@@ -1,0 +1,33 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');const elements=new Map();const ctx=new Proxy({},{get:(o,k)=>o[k]||(()=>({addColorStop(){}})),set:(o,k,v)=>(o[k]=v,true)});function el(){return {style:{},classList:{add(){},remove(){},contains(){return false},toggle(){}},children:[{},{}],append(){},prepend(){},insertBefore(){},addEventListener(){},querySelectorAll(){return []},setAttribute(){},getContext(){return ctx},closest(){return null},getBoundingClientRect(){return {left:0,top:0,width:100,height:100}},dataset:{}}}const doc={querySelector(){return null},getElementById(id){if(!elements.has(id))elements.set(id,el());return elements.get(id)},createElement:el,addEventListener(){},documentElement:{},body:el(),createTreeWalker(){return {nextNode(){return null}}}};let mem={};const c=vm.createContext({document:doc,window:{innerWidth:1200,innerHeight:850,addEventListener(){},removeEventListener(){}},NodeFilter:{SHOW_TEXT:4},sessionStorage:{getItem(){return null},setItem(){},removeItem(){}},AbortController,localStorage:{getItem:k=>mem[k],setItem:(k,v)=>mem[k]=v},console,Date,Math,setTimeout(){},clearTimeout(){},setInterval(){},clearInterval(){},requestAnimationFrame(){}});const s=fs.readFileSync(require('path').join(__dirname,'../index.html'),'utf8');for(const m of s.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g))vm.runInContext(m[1],c);function run(s){return vm.runInContext(s,c)};run("initAudio=()=>{};playChimeSound=()=>{};startMusic=()=>{};stopMusic=()=>{}");
+let clock=Date.now();class SimDate extends Date{static now(){return clock}}c.Date=SimDate;
+run("selectLanguage('tr');mode='comparison';startPlay();createFloatingText('BARRIER BREACH',300,400,'#fff',24,4,false,false,true);mainLoop()");
+assert.equal(run("t('HEALTHY')"),'SAĞLIKLI');
+run('performRestart();startPlay()');
+// Ten actual cuts trigger score bonuses and durable trophies.
+for(let i=0;i<10;i++){clock+=100;run("gameTimeRemaining-=.1;new GameItem('cyan',900,400,0,0,'right').slice(0);mainLoop()")}
+assert.equal(run('combo.right.count'),10);assert.equal(run('scoreRight'),1195);run('startPlay()');assert.equal(run('combo.right.count'),10);assert.ok(run('progress.unlocked.includes("first")'));assert.ok(run('progress.unlocked.includes("combo")'));assert.ok(run('arcadeStars.length')<=112);
+const before=run('comboTime()');run('pause(true)');clock+=3000;run('mainLoop()');assert.equal(run('comboTime()'),before);assert.equal(run('combo.right.count'),10);run('pause(false);gameTimeRemaining-=2.1;updateArcade(.02)');assert.equal(run('combo.right.count'),0);
+const total=run('progress.cuts');run('performRestart();startPlay()');assert.equal(run('combo.right.count'),0);assert.equal(run('progress.cuts'),total);assert.equal(run('combo.right.bonus'),0);
+// Identical combo bonuses apply to both panels.
+for(let i=0;i<5;i++)run("gameTimeRemaining-=.1;new GameItem('cyan',300,400,0,0,'left').slice(0);new GameItem('cyan',900,400,0,0,'right').slice(0)");assert.equal(run('scoreLeft'),run('scoreRight'));
+run('synergies=25;registerCombo("right",900,400)');assert.ok(run('progress.unlocked.includes("synergy")'));run('mode="challenge";durationLimit=100;level=2;gameTimeRemaining=59;s2SpawnedVegf=10;slicesRight=8;baseSpawn=0;baseSlice=0;advanceLevel()');assert.ok(run('progress.unlocked.includes("level")'));
+run('level=5;gameTimeRemaining=0;s2SpawnedVegf=20;slicesRight=18;baseSpawn=10;baseSlice=8;endPlay()');assert.ok(run('progress.unlocked.includes("champion")'));assert.ok(run('document.getElementById("newResults").innerHTML.includes("Kombo bonusu")'));assert.ok(run('db.get("angio-trophies-v1",{}).champion'));
+run('progress.cuts=99;gameState=STATE_PLAY;gameTimeRemaining=10;registerCombo("right",900,400)');assert.ok(run('progress.unlocked.includes("hundred")'));
+// Sustained rich effects remain bounded through a full 50-second session.
+run('performRestart();mode="comparison";startPlay();nextSpawnTime=Date.now();lastFrameTime=Date.now()');let peaks={stars:0,rings:0,ooze:0};
+for(let i=0;i<3100;i++){clock+=1000/60;if(i%18===0&&run('gameState===STATE_PLAY'))run("{const target=fruits.find(f=>f.panel==='right'&&!f.sliced);if(target)target.slice(0);}");run('mainLoop()');if(i%30===0){let v=run('({stars:arcadeStars.length,rings:arcadeRings.length,ooze:oozeParticles.length})');for(let k in peaks)peaks[k]=Math.max(peaks[k],v[k]);}}
+assert.equal(run('gameState'),2);assert.ok(peaks.stars<=112&&peaks.rings<=10&&peaks.ooze<=100);
+run('renderQuality="lite";for(let i=0;i<100;i++)sparkleBurst(100,200,true,"left")');assert.equal(run('arcadeStars.length'),56);assert.equal(run('arcadeRings.length'),10);
+console.log('PASS: combo bonuses, panel symmetry, pause/expiry/reset, six trophy goals, persistence, localized results, full-session stress, effect limits',peaks);
+
+run('performRestart();mode="comparison";startPlay();daily={day:localDay(),cuts:49,combo:9,synergies:4,claimed:[]};crystals=0;combo.right.count=9;combo.right.last=comboTime();synergies=1;runSynergiesLogged=0;registerCombo("right",900,400)');
+assert.equal(run('daily.cuts'),50);assert.equal(run('daily.combo'),10);assert.equal(run('daily.synergies'),5);
+for(const id of ['combo','synergy','cuts'])assert.equal(run('claimQuest('+JSON.stringify(id)+')'),true);
+assert.equal(run('crystals'),180);assert.equal(run('claimQuest("combo")'),false);assert.equal(run('crystals'),180);
+run('progress.unlocked=progress.unlocked.filter(x=>x!=="champion");ownedSkins=["default"]');assert.equal(run('buySkin("aurora")'),true);assert.equal(run('crystals'),20);assert.equal(run('buySkin("aurora")'),false);assert.equal(run('selectSkin("blade","aurora")'),true);assert.equal(run('selectedPalette("blade").id'),'aurora');
+run('progress.unlocked=progress.unlocked.filter(x=>x!=="hundred")');assert.equal(run('selectSkin("trail","gold")'),false);
+run('progress.unlocked.push("combo")');assert.equal(run('chooseDisplayTrophy("combo")'),true);assert.equal(run('profileBadge(displayTrophy)'),'🏆 ');
+for(const [points,label] of [[0,'Bronze'],[90,'Silver'],[240,'Gold'],[480,'Diamond']])assert.equal(run('currentLeague('+points+').en'),label);
+const yesterday=run('daily.day');clock+=86400000;run('ensureDay()');assert.notEqual(run('daily.day'),yesterday);assert.equal(run('daily.claimed.length'),0);assert.equal(run('daily.cuts'),0);assert.equal(run('crystals'),20);
+for(const tab of ['play','daily','trophies','skins']){run('hubTab='+JSON.stringify(tab)+';renderMenu()');assert.ok(run('document.getElementById("newMenu").innerHTML.length')>1000)}
+console.log('PASS: daily quests/reward idempotence, day rollover, cosmetic purchase/equipment locks, trophy display, league thresholds and all modern hub sections');
