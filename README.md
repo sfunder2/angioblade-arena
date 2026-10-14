@@ -1,4 +1,12 @@
-# AngioBlade Arena v1.9 — Damar Ağını Kurtar
+# AngioBlade Arena v2.0 — Genişletilmiş Yetenekler
+
+## v2.0 Yetenek paketi
+
+- Beş renkli dalda 30 yetenek; seviyeye ve ön koşullara bağlı açılış, üç üst uzmanlıktan yalnızca biri.
+- Üç kayıtlı yetenek düzeni; oyun dışında kaydetme, kuşanma ve ücretsiz puan dağıtma. Kayıtlar bu tarayıcıda tutulur.
+- Kampanyada başarılı kesimlerden enerji; zaman alanı ve sağlıklı hücreleri koruyan kalkan. Yavaşlatma görev süresini veya hedefin son kullanma süresini uzatmaz.
+- Yeni puan ve savunma yardımları çevrim içi maçlarda kapalıdır; görsel yetenekler görünümü değiştirebilir.
+- Renkli dal kartları, ön koşullar, uzmanlık etiketleri ve enerji göstergesi.
 
 ## Durum
 

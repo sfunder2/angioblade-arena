@@ -1,5 +1,12 @@
 # Changes
 
+## 2.0.0
+- Expanded five-branch skill tree with 30 nodes and exclusive top mastery.
+- Three persistent build slots with level, cost and prerequisite validation.
+- Campaign energy, time field and shield abilities, passive protection and progression bonuses.
+- Colored branch UI and ability HUD; gameplay advantages disabled in online matches.
+- Regression tests for build validation, energy, protection and online fairness.
+
 ## 1.9.0
 - 25-stage Save the Vessel Network campaign and mission map.
 - Five tougher regional finals, waves, protected cells and priority targets.
