@@ -101,3 +101,6 @@ npm test
 ```
 
 `tests/progression-test.cjs` seviye sınırları, düğüm ön koşulları ve maliyetleri, XP çarpanları, ücretsiz dağıtım, tek oyunculu süreler, değişmez oturum yetenekleri, çevrim içi denge, Prizma görünümü, XP kaydı ve tek maç ödülünü doğrular. Diğer testler oyun/görev/kupa/kozmetik ve iki istemcili oda akışlarını doğrular. Gerçek telefonlarda görsel ve dokunmatik test yapılmadı.
+
+## v1.7 — Ad ve lider tablosu
+İlk girişte takma ad istenir; seçilen ad bu tarayıcıda hatırlanır. Lider tablosunda adların herkese açık olduğu giriş ekranında belirtilir. Klasik ve meydan okuma için oyuncu başına en iyi skor, düello için sunucunun doğruladığı LP gösterilir. İlk 100 oyuncu listelenir. Tek oyunculu skorlar cihaz beyanıdır ve antrenman yetenekleri sonucu etkileyebilir. İnternet yoksa skor sırada tutulur ve sonraki girişte yeniden gönderilir. Profil anahtarları lider tablosuna dahil edilmez. `backend/leaderboard_v3.sql` mevcut oda/profil şemalarından sonra uygulanır.
