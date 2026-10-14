@@ -22,7 +22,7 @@ alter table public.angio_arena_players enable row level security;
 revoke all on public.angio_arena_rooms,public.angio_arena_players from public,anon,authenticated;
 grant select,insert,update,delete on public.angio_arena_rooms,public.angio_arena_players to service_role;
 
-create function public.angio_arena_action(p_action text,p_code text,p_hash text,p_payload jsonb default '{}') returns jsonb
+create or replace function public.angio_arena_action(p_action text,p_code text,p_hash text,p_payload jsonb default '{}') returns jsonb
 language plpgsql security invoker set search_path=public,pg_temp as $$
 declare r public.angio_arena_rooms; me public.angio_arena_players; member public.angio_arena_players;
  ms bigint:=(extract(epoch from clock_timestamp())*1000)::bigint; chosen_seat integer; incoming jsonb; h jsonb; target jsonb; t integer; last_t integer;
@@ -110,7 +110,7 @@ begin
  end if;
  select coalesce(jsonb_agg(to_jsonb(x) order by x.seat),'[]') into public_players from (
   select p.seat,p.name,p.score,p.ready,p.left_room as "left",p.seen_ms as "seenMs",jsonb_array_length(p.hits) as cuts,
-   public.angio_duel_stats(r.plan,p.hits) as stats,public.angio_profile_view(p.profile_hash) as profile
+   case when r.status in ('finished','forfeit') then public.angio_duel_stats(r.plan,p.hits) else null end as stats,public.angio_profile_view(p.profile_hash) as profile
   from public.angio_arena_players p where p.code=p_code and (r.status<>'waiting' or not p.left_room)
  ) x;
  return jsonb_build_object('arenaVersion',2,'capacity',16,'hostSeat',r.host_seat,'code',r.code,'status',r.status,'seat',chosen_seat,'serverMs',ms,'startMs',r.start_ms,'duration',50,'seed',r.seed,'plan',r.plan,'winners',r.winners,'winner',case when jsonb_array_length(r.winners)=1 then (r.winners->>0)::integer when r.status in ('finished','forfeit') then 0 else null end,'revision',r.revision,'players',public_players,'career',public.angio_profile_view(me.profile_hash));
