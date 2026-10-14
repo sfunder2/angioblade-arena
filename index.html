@@ -20,7 +20,7 @@ html, body {
   overflow: hidden;
   position: fixed;
   -webkit-text-size-adjust: 100%; /* Prevents iOS auto-scaling text */
-  touch-action: none;
+  touch-action: pan-y pinch-zoom;
   overscroll-behavior: none; /* Block systemic browser pulling effects */
 }
 body {
@@ -890,7 +890,7 @@ window.addEventListener('touchmove', (e) => {
       const diffY = currentY - touchStartY;
 
       // Detect if swiping inside overlayContainer, screenResults, or references container
-      const isScrollableOverlay = e.target.closest('#overlayContainer') || e.target.closest('#screenResults') || e.target.closest('.references-scroller');
+      const isScrollableOverlay = e.target.closest('#overlayContainer') || e.target.closest('#screenResults') || e.target.closest('.references-scroller') || e.target.closest('#playGuide');
       
       if (isScrollableOverlay) {
         // Allow the element to scroll natively
@@ -923,7 +923,7 @@ document.addEventListener('touchend', (e) => {
 
 // Completely ignore multi-finger zooming gestures at browser level
 document.addEventListener('gesturestart', (e) => {
-  e.preventDefault();
+  if(gameState===STATE_PLAY)e.preventDefault();
 }, { passive: false });
 
 function getDistanceToSegment(px, py, x1, y1, x2, y2) {
@@ -2989,7 +2989,7 @@ function updateArcade(delta){
  const now=comboTime();for(const [panel,state] of Object.entries(combo))if(now-state.last>comboWindow()&&state.count){if(mode!=='duel'&&skillActive('combo_guard')&&!state.recovered){state.recovered=true;state.last=now;createFloatingText(L('COMBO SAVED','KOMBO KORUNDU'),panel==='right'?width*.75:width*.25,height*.4,'#c4b5fd',18,1);}else state.count=0;}
  if(gameState===STATE_PLAY&&now-lastProgressSave>=2){saveProgress();saveDaily();lastProgressSave=now;}
  const box=document.getElementById('comboDisplay');box.hidden=gameState!==STATE_PLAY;
- if(gameState===STATE_PLAY&&(now-arcadeHudLast>=.08||arcadeHudLast<0)){arcadeHudLast=now;box.innerHTML=['left','right'].map(panel=>{const state=combo[panel];return `<div class="combo-cell ${state.count>=10?'combo-gold':''}"><span>${panel==='left'?L('VEGF COMBO','VEGF KOMBO'):L('DUAL COMBO','ÇİFT KOMBO')}</span><strong>${state.count} <small>×${comboMultiplier(state.count)}</small></strong><div class="combo-track"><i style="width:${state.count?Math.max(0,1-(now-state.last)/comboWindow())*100:0}%"></i></div></div>`}).join('');}
+ if(gameState===STATE_PLAY&&(now-arcadeHudLast>=.08||arcadeHudLast<0)){arcadeHudLast=now;box.innerHTML=['left','right'].map(panel=>{const state=combo[panel];return `<div class="combo-cell ${state.count>=10?'combo-gold':''}"><span>${window.innerWidth<=700?L('COMBO','KOMBO'):panel==='left'?L('VEGF COMBO','VEGF KOMBO'):L('DUAL COMBO','ÇİFT KOMBO')}</span><strong>${state.count} <small>×${comboMultiplier(state.count)}</small></strong><div class="combo-track"><i style="width:${state.count?Math.max(0,1-(now-state.last)/comboWindow())*100:0}%"></i></div></div>`}).join('');}
  if(!activeToast&&toastQueue.length){activeToast={item:toastQueue.shift(),life:0};playChimeSound();const toast=document.getElementById('trophyToast');toast.hidden=false;toast.innerHTML=cupIcon()+`<div><span>${L('TROPHY UNLOCKED','KUPA AÇILDI')}</span><strong>${L(activeToast.item.en,activeToast.item.tr)}</strong></div>`;}
  if(activeToast){activeToast.life+=delta;if(activeToast.life>=2.8){activeToast=null;document.getElementById('trophyToast').hidden=true;}}
  for(let i=arcadeStars.length-1;i>=0;i--){const star=arcadeStars[i];star.life+=delta;if(star.life>=star.ttl){arcadeStars.splice(i,1);continue;}star.x+=star.vx*delta;star.y+=star.vy*delta;star.vy+=95*delta;}
@@ -3205,7 +3205,7 @@ class MolecularRenderer {
  }
  drawCell(g,bx,by,bw,bh,panel,integrity,severity){const id=Math.abs(Math.sin(bx*12.3+by*34.5)),loose=id<severity,cx=bx+bw/2,cy=by+bh/2;g.save();
   if(loose&&integrity<100){g.fillStyle='#1a040bc0';g.fillRect(bx,by,bw,bh);if(gameState===STATE_PLAY&&oozeParticles.length<(renderQuality==='lite'?40:100)&&Math.random()<.012*severity)oozeParticles.push(new OozeParticle(cx,cy,panel));g.translate(cx,cy);g.translate(0,(100-integrity)*.2*id);g.rotate((panel==='right'?-1:1)*(100-integrity)*.001*(id-.5));g.translate(-cx,-cy);}
-  g.globalAlpha=loose?.72:.52;g.drawImage(this.cell(loose,Math.floor(id*3)),bx-1,by-1,bw+2,bh+2);g.restore();
+  g.globalAlpha=loose?.72:(window.innerWidth<=700?.28:.45);g.drawImage(this.cell(loose,Math.floor(id*3)),bx-1,by-1,bw+2,bh+2);g.restore();
   if(integrity<100){const x=bx+bw,y=by+bh;if(x>0&&x<width/2-10&&y>0&&y<height&&panel==='left')visibleJunctionsLeft.push({x,y});if(x>width/2+10&&x<width&&y>0&&y<height&&panel==='right')visibleJunctionsRight.push({x,y});}
  }
  drawTarget(item){if(item.healthy){this.drawHealthy(item);return;}const g=ctx,r=item.radius,s=r/57,sprite=this.molecule(item.type);g.save();g.beginPath();g.rect(item.panel==='left'?0:width/2,0,width/2,height);g.clip();if(item.priority)this.drawPriority(item);
@@ -3735,5 +3735,9 @@ window.onload = function () {
 </style>
 
 <style>
-#overlayContainer,#newMenu,#playGuide{touch-action:pan-y}.science-details{width:100%;margin:10px 0;padding:14px;border:1px solid #334155;border-radius:14px;font-size:14px}.science-details summary{cursor:pointer;min-height:35px}#screenResults>h2{display:none}#screenResults{max-width:680px!important}#newResults{font-size:15px}#newResults h3{font-size:24px}#newResults button,#btnRestart{min-height:50px;font-size:15px}#comboCelebration{position:fixed;top:235px;left:50%;transform:translateX(-50%);z-index:25;pointer-events:none;display:flex;align-items:center;gap:9px;padding:10px 17px;border-radius:16px;border:1px solid #fbd67b;background:#302814ec;color:#ffe9a9}#comboCelebration[hidden]{display:none}#comboCelebration span{font-size:25px}#comboCelebration strong{font-size:18px}#comboCelebration small{font-size:12px;color:#fff1ca}#comboCelebration.celebrate{animation:comboBounce .8s ease-out both}@keyframes comboBounce{0%{opacity:0;transform:translate(-50%,8px) scale(.7)}22%{opacity:1;transform:translate(-50%,-4px) scale(1.08)}42%,75%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-14px) scale(.96)}}@media(max-width:700px){.single-field #comboCelebration{top:120px;padding:8px 12px}.single-field #comboCelebration strong{font-size:15px}.single-field #comboCelebration small{font-size:11px}}@media(prefers-reduced-motion:reduce){#comboCelebration.celebrate{animation:none}}
+#overlayContainer,#newMenu,#playGuide{touch-action:pan-y pinch-zoom}.science-details{width:100%;margin:10px 0;padding:14px;border:1px solid #334155;border-radius:14px;font-size:14px}.science-details summary{cursor:pointer;min-height:35px}#screenResults>h2{display:none}#screenResults{max-width:680px!important}#newResults{font-size:15px}#newResults h3{font-size:24px}#newResults button,#btnRestart{min-height:50px;font-size:15px}#comboCelebration{position:fixed;top:235px;left:50%;transform:translateX(-50%);z-index:25;pointer-events:none;display:flex;align-items:center;gap:9px;padding:10px 17px;border-radius:16px;border:1px solid #fbd67b;background:#302814ec;color:#ffe9a9}#comboCelebration[hidden]{display:none}#comboCelebration span{font-size:25px}#comboCelebration strong{font-size:18px}#comboCelebration small{font-size:12px;color:#fff1ca}#comboCelebration.celebrate{animation:comboBounce .8s ease-out both}@keyframes comboBounce{0%{opacity:0;transform:translate(-50%,8px) scale(.7)}22%{opacity:1;transform:translate(-50%,-4px) scale(1.08)}42%,75%{opacity:1;transform:translate(-50%,0) scale(1)}100%{opacity:0;transform:translate(-50%,-14px) scale(.96)}}@media(max-width:700px){.single-field #comboCelebration{top:120px;padding:8px 12px}.single-field #comboCelebration strong{font-size:15px}.single-field #comboCelebration small{font-size:11px}}@media(prefers-reduced-motion:reduce){#comboCelebration.celebrate{animation:none}}
+</style>
+
+<style>
+#hudLeft,#hudRight{max-width:240px;padding:12px;box-shadow:none!important}#hudLeft>div>div:first-child>div:last-child,#hudRight>div>div:first-child>div:last-child{display:none}#hudLeft h2,#hudRight h2{font-size:13px}#hudLeft>div>div:last-child>div:last-child,#hudRight>div>div:last-child>div:last-child{display:none}@media(max-width:700px){#btnFullscreen{display:none!important}.single-field #pauseBtn{min-height:44px}.single-field #stage{max-width:95px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
 </style>
