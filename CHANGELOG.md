@@ -1,5 +1,12 @@
 # Changes
 
+## 2.1.0
+- Five cached regional backdrops, vessel motifs and illustrated campaign cards.
+- Regional-final wave countdowns, arrival banners and slow warning rings.
+- Healthy-cell hexagons, priority-target diamonds and expiry arcs.
+- Combo-scaled impact rays and fading blade trails; bounded lightweight effects and reduced-motion support.
+- Visual ability fields for campaign shield and time field.
+
 ## 2.0.0
 - Expanded five-branch skill tree with 30 nodes and exclusive top mastery.
 - Three persistent build slots with level, cost and prerequisite validation.

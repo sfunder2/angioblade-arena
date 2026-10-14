@@ -1,4 +1,12 @@
-# AngioBlade Arena v2.0 — Genişletilmiş Yetenekler
+# AngioBlade Arena v2.1 — Bölge Atmosferleri
+
+## v2.1 Grafik paketi
+
+- Beş bölgeye özel renkler, önceden çizilen damar dokuları ve harita kartları.
+- Bölge finallerinde sonraki dalgadan 2,5 saniye önce geri sayım; dalga başlangıç kartları.
+- Sağlıklı hücreler altıgen ve artı işaretli; öncelikli hedefler elmas çerçeveli, ünlemli ve kalan süre halkalıdır. Kesim alanları aynı kalır.
+- Kombo ile güçlenen sınırlı ışın/parıltı efektleri, solan bıçak izleri. Hafif ayarda daha az efekt, azaltılmış hareket tercihinde sabit atmosfer ve kısa kesim parıltısı.
+- Kampanya kalkanı ve zaman alanı için ayrı görsel göstergeler.
 
 ## v2.0 Yetenek paketi
 
