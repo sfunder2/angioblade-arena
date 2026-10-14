@@ -1,4 +1,4 @@
-# AngioBlade Arena v1.6 — İki oyunculu oda sistemi
+# AngioBlade Arena v1.9 — Damar Ağını Kurtar
 
 ## Durum
 
@@ -109,3 +109,12 @@ npm test
 Yeni odalara 2–16 oyuncu katılabilir. Herkes Hazırım der; oda sahibi Maçı başlat düğmesine basar. Ortak geri sayım 5 saniye, maç 50 saniyedir. Üç ve daha fazla oyuncuda skorlar yaklaşık saniyede bir yenilenir. Bekleme ekranında ayrılan kişinin yeri yeniden kullanılabilir; oda sahibi ayrılırsa sahiplik en küçük aktif oyuncu numarasına aktarılır. Başlamış maça yeni oyuncu alınmaz. Maç sırasında ayrılan oyuncu birincilikten çıkarılır; kalanlar devam eder. Son bir oyuncu kalırsa hükmen kazanır. Birincilik +30 LP; zirveyi paylaşanlar +10 LP; diğerleri mağlubiyet alır. XP yalnızca en az bir hedef kesen oyuncuya verilir.
 
 `backend/arena_rooms_v4.sql` yeni tablolar ve RLS/servis erişimli oda işlevini ekler; eski iki oyunculu tabloları değiştirmez. Yeni istemci `arenaVersion: 2` gönderir. Önceki istemciler eski düello işlevini kullanabilir. `tests/arena-db-test.sql` gerçek Postgres oda işlevini geçici bir transaction içinde doğrular ve tüm test verisini rollback eder. On altı gerçek telefonda eş zamanlı performans denemesi yapılmadı.
+
+## v1.9 — 25 aşamalı serüven
+Serüven sekmesi: beş bölgede 25 aşama, 5/10/15/20/25. aşamalarda bölge finali. Her görev öncesi hedef sayısı, yakalama oranı, kombo, sinerji, öncelikli hedef ve minimum bütünlük koşulları gösterilir. Görev yalnızca sağ panelden değerlendirilir; klasik eğitim karşılaştırması ve 16 kişilik arena korunur.
+
+Yeşil + hücrelerini kesmek 14 bütünlük hasarı verir, komboyu sıfırlar ve puan kazandırmaz. Altın ! öncelikli hedefler 4 saniyede, diğerleri 6 saniyede kaybolur. Kaçırılan öncelikli hedef 7; diğer hedef 3 hasar verir. Başarılı kesim 0,8 bütünlük iyileştirir. Bütünlük koşulu yalnızca son değerle değil oturumdaki en düşük değerle değerlendirilir. Finaller üç dalga, 25. final beş dalgadır; hız her dalgada artar.
+
+Görevi bitirmek bir yıldız verir; sağlıklı hücre kesmeden en az %90 bütünlük ikinci yıldızı, en az %90 yakalama ve daha yüksek kombo üçüncü yıldızı verir. İlk tamamlama 80 XP; final 200 XP + 100 kristal verir. Her final bölge kupası ve bıçak/iz paleti açar; 25. aşama Damar Koruyucusu unvanını açar. Tekrar oynama yıldız ve rekoru iyileştirebilir; ilk-tamamlama ödülünü tekrar vermez. Kaydetme bu tarayıcının localStorage alanındadır, cihazlar arası senkronizasyon yoktur. Mevcut beş aşamalı hızlı meydan okuma da kullanılabilir.
+
+`tests/campaign-test.cjs` gerçek oyun döngüsünde tüm 25 aşamayı ideal kesim stratejisiyle tamamlar; final dalgaları, ön koşullar, korunan hücre ve öncelikli hedef cezaları, başarısızlık sonrası ilerleme korunması, yıldızlar, yerel kayıt ve tek seferlik ödülleri doğrular.

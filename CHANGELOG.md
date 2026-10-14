@@ -1,5 +1,10 @@
 # Changes
 
+## 1.9.0
+- 25-stage Save the Vessel Network campaign and mission map.
+- Five tougher regional finals, waves, protected cells and priority targets.
+- Persistent stars, replayable missions, regional trophies, appearance palettes and final title.
+
 ## 1.8.0
 - Rooms for 2–16 players with explicit host start after all players are ready.
 - Complete live scoreboard and final performance ranking.
