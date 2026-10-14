@@ -104,3 +104,8 @@ npm test
 
 ## v1.7 — Ad ve lider tablosu
 İlk girişte takma ad istenir; seçilen ad bu tarayıcıda hatırlanır. Lider tablosunda adların herkese açık olduğu giriş ekranında belirtilir. Klasik ve meydan okuma için oyuncu başına en iyi skor, düello için sunucunun doğruladığı LP gösterilir. İlk 100 oyuncu listelenir. Tek oyunculu skorlar cihaz beyanıdır ve antrenman yetenekleri sonucu etkileyebilir. İnternet yoksa skor sırada tutulur ve sonraki girişte yeniden gönderilir. Profil anahtarları lider tablosuna dahil edilmez. `backend/leaderboard_v3.sql` mevcut oda/profil şemalarından sonra uygulanır.
+
+## v1.8 — 16 kişilik arena
+Yeni odalara 2–16 oyuncu katılabilir. Herkes Hazırım der; oda sahibi Maçı başlat düğmesine basar. Ortak geri sayım 5 saniye, maç 50 saniyedir. Üç ve daha fazla oyuncuda skorlar yaklaşık saniyede bir yenilenir. Bekleme ekranında ayrılan kişinin yeri yeniden kullanılabilir; oda sahibi ayrılırsa sahiplik en küçük aktif oyuncu numarasına aktarılır. Başlamış maça yeni oyuncu alınmaz. Maç sırasında ayrılan oyuncu birincilikten çıkarılır; kalanlar devam eder. Son bir oyuncu kalırsa hükmen kazanır. Birincilik +30 LP; zirveyi paylaşanlar +10 LP; diğerleri mağlubiyet alır. XP yalnızca en az bir hedef kesen oyuncuya verilir.
+
+`backend/arena_rooms_v4.sql` yeni tablolar ve RLS/servis erişimli oda işlevini ekler; eski iki oyunculu tabloları değiştirmez. Yeni istemci `arenaVersion: 2` gönderir. Önceki istemciler eski düello işlevini kullanabilir. `tests/arena-db-test.sql` gerçek Postgres oda işlevini geçici bir transaction içinde doğrular ve tüm test verisini rollback eder. On altı gerçek telefonda eş zamanlı performans denemesi yapılmadı.

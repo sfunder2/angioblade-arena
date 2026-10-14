@@ -1,5 +1,10 @@
 # Changes
 
+## 1.8.0
+- Rooms for 2–16 players with explicit host start after all players are ready.
+- Complete live scoreboard and final performance ranking.
+- Host transfer, vacated waiting seats, departures and idempotent league rewards.
+
 ## 1.6.0
 - Persistent XP and player levels 1–30.
 - Three skill branches, nine gated nodes, free respec.
