@@ -1,4 +1,13 @@
-# AngioBlade Arena v2.1 — Bölge Atmosferleri
+# AngioBlade Arena v2.2 — Mobil ve Sade
+
+## v2.2 Mobil arayüz
+
+- Üç büyük oyun seçeneği; dört ana sekme. Günlük görev, koleksiyon, kupa ve sıralama Diğer sekmesindedir.
+- 700 piksel ve altında tek geniş oyun alanı. Sağ panel oyun mantığı korunur; ekrandaki dokunuşlar kaydırılmış Canvas koordinatlarına eşlenir.
+- İlk tek oyunculu oyundan önce üç adımlı anlatım. Nasıl oynanır düğmesiyle tekrar açılır; arena geri sayımı anlatımla kesilmez.
+- Büyük dokunma hedefleri, kısa metinler, açılır yetenek dalları ve oyuncu ayrıntıları.
+- Kombo kutlamaları, moleküler parçacıklar ve menüde kaydırma animasyonu. Hareket azaltma tercihi desteklenir.
+- tests/mobile-preview.html: gerçek 320, 390, 430 piksel iframe görünümü ile manuel kontrol.
 
 ## v2.1 Grafik paketi
 

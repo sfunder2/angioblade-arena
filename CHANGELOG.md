@@ -1,5 +1,13 @@
 # Changes
 
+## 2.2.0
+- Simple home with three large play choices and four primary tabs.
+- Mobile single-field rendering with correctly mapped touches and compact HUD.
+- Three-step first-play tutorial and replayable instructions.
+- Accordion skills, expandable player details and optional scientific result details.
+- Coherent molecular fragments, animated menu demo and combo celebration.
+- Mobile coordinate tests and a 320/390/430px iframe preview.
+
 ## 2.1.0
 - Five cached regional backdrops, vessel motifs and illustrated campaign cards.
 - Regional-final wave countdowns, arrival banners and slow warning rings.

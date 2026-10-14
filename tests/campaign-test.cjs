@@ -3,12 +3,12 @@ const fs=require('fs'),vm=require('vm'),assert=require('assert');const elements=
 let clock=Date.now();class SimDate extends Date{static now(){return clock}}c.Date=SimDate;
 run("selectLanguage('tr');nameAccepted=true");assert.equal(run('campaignStages.length'),25);assert.deepEqual(Array.from(run('campaignStages.filter(s=>s.boss).map(s=>s.n)')),[5,10,15,20,25]);assert.equal(run('campaignUnlocked()'),1);
 // Actual spawns/cuts through complete sessions; all 25 missions must be achievable.
-for(let n=1;n<=25;n++){
+for(const viewport of [1200,390]){run("window.innerWidth="+viewport);for(let n=1;n<=25;n++){
  run('performRestart();mode="campaign";selectedCampaignStage='+n+';startPlay()');assert.equal(run('durationLimit'),run('campaignStages['+(n-1)+'].duration'));
  const duration=run('durationLimit');
  for(let frame=0;frame<duration*10+3;frame++){clock+=100;run('mainLoop()');if(run('gameState===STATE_PLAY'))run('for(const f of [...fruits])if(!f.healthy&&!f.sliced)f.slice(0)');}
  assert.equal(run('gameState'),2);assert.ok(run('campaign.stars['+(n-1)+']')>=1,'unachievable stage '+n);assert.ok(run('campaignRun.wave')===run('campaignRun.stage.waves'));assert.ok(run('campaignRun.healthyCuts')===0);
-}
+}}
 assert.equal(run('campaignUnlocked()'),25);assert.equal(run('campaign.rewarded.length'),5);assert.equal(run('skinUnlocked("region5")'),true);assert.ok(run('campaignTrophies()').includes('earned'));const xp=run('growth.xp'),wallet=run('crystals');run('finishCampaign()');assert.equal(run('growth.xp'),xp);assert.equal(run('crystals'),wallet);
 // Healthy cuts penalize integrity and break combo without granting score or XP.
 run('performRestart();mode="campaign";selectedCampaignStage=10;startPlay();combo.right.count=7');const before=run('scoreRight');run('{const f=new GameItem("cyan",900,400,0,0,"right");f.healthy=true;f.slice(0)}');assert.equal(run('scoreRight'),before);assert.equal(run('campaignRun.integrity'),86);assert.equal(run('combo.right.count'),0);assert.equal(run('campaignRun.healthyCuts'),1);
@@ -16,4 +16,4 @@ run('{const f=new GameItem("cyan",900,400,0,0,"right");f.priority=true;campaignM
 // Failure retains cleared stages and cannot unlock the next one.
 run('campaign.stars[9]=0;campaign.stars[10]=0;gameTimeRemaining=0;slicesRight=0;finishCampaign()');assert.equal(run('campaign.stars[9]'),0);assert.equal(run('campaignUnlocked()'),10);assert.equal(run('campaign.stars[8]')>0,true);
 run('hubTab="campaign";renderMenu()');assert.ok(run('document.getElementById("newMenu").innerHTML').includes('25 aşamayı'));assert.ok(run('document.getElementById("newMenu").innerHTML').includes('data-campaign-stage="25" disabled'));assert.equal(run('db.get("angio-campaign-v1",{}).stars.length'),25);
-console.log('PASS: all 25 actual sessions achievable, five wave finals, unlocks, stars, persistence, healthy/priority penalties, failure retry and once-only regional rewards');
+console.log('PASS: all 25 actual sessions achievable at desktop and mobile widths, five wave finals, unlocks, stars, persistence, healthy/priority penalties, failure retry and once-only regional rewards');
