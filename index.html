@@ -113,16 +113,16 @@ body {
 
 <!-- Interactive Game HUD Overlay -->
 <div class="absolute inset-0 z-20 flex flex-col justify-between pointer-events-none p-4 md:p-6 select-none" style="padding-top: calc(1rem + env(safe-area-inset-top)); padding-bottom: calc(1rem + env(safe-area-inset-bottom));">
-  
+
   <!-- TOP STATUS HEADER SPLIT-PANEL -->
   <div class="w-full flex justify-between items-start gap-4 pr-16 md:pr-20">
-    
+
     <!-- LEFT PANEL HUD -->
     <div id="hudLeft" class="glass-panel rounded-[24px] p-4 flex flex-col gap-1.5 transition-all duration-700 transform -translate-y-[150px] opacity-0 pointer-events-auto w-full max-w-[280px] md:max-w-xs neon-border-blue">
       <h2 class="text-base md:text-lg font-black tracking-tight text-blue-400">
         VEGF Blade
       </h2>
-      
+
       <!-- Metrics Layout with Showcase of Inverse Relationship -->
       <div class="flex flex-col gap-2.5 mt-2 pt-2 border-t border-white/5 text-xs">
         <!-- Row 1: Score & Unbound Ang-2 -->
@@ -159,7 +159,7 @@ body {
     <!-- CENTER TIMER / CLOCK HUB -->
     <div id="hudCenter" class="flex flex-col items-center gap-2 transition-all duration-700 transform -translate-y-[150px] opacity-0 pointer-events-auto">
       <div class="glass-panel px-5 py-2.5 rounded-full border border-white/10 flex items-center justify-center gap-4 animate-opacity pointer-events-auto">
-        
+
         <!-- High-Tech SVG Circular Countdown Timer (Enlarged) -->
         <div class="relative w-12 h-12 flex items-center justify-center" title="Time Remaining">
           <svg class="w-12 h-12 transform -rotate-90">
@@ -169,18 +169,18 @@ body {
           </svg>
           <span class="absolute text-sm font-black tabular-nums mono-font text-white" id="timerValue">50</span>
         </div>
-        
+
         <div class="h-6 w-[1px] bg-white/15"></div>
-        
+
         <!-- Restart / Refresh Game Button -->
         <button id="btnRefresh" class="flex items-center justify-center p-2 hover:bg-white/10 active:scale-90 rounded-full transition-all duration-200" title="Restart Simulation">
           <svg id="refreshIcon" class="w-6 h-6 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
           </svg>
         </button>
-        
+
         <div class="h-6 w-[1px] bg-white/15"></div>
-        
+
         <!-- Audio Volume Control -->
         <button id="btnMuteToggle" class="flex items-center justify-center p-2 hover:bg-white/10 active:scale-90 rounded-full transition-all duration-200" title="Toggle Audio">
           <svg id="volumeIcon" class="w-6 h-6 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -188,7 +188,7 @@ body {
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 5L6 9H2v6h4l5 4V5z M15.54 8.46a5 5 0 010 7.07 M19.07 4.93a10 10 0 010 14.14" />
           </svg>
         </button>
-        
+
       </div>
     </div>
 
@@ -236,14 +236,14 @@ body {
 
 <!-- OVERLAY PORTAL SCREEN -->
 <div id="overlayContainer" class="absolute inset-0 z-30 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-xl overflow-y-auto page-transition">
-  
+
   <!-- 1. INTRO/TRIAL SETUP SCREEN (HIGHLY REFINED DESIGN) -->
   <div id="screenIntro" class="max-w-xl w-full glass-panel rounded-[36px] p-6 md:p-8 flex flex-col items-center text-center shadow-2xl page-transition scale-100 opacity-100 neon-border-blue my-auto border border-blue-500/20">
-    
+
     <!-- Unified Bio-sensing Title Card -->
     <div class="relative py-6 px-8 rounded-[24px] border border-blue-500/30 bg-[#090d1a]/80 flex flex-col items-center justify-center w-full shadow-[0_0_40px_rgba(59,130,246,0.15)]">
       <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 blur-xl opacity-30 rounded-full"></div>
-      
+
       <h1 class="serif-font text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-100 to-slate-300 drop-shadow-md select-none uppercase leading-tight text-center">
         Dual Strike AngioBlade
       </h1>
@@ -251,14 +251,14 @@ body {
         The Vascular Stabilizer
       </div>
     </div>
-    
+
     <!-- Interactive Pill Button Row -->
     <div class="my-6">
       <span id="introSlashTarget" class="inline-block bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-extrabold text-xs px-10 py-4 rounded-full uppercase tracking-[0.2em] mono-font shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_35px_rgba(168,85,247,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 select-none animate-bounce cursor-pointer border border-white/10">
         Slash to Start Simulation
       </span>
     </div>
-    
+
     <!-- MoA Description in beautiful modern Glass-pill styling -->
     <div class="w-full mb-6 py-2.5 px-4 rounded-full border border-white/5 bg-white/[0.02] inline-flex items-center justify-center gap-2">
       <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
@@ -294,7 +294,7 @@ body {
     <details class="science-details"><summary>Detailed comparison / Ayrıntılı karşılaştırma</summary>
     <!-- Dual comparative performance cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mb-6">
-      
+
       <!-- Left Panel Report (Monotherapy) -->
       <div class="p-5 rounded-[20px] bg-slate-900/50 border border-white/5 flex flex-col justify-between relative overflow-hidden">
         <div>
@@ -321,7 +321,7 @@ body {
               <div class="font-black tabular-nums mono-font text-sm flex items-center gap-1.5">
                 <span class="text-slate-300" id="resS1Slices">0</span>
                 <span class="text-slate-500 text-[10px] font-bold">
-                  (<span class="text-cyan-400" id="resS1SlicedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> / 
+                  (<span class="text-cyan-400" id="resS1SlicedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> /
                   <span class="text-purple-400" id="resS1SlicedAng2">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">ANG-2</span>)
                 </span>
               </div>
@@ -331,7 +331,7 @@ body {
               <div class="font-black tabular-nums mono-font text-sm flex items-center gap-1.5">
                 <span class="text-slate-300" id="resS1Misses">0</span>
                 <span class="text-slate-500 text-[10px] font-bold">
-                  (<span class="text-cyan-400" id="resS1MissedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> / 
+                  (<span class="text-cyan-400" id="resS1MissedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> /
                   <span class="text-purple-400" id="resS1MissedAng2">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">ANG-2</span>)
                 </span>
               </div>
@@ -384,7 +384,7 @@ body {
               <div class="font-black tabular-nums mono-font text-sm flex items-center gap-1.5">
                 <span class="text-purple-400" id="resS2Slices">0</span>
                 <span class="text-slate-500 text-[10px] font-bold">
-                  (<span class="text-cyan-400" id="resS2SlicedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> / 
+                  (<span class="text-cyan-400" id="resS2SlicedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> /
                   <span class="text-purple-400" id="resS2SlicedAng2">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">ANG-2</span>)
                 </span>
               </div>
@@ -394,7 +394,7 @@ body {
               <div class="font-black tabular-nums mono-font text-sm flex items-center gap-1.5">
                 <span class="text-purple-300" id="resS2Misses">0</span>
                 <span class="text-slate-500 text-[10px] font-bold">
-                  (<span class="text-cyan-400" id="resS2MissedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> / 
+                  (<span class="text-cyan-400" id="resS2MissedVegf">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">VEGF</span> /
                   <span class="text-purple-400" id="resS2MissedAng2">0</span> <span class="text-[9px] font-normal text-slate-500 uppercase">ANG-2</span>)
                 </span>
               </div>
@@ -480,16 +480,16 @@ let schedulerTimerId = null;
 let musicGainNode = null;
 let nextNoteTime = 0;
 let currentStep = 0;
-const tempo = 138; 
-const lookahead = 25.0; 
-const scheduleAheadTime = 0.1; 
+const tempo = 138;
+const lookahead = 25.0;
+const scheduleAheadTime = 0.1;
 
 // Initialise and robustly unlock Web Audio for iOS / iPadOS Safari standards
 function initAudio() {
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
-  
+
   if (audioCtx.state === 'suspended') {
     audioCtx.resume().then(() => {
       // Create and trigger an instantaneous silent sweep to explicitly unlock the iOS CoreAudio daemon
@@ -526,7 +526,7 @@ function startMusic() {
   if (sequencerActive || isMuted) return;
 
   musicGainNode = audioCtx.createGain();
-  musicGainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); 
+  musicGainNode.gain.setValueAtTime(0.05, audioCtx.currentTime);
   musicGainNode.connect(audioCtx.destination);
 
   nextNoteTime = audioCtx.currentTime;
@@ -564,15 +564,15 @@ function scheduler() {
 
 function advanceNote() {
   const secondsPerBeat = 60.0 / tempo;
-  nextNoteTime += 0.25 * secondsPerBeat; 
+  nextNoteTime += 0.25 * secondsPerBeat;
   currentStep = (currentStep + 1) % 16;
 }
 
 const bassScale = [
-  36.71, 36.71, 73.42, 73.42, 
-  43.65, 43.65, 87.31, 87.31, 
-  49.00, 49.00, 98.00, 98.00, 
-  36.71, 55.00, 110.0, 73.42  
+  36.71, 36.71, 73.42, 73.42,
+  43.65, 43.65, 87.31, 87.31,
+  49.00, 49.00, 98.00, 98.00,
+  36.71, 55.00, 110.0, 73.42
 ];
 
 // Kick, highhat and bass synthesis scheduler
@@ -673,7 +673,7 @@ function playSliceSound(weight=0) {
     noise.connect(noiseFilter);
     noiseFilter.connect(noiseGain);
     noiseGain.connect(audioCtx.destination);
-    
+
     noise.start(time);
     noise.stop(time + 0.08);
 
@@ -711,10 +711,10 @@ function playSynergySound() {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(freq, noteTime);
       osc.frequency.exponentialRampToValueAtTime(freq * 1.5, noteTime + 0.12);
-      
+
       gain.gain.setValueAtTime(0.1, noteTime);
       gain.gain.exponentialRampToValueAtTime(0.01, noteTime + 0.12);
-      
+
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start(noteTime);
@@ -752,15 +752,15 @@ function playDeflectSound() {
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(280, audioCtx.currentTime);
     osc.frequency.linearRampToValueAtTime(120, audioCtx.currentTime + 0.18);
-    
+
     let filter = audioCtx.createBiquadFilter();
     filter.type = 'lowpass';
     filter.frequency.setValueAtTime(700, audioCtx.currentTime);
-    
+
     osc.disconnect();
     osc.connect(filter);
     filter.connect(gain);
-    
+
     gain.gain.setValueAtTime(0.25, audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.188);
     osc.start();
@@ -773,7 +773,7 @@ function playAng2UnboundSound() {
   if (!audioCtx || isMuted) return;
   try {
     const now = audioCtx.currentTime;
-    
+
     // Helper function to synthesize a detuned harsh pulse
     const playPulse = (startTime, duration, f1, f2) => {
       let osc1 = audioCtx.createOscillator();
@@ -831,10 +831,10 @@ function trackSwipe(e) {
   if(e.target?.closest?.('button,input,summary,#playGuide,#pauseScreen'))return;
   let clientX, clientY;
   if (e.touches && e.touches.length > 0) {
-    clientX = e.touches[0].clientX; 
+    clientX = e.touches[0].clientX;
     clientY = e.touches[0].clientY;
   } else {
-    clientX = e.clientX; 
+    clientX = e.clientX;
     clientY = e.clientY;
   }
   if(window.innerWidth<=700&&gameState===STATE_PLAY)clientX+=window.innerWidth;
@@ -857,15 +857,15 @@ window.addEventListener('touchstart', (e) => {
     touchStartY = e.touches[0].clientY;
     touchStartX = e.touches[0].clientX;
   }
-  
+
   // Only call preventDefault during active gameplay to block browser pulls/pinches
   if (gameState === STATE_PLAY && e.touches.length > 1 && e.cancelable) {
     e.preventDefault();
   }
-  
+
   let clientX, clientY;
   if (e.touches && e.touches.length > 0) {
-    clientX = e.touches[0].clientX; 
+    clientX = e.touches[0].clientX;
     clientY = e.touches[0].clientY;
   } else {
     clientX = e.clientX;
@@ -873,7 +873,7 @@ window.addEventListener('touchstart', (e) => {
   }
   if(window.innerWidth<=700&&gameState===STATE_PLAY)clientX+=window.innerWidth;
   activeMousePos = { x: clientX, y: clientY };
-  slicesHistory = []; 
+  slicesHistory = [];
   addSlicePoint(clientX, clientY);
   initAudio();
 }, { passive: true });
@@ -894,13 +894,13 @@ window.addEventListener('touchmove', (e) => {
 
       // Detect if swiping inside overlayContainer, screenResults, or references container
       const isScrollableOverlay = e.target.closest('#overlayContainer') || e.target.closest('#screenResults') || e.target.closest('.references-scroller') || e.target.closest('#playGuide');
-      
+
       if (isScrollableOverlay) {
         // Allow the element to scroll natively
         const container = isScrollableOverlay;
         const isAtTop = container.scrollTop <= 0;
         const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight;
-        
+
         // If swiping further than scrolling limits allow, block native elastic rubber-band pull-to-refresh cascades
         if ((diffY > 0 && isAtTop) || (diffY < 0 && isAtBottom)) {
           if (e.cancelable) e.preventDefault();
@@ -930,7 +930,7 @@ document.addEventListener('gesturestart', (e) => {
 }, { passive: false });
 
 function getDistanceToSegment(px, py, x1, y1, x2, y2) {
-  const dx = x2 - x1; 
+  const dx = x2 - x1;
   const dy = y2 - y1;
   const l2 = dx*dx + dy*dy;
   if (l2 === 0) return Math.hypot(px - x1, py - y1);
@@ -991,67 +991,67 @@ class OozeParticle {
     this.x = x;
     this.y = y;
     this.panel = panel;
-    
+
     // Read the integrity corresponding to this panel
     const totalLeft = fruits.filter(f => f.panel === 'left' && !f.sliced).length;
     const totalRight = fruits.filter(f => f.panel === 'right' && !f.sliced).length;
     const integrity = panel === 'left' ? calculateIntegrity(totalLeft) : calculateIntegrity(totalRight);
     const severity = (100 - integrity) / 100; // 0 to 1
-    
+
     // The lower the score of % integrity, the faster the speed/flow from behind to front
     const speedScale = 1.0 + severity * 10.0; // up to 11x velocity!
     this.vx = rng.range(-0.8, 0.8) * speedScale;
     this.vy = rng.range(0.4, 2.0) * speedScale;
-    
+
     this.maxRadius = rng.range(8, 16);
     this.radius = 2.0; // starts small behind the wall
     this.z = 0.0; // depth tracker (0.0 = deep background, 1.0 = emerging front space)
-    
+
     // lower integrity = spurts and surfaces to front retinal space much faster
     this.zSpeed = (0.015 + 0.065 * severity) * rng.range(0.8, 1.3);
-    
+
     this.life = 1.0;
     this.decay = rng.range(0.006, 0.016);
     this.alpha = 1.0;
   }
-  
+
   update() {
     this.x += this.vx;
     this.y += this.vy;
     this.vy += 0.05; // Faint gravity pull
-    
+
     if (this.z < 1.0) {
       this.z = Math.min(1.0, this.z + 0.02);
     }
     this.life -= this.decay;
     this.alpha = Math.max(0, this.life);
   }
-  
+
   draw(renderCtx, layer) {
     // Only draw at appropriate depth layer
     // 'behind' represents z-index behind bricks (z < 0.5)
     // 'front' represents retinal space in front of bricks (z >= 0.5)
     const zDepth = this.life; // maps 1.0 (spawned behind) to 0.0 (decayed)
     const currentZ = 1.0 - zDepth; // 0.0 to 1.0 (emerging forward)
-    
+
     if (layer === 'behind' && currentZ >= 0.5) return;
     if (layer === 'front' && currentZ < 0.5) return;
-    
+
     renderCtx.save();
     renderCtx.globalAlpha = this.alpha * 0.9;
-    
+
     // Scale up size as it emerges into front retinal space
     const currentRadius = this.radius + (this.maxRadius - this.radius) * currentZ;
-    
+
     // Interpolate color from extremely dark coagulated red (behind) to brighter arterial red (front)
     const rVal = Math.floor(65 + (185 - 65) * currentZ);
     const gVal = Math.floor(2 + (15 - 2) * currentZ);
     const bVal = Math.floor(2 + (15 - 2) * currentZ);
-    
+
     renderCtx.fillStyle = `rgb(${rVal}, ${gVal}, ${bVal})`;
     renderCtx.shadowColor = `rgb(${rVal}, ${gVal}, ${bVal})`;
     renderCtx.shadowBlur = layer === 'behind' ? 4 : 14 * currentZ;
-    
+
     renderCtx.beginPath();
     renderCtx.arc(this.x, this.y, currentRadius, 0, Math.PI * 2);
     renderCtx.fill();
@@ -1110,7 +1110,7 @@ let slicesRight = 0;
 let missesLeft = 0;
 let missesRight = 0;
 let deflectedPlumsLeft = 0;
-let sliceCounter = 0; 
+let sliceCounter = 0;
 let activeMousePos = { x: 0, y: 0 };
 let weaponAngle = 0; // Persistent weapon rotational tracing angle
 
@@ -1161,7 +1161,7 @@ function resize() {
   height = window.innerHeight;
   document.body.classList.toggle('single-field',single);
   const dpr = Math.min(window.devicePixelRatio || 1, renderQuality === "lite" ? 1 : renderQuality === "cinematic" ? 2 : 1.5);
-  
+
   canvas.width = width * dpr;
   canvas.height = height * dpr;
   canvas.style.width = width + 'px';
@@ -1192,13 +1192,13 @@ let particles = [];
 let slicesHistory = [];
 let screenShakeAmount = 0;
 let floatingTexts = [];
-let backgroundLeakageParticlesLeft = []; 
+let backgroundLeakageParticlesLeft = [];
 let backgroundLeakageParticlesRight = [];
 
 const FruitConfig = {
   cyan: {
     name: 'VEGF-A Ligand',
-    color: '#06b6d4', 
+    color: '#06b6d4',
     innerColor: '#0891b2',
     seedColor: '#ecfeff',
     radius: 28,
@@ -1206,7 +1206,7 @@ const FruitConfig = {
   },
   plum: {
     name: 'Ang-2 Target',
-    color: '#a855f7', 
+    color: '#a855f7',
     innerColor: '#6b21a8',
     seedColor: '#f3e8ff',
     radius: 28,
@@ -1219,7 +1219,7 @@ function resolveMolecularCollisions() {
     for (let j = i + 1; j < fruits.length; j++) {
       let f1 = fruits[i];
       let f2 = fruits[j];
-      
+
       if (f1.sliced || f2.sliced) continue;
       if (f1.panel !== f2.panel) continue;
 
@@ -1250,7 +1250,7 @@ function resolveMolecularCollisions() {
         let velAlongNormal = rvx * nx + rvy * ny;
 
         if (velAlongNormal > 0) {
-          let restitution = 0.85; 
+          let restitution = 0.85;
           let impulse = (1 + restitution) * velAlongNormal / 2;
 
           f1.vx -= impulse * nx;
@@ -1270,16 +1270,16 @@ class GameItem {
     this.y = y;
     this.vx = vx;
     this.vy = vy;
-    this.panel = panel; 
+    this.panel = panel;
     this.radius = FruitConfig[type].radius;
     this.rotation = rng.range(0, Math.PI * 2);
     this.rotationSpeed = rng.range(-0.02, 0.02);
     this.sliced = false;
     this.sliceAngle = 0;
-    
+
     // Initial alpha for the sliced halves. It starts lighter/translucent (0.5) and fades.
     this.slicedAlpha = 0.5;
-    
+
     this.halfLeftX = 0;
     this.halfRightX = 0;
     this.halfLeftY = 0;
@@ -1295,7 +1295,7 @@ class GameItem {
     this.slicedAt = 0;
     this.wasMissLogged = false;
 
-    this.isFloatingAccumulation = false; 
+    this.isFloatingAccumulation = false;
     this.lastDeflectTime = 0;
     this.hasEnteredPanel = false; // Smooth non-glitchy entry check for multi-directional spawner
   }
@@ -1305,9 +1305,9 @@ class GameItem {
     if(mode==='duel'&&!this.sliced&&this.duelExpires&&duelElapsed()>=this.duelExpires){this.isOffscreen=true;return;}
     let panelLeftBound = this.panel === 'left' ? 35 : width / 2 + 35;
     let panelRightBound = this.panel === 'left' ? width / 2 - 35 : width - 35;
-    
+
     // Safely bounded gameplay corridor (150px from top, 100px from bottom) to avoid iOS status/home indicators
-    let topBound = 150; 
+    let topBound = 150;
     let bottomBound = height - 100;
 
     if (!this.sliced) {
@@ -1323,7 +1323,7 @@ class GameItem {
           this.hasEnteredPanel = true;
         }
       }
-      
+
       let speed = Math.hypot(this.vx, this.vy);
       if (speed < 1.5) {
         let angle = Math.atan2(this.vy, this.vx) || rng.range(0, Math.PI * 2);
@@ -1437,7 +1437,7 @@ class GameItem {
     this.slicedAt = Date.now();
     this.sliceAngle = angle;
     molecularRenderer.cut(this);hitFeel.cut(this);
-    
+
     const force = rng.range(4.5, 7.0);
     this.halfLeftVx = Math.cos(angle - Math.PI/2) * force + this.vx * 0.25;
     this.halfLeftVy = Math.sin(angle - Math.PI/2) * force + this.vy * 0.25;
@@ -1455,50 +1455,50 @@ class GameItem {
       scoreLeft += pointsGained + registerCombo('left', this.x, this.y);
       if (this.type === 'plum') s1SlicedAng2++;
       else s1SlicedVegf++;
-      
+
       const floatTextMsg = "+"+pointsGained;
       createFloatingText(floatTextMsg, this.x, this.y, FruitConfig[this.type].seedColor, 14);
     } else {
       sliceCounter++;
       slicesRight++;
-      
+
       // Synergy tracking logic for single-strike check (right panel)
       let finalPoints = pointsGained;
       recentSlicesRight = recentSlicesRight.filter(s => Date.now() - s.time < 180);
       const oppositeType = this.type === 'cyan' ? 'plum' : 'cyan';
       const synergyIndex = recentSlicesRight.findIndex(s => s.type === oppositeType);
-      
+
       if (synergyIndex !== -1) {
         finalPoints = 110+soloBonus; // Synergistic blockade match bonus (+10 point bonus)
         hitFeel.link(recentSlicesRight[synergyIndex],this);recentSlicesRight.splice(synergyIndex, 1);
-        
+
         // Prominent multicolored overlay message in TWO LINES
         createFloatingText(L('SYNERGY!','SİNERJİ!'), this.x, this.y - 15, '#c4b5fd', 18, .75);
         synergies++;playSynergySound();
-        
+
         // Toned down splash particles for Synergy Match to maintain absolute readability
         for (let i = 0; i < 8; i++) {
           particles.push(new SplashParticle(
             this.x, this.y,
             rng.range(-14, 14), rng.range(-14, 6),
             '#22d3ee',
-            true 
+            true
           ));
         }
       } else {
         recentSlicesRight.push({ type: this.type, time: Date.now(),x:this.x,y:this.y });
         createFloatingText('+'+pointsGained, this.x, this.y, '#d5fff7', 13, .55);
       }
-      
+
       scoreRight += finalPoints + registerCombo('right', this.x, this.y);
       if (this.type === 'plum') s2SlicedAng2++;
       else s2SlicedVegf++;
     }
-    
+
     playSliceSound(Math.min(4,Math.floor(combo[this.panel].count/5)));
 
     const config = FruitConfig[this.type];
-    
+
     // Lessened slice splash particle count from 20-30 down to a clean 4-8 burst
     const count = Math.floor(rng.range(4, 8));
     for (let i = 0; i < count; i++) {
@@ -1506,7 +1506,7 @@ class GameItem {
         this.x, this.y,
         rng.range(-9, 9), rng.range(-10, 4),
         config.color,
-        true 
+        true
       ));
     }
 
@@ -1672,7 +1672,7 @@ function renderLeakageParticles(particlesArray, renderCtx, minX, maxX) {
 function drawRetinalFluidSmear(renderCtx) {
   const totalLeft = fruits.filter(f => f.panel === 'left' && !f.sliced).length;
   const totalRight = fruits.filter(f => f.panel === 'right' && !f.sliced).length;
-  
+
   // Left Fluid Smear Render (Starts above 6 unneutralized molecules)
   if (totalLeft > 6) {
     renderCtx.save();
@@ -1685,10 +1685,10 @@ function drawRetinalFluidSmear(renderCtx) {
       gradient.addColorStop(0, `rgba(180, 30, 30, ${smearAlpha * 0.4})`);
       gradient.addColorStop(0.5, `rgba(210, 60, 60, ${smearAlpha * 0.2})`);
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      
+
       renderCtx.fillStyle = gradient;
       renderCtx.fillRect(0, 0, width / 2, height);
-      
+
       if (totalLeft >= 10) {
         let auxGrad = renderCtx.createRadialGradient(
           0, height * 0.75, 10,
@@ -1716,10 +1716,10 @@ function drawRetinalFluidSmear(renderCtx) {
       gradient.addColorStop(0, `rgba(180, 30, 30, ${smearAlpha * 0.4})`);
       gradient.addColorStop(0.5, `rgba(210, 60, 60, ${smearAlpha * 0.2})`);
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      
+
       renderCtx.fillStyle = gradient;
       renderCtx.fillRect(width / 2, 0, width / 2, height);
-      
+
       if (totalRight >= 10) {
         let auxGrad = renderCtx.createRadialGradient(
           width, height * 0.75, 10,
@@ -1742,19 +1742,19 @@ function renderBackgroundSmears(smearsList, renderCtx) {
   for (let i = smearsList.length - 1; i >= 0; i--) {
     let smear = smearsList[i];
     smear.y += smear.speed;
-    
+
     // Smooth trailing vertical segment plotting
     smear.segments.push({ x: smear.x, y: smear.y, r: smear.width });
     if (smear.segments.length > 60) {
       smear.segments.shift();
     }
-    
+
     smear.alpha -= smear.decay;
     if (smear.alpha <= 0) {
       smearsList.splice(i, 1);
       continue;
     }
-    
+
     // Draw smear streak segments organically
     for (let s = 1; s < smear.segments.length; s++) {
       let seg = smear.segments[s];
@@ -1777,7 +1777,7 @@ function drawEndothelialCell(bx,by,bw,bh,panel,integrity,severity){molecularRend
 
 function drawDynamicBackground() {
   bgCtx.clearRect(0, 0, width, height);
-  
+
   bgCtx.drawImage(molecularRenderer.base(width,height),0,0,width,height);
 
   // Read current active unblocked VEGF and ANG-2 target counts in both panels
@@ -1852,14 +1852,14 @@ function drawDynamicBackground() {
   for (let y = -brickH; y < height + brickH; y += brickH + 2) {
     const isOffsetRow = Math.floor((y + brickH) / brickH) % 2 === 0;
     const rowShift = isOffsetRow ? brickW / 2 : 0;
-    
+
     for (let col = 0; col < numCols; col++) {
       // Left Panel Brick - built going left from splitX
       const bxLeft = splitX - (col + 1) * (brickW + 2) + rowShift;
       if (bxLeft + brickW > 0 && bxLeft < splitX) {
         drawEndothelialCell(bxLeft, y, brickW, brickH, 'left', integrityLeft, severityLeft);
       }
-      
+
       // Right Panel Brick - perfectly mirrored going right from splitX!
       const bxRight = splitX + col * (brickW + 2) - rowShift;
       if (bxRight + brickW > splitX && bxRight < width) {
@@ -1983,13 +1983,13 @@ function detectIntersections() {
   const p1 = slicesHistory[slicesHistory.length - 2];
   const p2 = slicesHistory[slicesHistory.length - 1];
 
-  let sweepRadius = 42; 
+  let sweepRadius = 42 + (typeof rpgRun!=='undefined'&&rpgSolo()?((rpgClass()==='cutter'?4:0)+(rpgRun.blade==='wide'?6:0)):0);
   const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
   if(tryBossCut(p1,p2,angle))return;
 
   fruits.forEach(item => {
     if (item.sliced || item.isFloatingAccumulation) return;
-    
+
     // Project and translate swipe segments to match this item's specific panel perfectly
     let activeP1, activeP2;
     if (item.panel === 'left') {
@@ -2014,7 +2014,7 @@ function detectIntersections() {
           combo.left.count = 0;
           createFloatingText("ANG-2 UNBOUND", item.x, item.y, '#f3e8ff', 14, 1.5);
           playAng2UnboundSound(); // Distinct warning sound standardizing the caution feedback
-          
+
           deflectionShields.push({
             x: item.x,
             y: item.y,
@@ -2030,7 +2030,7 @@ function detectIntersections() {
             updateHUD();
           }
         }
-        return; 
+        return;
       }
       item.slice(angle);
     }
@@ -2049,7 +2049,7 @@ function detectUIIntersections() {
     if (!el || !languageChosen || el.closest(".hidden")) return;
     const rect = el.getBoundingClientRect();
     const distance = getDistanceToSegment(rect.left + rect.width/2, rect.top + rect.height/2, p1.x, p1.y, p2.x, p2.y);
-    
+
     if (distance < rect.width/2 + 20 && segmentLength > 12) {
       startPlay();
     }
@@ -2068,13 +2068,13 @@ function runSpawner() {
     for (let index = 0; index < batchSize; index++) {
       // Pick a random molecule type based on the tuned probability
       const fruitType = rng.choice(['cyan', 'cyan', 'cyan', 'cyan', 'cyan', 'plum', 'plum']);
-      
+
       // Allow molecules to emerge from all directions symmetrically: bottom, top, left, or right side of panel
       const spawnDirection = rng.choice(['bottom', 'top', 'left', 'right']);
-      
+
       let rx, ry, vxLeft, vyLeft;
       const speed = rng.range(2.5, 4.5)*(mode==='challenge'?1+(level-1)*.18:1);
-      
+
       if (spawnDirection === 'bottom') {
         rx = rng.range(width * 0.08, width * 0.42);
         ry = height + 40;
@@ -2129,7 +2129,7 @@ function runSpawner() {
       }
     }
 
-    nextSpawnTime = now + rng.range(1400, 2200)/(mode==='challenge'?1+(level-1)*.22:1); 
+    nextSpawnTime = now + rng.range(1400, 2200)/(mode==='challenge'?1+(level-1)*.22:1);
   }
 }
 
@@ -2143,27 +2143,27 @@ function drawPanelAccumulation(renderCtx, panel) {
 
   renderCtx.save();
   renderCtx.beginPath();
-  
+
   // Wavy fluid effect physics
   const waveSpeed = Date.now() * 0.003;
   const waveAmplitude = 6;
   const waveFrequency = 0.015;
   const poolTop = height - poolHeight;
-  
+
   const startX = isLeft ? 0 : width / 2;
   const endX = isLeft ? width / 2 : width;
-  
+
   renderCtx.moveTo(startX, height);
   renderCtx.lineTo(startX, poolTop);
-  
+
   for (let x = startX; x <= endX; x += 10) {
     const waveY = poolTop + Math.sin(x * waveFrequency + waveSpeed) * waveAmplitude;
     renderCtx.lineTo(x, waveY);
   }
-  
+
   renderCtx.lineTo(endX, height);
   renderCtx.closePath();
-  
+
   // Wavy layout gradient (Reddish/Amber blood seepage and fluid) - Corrected to createLinearGradient
   let poolGrad = renderCtx.createLinearGradient(startX, poolTop, startX, height);
   poolGrad.addColorStop(0, 'rgba(185, 28, 28, 0.45)');  // Wavy red barrier surface
@@ -2171,7 +2171,7 @@ function drawPanelAccumulation(renderCtx, panel) {
   poolGrad.addColorStop(1, 'rgba(67, 2, 2, 0.75)');      // Static subretinal hemorrhaging
   renderCtx.fillStyle = poolGrad;
   renderCtx.fill();
-  
+
   // Wavy glowing crest line
   renderCtx.strokeStyle = 'rgba(239, 68, 68, 0.6)';
   renderCtx.lineWidth = 2.5;
@@ -2181,17 +2181,17 @@ function drawPanelAccumulation(renderCtx, panel) {
   if (poolHeight > 45 && Math.random() < 0.003) {
     createFloatingText("BARRIER BREACH\nACTIVE LEAKAGE", startX + (endX - startX) / 2 + rng.range(-20, 20), height - 90, '#facc15', 24, 4.0, false, false, true);
   }
-  
+
   renderCtx.restore();
 }
 
 function updateHUD(delta = 0) {
   const scoreLeftEl = document.getElementById('scoreLeftVal');
   if (scoreLeftEl) scoreLeftEl.textContent = scoreLeft.toLocaleString();
-  
+
   const scoreRightEl = document.getElementById('scoreRightVal');
   if (scoreRightEl) scoreRightEl.textContent = scoreRight.toLocaleString();
-  
+
   const timerValueEl = document.getElementById('timerValue');
   if (timerValueEl) timerValueEl.textContent = Math.ceil(gameTimeRemaining);
 
@@ -2284,8 +2284,8 @@ function getIntegrityStatusText(val) {
 function startPlay() {
  if(mode==='duel'&&!duel.started){openDuelLobby();return;}
  if(!languageChosen || gameState!==STATE_INTRO)return; const token=++sessionToken;paused=false;level=1;baseSpawn=0;baseSlice=0;synergies=0;durationLimit=mode==='duel'?50:mode==='challenge'?soloStageSeconds()*5:soloClassicSeconds();fruits=[];floatingTexts=[];lastFrameTime=Date.now();renderStatus();resetArcade();combo.left.recovered=false;combo.right.recovered=false;resetActiveSkills();if(mode==='campaign')beginCampaignRun();lastProgressSave=-1;
-  if (gameState !== STATE_INTRO) return; 
-  
+  if (gameState !== STATE_INTRO) return;
+
   // Explicitly ensure sound is ON by default on start
   isMuted = false;
   const btn = document.getElementById('btnMuteToggle');
@@ -2295,16 +2295,16 @@ function startPlay() {
     btn.classList.remove('opacity-60');
   }
 
-  initAudio(); 
+  initAudio();
   if (audioCtx && audioCtx.state === 'suspended') {
     audioCtx.resume();
   }
   playChimeSound();
-  
+
   document.getElementById('screenResults').classList.add('hidden', 'scale-90', 'opacity-0');
   document.getElementById('screenResults').classList.remove('scale-100', 'opacity-100');
   document.getElementById('screenIntro').classList.add('scale-90', 'opacity-0');
-  
+
   setTimeout(() => {
     if(token!==sessionToken)return;
     document.getElementById('screenIntro').classList.add('hidden');
@@ -2312,7 +2312,7 @@ function startPlay() {
   }, 500);
 
   gameState = STATE_PLAY;resize();
-  
+
   scoreLeft = 0;
   scoreRight = 0;
   slicesLeft = 0;
@@ -2343,7 +2343,7 @@ function startPlay() {
   gameTimeRemaining = durationLimit;
   isSessionEnding = false;
 
-  rng.reset(); 
+  rng.reset();
   resetDestabilization();
 
   updateHUD();
@@ -2442,10 +2442,10 @@ function endPlay() {
     const resScreen = document.getElementById('screenResults');
     document.getElementById('overlayContainer').classList.remove('hidden');
     resScreen.classList.remove('hidden');
-    
-    setTimeout(() => { 
-      resScreen.classList.add('scale-100', 'opacity-100'); 
-      resScreen.classList.remove('scale-90', 'opacity-0'); 
+
+    setTimeout(() => {
+      resScreen.classList.add('scale-100', 'opacity-100');
+      resScreen.classList.remove('scale-90', 'opacity-0');
     }, 100);
   }, 800);
 }
@@ -2453,13 +2453,13 @@ function endPlay() {
 function toggleHUD(show) {
   const l = document.getElementById('hudLeft'), r = document.getElementById('hudRight'), c = document.getElementById('hudCenter');
   if (show) {
-    l.classList.remove('-translate-y-[150px]', 'opacity-0'); 
-    r.classList.remove('-translate-y-[150px]', 'opacity-0'); 
-    c.classList.remove('-translate-y-[150px]', 'opacity-0'); 
+    l.classList.remove('-translate-y-[150px]', 'opacity-0');
+    r.classList.remove('-translate-y-[150px]', 'opacity-0');
+    c.classList.remove('-translate-y-[150px]', 'opacity-0');
   } else {
-    l.classList.add('-translate-y-[150px]', 'opacity-0'); 
-    r.classList.add('-translate-y-[150px]', 'opacity-0'); 
-    c.classList.add('-translate-y-[150px]', 'opacity-0'); 
+    l.classList.add('-translate-y-[150px]', 'opacity-0');
+    r.classList.add('-translate-y-[150px]', 'opacity-0');
+    c.classList.add('-translate-y-[150px]', 'opacity-0');
   }
 }
 
@@ -2513,7 +2513,7 @@ function drawLeftBlade() {
   ctx.lineTo(0, -40);
   ctx.strokeStyle = '#ffffff';
   ctx.lineWidth = 1.5;
-  ctx.shadowBlur = 0; 
+  ctx.shadowBlur = 0;
   ctx.stroke();
 }
 
@@ -2526,7 +2526,7 @@ function drawRightBlade() {
   ctx.beginPath();
   ctx.moveTo(0, -12);
   ctx.lineTo(0, 12);
-  ctx.strokeStyle = '#1e1b4b'; 
+  ctx.strokeStyle = '#1e1b4b';
   ctx.lineWidth = 5;
   ctx.lineCap = 'round';
   ctx.stroke();
@@ -2618,7 +2618,7 @@ function drawActiveWeaponModel() {
     ctx.restore();
     return;
   }
-  
+
   if (slicesHistory.length > 1) {
     const p1 = slicesHistory[slicesHistory.length - 2];
     const p2 = slicesHistory[slicesHistory.length - 1];
@@ -2675,8 +2675,8 @@ function drawTrails() {
       px = -dy / len;
       py = dx / len;
     }
-    let offset = 6; 
-    
+    let offset = 6;
+
     // 1. Draw glowing cyan trail (VEGF)
     ctx.beginPath();
     ctx.moveTo(rightPt1.x + px * offset, rightPt1.y + py * offset);
@@ -2734,13 +2734,13 @@ function simulateAndDrawLeukocytes(particlesArray, minX, maxX) {
       p.vy += rng.range(-0.02, 0.02);
       p.vx *= 0.98;
       p.vy *= 0.98;
-      p.x += Math.sin(Date.now() * 0.05 + p.size) * 0.25; 
+      p.x += Math.sin(Date.now() * 0.05 + p.size) * 0.25;
       p.life -= p.decay;
       p.alpha = Math.max(0, p.life * 0.9);
-      
+
       ctx.save();
       ctx.globalAlpha = p.alpha;
-      
+
       // Draw realistic multi-lobed polymorphonuclear leukocyte (WBC) membrane
       ctx.beginPath();
       let steps = 10;
@@ -2768,7 +2768,7 @@ function simulateAndDrawLeukocytes(particlesArray, minX, maxX) {
       ctx.arc(p.x + p.size * 0.2, p.y + p.size * 0.2, p.size * 0.2, 0, Math.PI * 2);
       ctx.arc(p.x - p.size * 0.1, p.y + p.size * 0.3, p.size * 0.22, 0, Math.PI * 2);
       ctx.fill();
-      
+
       ctx.restore();
 
       if (p.alpha <= 0 || p.y > height || p.y < 0 || p.x < minX || p.x > maxX) {
@@ -2782,7 +2782,7 @@ function simulateAndDrawLeukocytes(particlesArray, minX, maxX) {
 function handleRetinalBreakDrips() {
   const totalLeft = fruits.filter(f => f.panel === 'left' && !f.sliced).length;
   const totalRight = fruits.filter(f => f.panel === 'right' && !f.sliced).length;
-  
+
   // Integrity decreases faster: by 10% for every 2 molecules of total unneutralized ligands instead of 4
   const integrityLeft = calculateIntegrity(totalLeft);
   const integrityRight = calculateIntegrity(totalRight);
@@ -2802,8 +2802,8 @@ function handleRetinalBreakDrips() {
         particles.push(new SplashParticle(
           node.x, node.y,
           rng.range(-0.6, 0.6), rng.range(1.2, 3.2), // Gravity-driven vertical dripping movement
-          rng.choice(['#7f1d1d', '#991b1b', '#b91c1c', '#ef4444', '#f87171']), 
-          true 
+          rng.choice(['#7f1d1d', '#991b1b', '#b91c1c', '#ef4444', '#f87171']),
+          true
         ));
       }
     }
@@ -2817,10 +2817,10 @@ function handleRetinalBreakDrips() {
         x: node.x,
         y: node.y,
         vx: rng.range(-0.6, 0.6),
-        vy: rng.range(0.3, 1.2), 
+        vy: rng.range(0.3, 1.2),
         size: rng.range(6.5, 10.5),
         life: 1.0,
-        decay: rng.range(0.005, 0.010) 
+        decay: rng.range(0.005, 0.010)
       });
     }
   }
@@ -2836,8 +2836,8 @@ function handleRetinalBreakDrips() {
         particles.push(new SplashParticle(
           node.x, node.y,
           rng.range(-0.6, 0.6), rng.range(1.2, 3.2), // Gravity-driven vertical dripping movement
-          rng.choice(['#7f1d1d', '#991b1b', '#b91c1c', '#ef4444', '#f87171']), 
-          false 
+          rng.choice(['#7f1d1d', '#991b1b', '#b91c1c', '#ef4444', '#f87171']),
+          false
         ));
       }
     }
@@ -2850,10 +2850,10 @@ function handleRetinalBreakDrips() {
         x: node.x,
         y: node.y,
         vx: rng.range(-0.6, 0.6),
-        vy: rng.range(0.3, 1.2), 
+        vy: rng.range(0.3, 1.2),
         size: rng.range(6.5, 10.5),
         life: 1.0,
-        decay: rng.range(0.005, 0.010) 
+        decay: rng.range(0.005, 0.010)
       });
     }
   }
@@ -2863,17 +2863,17 @@ function handleRetinalBreakDrips() {
 function drawSeparatingBezel(renderCtx) {
   renderCtx.save();
   let splitX = width / 2;
-  
+
   // Carbon Bezel Divider Background
   renderCtx.fillStyle = '#0a0d16';
   renderCtx.fillRect(splitX - 12, 0, 24, height);
-  
+
   // Glowing laser core
   let splitGrad = renderCtx.createLinearGradient(splitX, 0, splitX, height);
   splitGrad.addColorStop(0, '#1e293b');
   splitGrad.addColorStop(0.5, '#3b82f6');
   splitGrad.addColorStop(1, '#a855f7');
-  
+
   renderCtx.strokeStyle = splitGrad;
   renderCtx.shadowColor = '#6366f1';
   renderCtx.shadowBlur = 18;
@@ -2882,7 +2882,7 @@ function drawSeparatingBezel(renderCtx) {
   renderCtx.moveTo(splitX, 0);
   renderCtx.lineTo(splitX, height);
   renderCtx.stroke();
-  
+
   renderCtx.restore();
 }
 </script>
@@ -3111,7 +3111,7 @@ function advancePlayGuide(){if(guideStep<2){guideStep++;renderPlayGuide();}else 
 function finishPlayGuide(){db.set('angio-guide-seen-v1',true);document.getElementById('playGuide').hidden=true;const action=guideAction;guideAction=null;if(action)action();}
 function renderMenu(){
  ensureDay();const root=document.getElementById('newMenu');if(!root)return;const rows=db.get('angio-records-'+mode,[]);const tabs=[['play',L('Play','Oyna')],['campaign',L('Adventure','Serüven')],['skills',L('Skills','Yetenekler')],['more',L('More','Diğer')]];
- root.innerHTML=`<header class="hub-header"><div class="hub-brand"><div class="brand-mark">✦</div><div><span>DUAL STRIKE</span><h1>AngioBlade <em>Arena</em></h1></div></div><div class="hub-profile"><span>${profileBadge(displayTrophy)+escapeText(playerNick||career.name||L('Player','Oyuncu'))}${campaign.stars[24]?' · '+L('Vessel Guardian','Damar Koruyucusu'):''}</span><b>◇ ${crystals}</b></div></header><nav class="hub-nav">${tabs.map(([id,label])=>`<button data-hub-tab="${id}" aria-pressed="${hubTab===id||(id==='more'&&['daily','trophies','skins','leaderboard','account','settings'].includes(hubTab))}">${label}</button>`).join('')}</nav><div class="hub-layout"><section class="hub-main">${hubTab==='play'?simpleHome():hubTab==='campaign'?campaignMap():hubTab==='more'?moreMenu():hubTab==='account'?accountView():hubTab==='settings'?settingsView():hubTab==='daily'?`<div class="section-heading"><span class="eyebrow">${ensureDay().day} · ${L('ISTANBUL TIME','İSTANBUL SAATİ')}</span><h2>${L('Daily missions','Günlük görevler')}</h2><p>${L('Play, complete goals and claim cosmetic crystals. Resets at midnight.','Oynayın, hedefleri tamamlayın ve kozmetik kristalleri alın. Gece yarısı yenilenir.')}</p></div>${questCards()}`:hubTab==='leaderboard'?leaderboardView():hubTab==='skills'?skillTreeView():hubTab==='trophies'?`<div class="section-heading"><span class="eyebrow">${progress.unlocked.length}/${trophies.length}</span><h2>${L('Your trophy showcase','Kupa vitrininiz')}</h2></div>${trophyShowcase()}`:`<div class="section-heading"><span class="eyebrow">${L('LOOKS ONLY · EQUAL PLAY','SADECE GÖRÜNÜM · EŞİT OYUN')}</span><h2>${L('Blade & trail collection','Bıçak ve iz koleksiyonu')}</h2></div>${wardrobe()}`}</section><details class="hub-player-details"><summary>👤 ${L('Player details','Oyuncu bilgilerim')}</summary><aside class="hub-aside">${growthCard()}${leagueCard()}<div class="hub-mini"><h3>${L('Player identity','Oyuncu kimliği')}</h3><div class="nick-row"><input id="profileName" maxlength="24" placeholder="${L('Your name','Adınız')}" value="${escapeText(playerNick||career.name||'')}"><button id="saveProfileName">✓</button></div><p id="careerMessage">${careerStatus}</p><p>${L('Keep this browser’s game data to retain access to your league profile.','Lig profilinize erişimi korumak için bu tarayıcının oyun verilerini saklayın.')}</p></div><div class="hub-mini"><h3>${L('Personal records','Kişisel rekorlar')}</h3>${rows.length?rows.slice(0,3).map((r,i)=>`<div class="hub-record"><span>0${i+1}</span><strong>${escapeText(r.name||playerNick)} · ${r.score.toLocaleString()}</strong></div>`).join(''):`<p>${L('Your next match could be a new record.','Bir sonraki maç yeni rekorunuz olabilir.')}</p>`}</div></aside></details></div><footer class="hub-footer"><span>v3.0.2 · ${L('Progression · skills · arena','İlerleme · yetenekler · arena')}</span><div><button id="switchLanguage">🌐 ${lang==='tr'?'Türkçe':'English'}</button><button id="qualityBtn">⚙ ${renderQuality==='lite'?L('Lightweight','Hafif'):renderQuality==='cinematic'?L('Cinematic','Sinematik'):L('Standard','Standart')}</button></div></footer>`;
+ root.innerHTML=`<header class="hub-header"><div class="hub-brand"><div class="brand-mark">✦</div><div><span>DUAL STRIKE</span><h1>AngioBlade <em>Arena</em></h1></div></div><div class="hub-profile"><span>${profileBadge(displayTrophy)+escapeText(playerNick||career.name||L('Player','Oyuncu'))}${campaign.stars[24]?' · '+L('Vessel Guardian','Damar Koruyucusu'):''}</span><b>◇ ${crystals}</b></div></header><nav class="hub-nav">${tabs.map(([id,label])=>`<button data-hub-tab="${id}" aria-pressed="${hubTab===id||(id==='more'&&['daily','trophies','skins','leaderboard','account','settings'].includes(hubTab))}">${label}</button>`).join('')}</nav><div class="hub-layout"><section class="hub-main">${hubTab==='play'?simpleHome():hubTab==='campaign'?campaignMap():hubTab==='more'?moreMenu():hubTab==='account'?accountView():hubTab==='settings'?settingsView():hubTab==='daily'?`<div class="section-heading"><span class="eyebrow">${ensureDay().day} · ${L('ISTANBUL TIME','İSTANBUL SAATİ')}</span><h2>${L('Daily missions','Günlük görevler')}</h2><p>${L('Play, complete goals and claim cosmetic crystals. Resets at midnight.','Oynayın, hedefleri tamamlayın ve kozmetik kristalleri alın. Gece yarısı yenilenir.')}</p></div>${questCards()}`:hubTab==='leaderboard'?leaderboardView():hubTab==='skills'?skillTreeView():hubTab==='trophies'?`<div class="section-heading"><span class="eyebrow">${progress.unlocked.length}/${trophies.length}</span><h2>${L('Your trophy showcase','Kupa vitrininiz')}</h2></div>${trophyShowcase()}`:`<div class="section-heading"><span class="eyebrow">${L('LOOKS ONLY · EQUAL PLAY','SADECE GÖRÜNÜM · EŞİT OYUN')}</span><h2>${L('Blade & trail collection','Bıçak ve iz koleksiyonu')}</h2></div>${wardrobe()}`}</section><details class="hub-player-details"><summary>👤 ${L('Player details','Oyuncu bilgilerim')}</summary><aside class="hub-aside">${growthCard()}${leagueCard()}<div class="hub-mini"><h3>${L('Player identity','Oyuncu kimliği')}</h3><div class="nick-row"><input id="profileName" maxlength="24" placeholder="${L('Your name','Adınız')}" value="${escapeText(playerNick||career.name||'')}"><button id="saveProfileName">✓</button></div><p id="careerMessage">${careerStatus}</p><p>${L('Keep this browser’s game data to retain access to your league profile.','Lig profilinize erişimi korumak için bu tarayıcının oyun verilerini saklayın.')}</p></div><div class="hub-mini"><h3>${L('Personal records','Kişisel rekorlar')}</h3>${rows.length?rows.slice(0,3).map((r,i)=>`<div class="hub-record"><span>0${i+1}</span><strong>${escapeText(r.name||playerNick)} · ${r.score.toLocaleString()}</strong></div>`).join(''):`<p>${L('Your next match could be a new record.','Bir sonraki maç yeni rekorunuz olabilir.')}</p>`}</div></aside></details></div><footer class="hub-footer"><span>v4.0.0 · ${L('Progression · skills · arena','İlerleme · yetenekler · arena')}</span><div><button id="switchLanguage">🌐 ${lang==='tr'?'Türkçe':'English'}</button><button id="qualityBtn">⚙ ${renderQuality==='lite'?L('Lightweight','Hafif'):renderQuality==='cinematic'?L('Cinematic','Sinematik'):L('Standard','Standart')}</button></div></footer>`;
  root.querySelectorAll('[data-hub-tab]').forEach(button=>button.onclick=()=>{hubTab=button.dataset.hubTab;if(hubTab==='play'&&mode==='campaign')mode='comparison';renderMenu();if(hubTab==='leaderboard')loadLeaderboard()});root.querySelectorAll('[data-unlock-skill]').forEach(button=>button.onclick=()=>unlockSkill(button.dataset.unlockSkill));if(hubTab==='skills'){document.getElementById('resetSkills').onclick=resetSkills;root.querySelectorAll('[data-loadout-save]').forEach(b=>b.onclick=()=>saveSkillLoadout(Number(b.dataset.loadoutSave)));root.querySelectorAll('[data-loadout-load]').forEach(b=>b.onclick=()=>loadSkillLoadout(Number(b.dataset.loadoutLoad)));}root.querySelectorAll('[data-claim]').forEach(button=>button.onclick=()=>claimQuest(button.dataset.claim));root.querySelectorAll('[data-trophy]').forEach(button=>button.onclick=()=>chooseDisplayTrophy(button.dataset.trophy));root.querySelectorAll('[data-skin]').forEach(button=>button.onclick=()=>selectSkin(...button.dataset.skin.split(':')));root.querySelectorAll('[data-buy]').forEach(button=>button.onclick=()=>buySkin(button.dataset.buy));
  root.querySelectorAll('[data-campaign-stage]').forEach(button=>button.onclick=()=>campaignBriefing(Number(button.dataset.campaignStage)));
  if(hubTab==='play'){document.getElementById('campaignEntry').onclick=()=>{hubTab='campaign';renderMenu()};document.getElementById('compare').onclick=()=>{mode='comparison';renderMenu()};document.getElementById('challenge').onclick=()=>{mode='challenge';renderMenu()};document.getElementById('duelModeButton').onclick=openDuelLobby;document.getElementById('introSlashTarget').onclick=requestPlay;document.getElementById('learnToPlay').onclick=()=>showPlayGuide();}
@@ -3440,32 +3440,32 @@ function mainLoop() {
     t.life -= t.decay || 0.02;
     t.alpha = Math.max(0, t.life);
     t.scale = Math.min(1.2, t.scale + 0.1);
-    
+
     if (t.isBarrierBreach) {
       ctx.save();
       ctx.globalAlpha = t.alpha;
       ctx.translate(t.x, t.y);
       ctx.scale(t.scale, t.scale);
-      
+
       ctx.font = `bold ${t.size}px "Plus Jakarta Sans"`;
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
-      
+
       // Black strokes around the text to create supreme contrast against the red/dark background
       ctx.strokeStyle = '#000000';
       ctx.lineWidth = 5;
-      
+
       const line1 = L("BARRIER BREACH", "BARİYER İHLALİ");
       const line2 = L("ACTIVE LEAKAGE", "AKTİF SIZINTI");
       const spacing = t.size * 1.15;
-      
+
       ctx.fillStyle = t.color; // '#facc15' bright yellow
       ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
       ctx.shadowBlur = 12;
-      
+
       ctx.strokeText(line1, 0, -spacing / 2);
       ctx.fillText(line1, 0, -spacing / 2);
-      
+
       ctx.strokeText(line2, 0, spacing / 2);
       ctx.fillText(line2, 0, spacing / 2);
       ctx.restore();
@@ -3473,19 +3473,19 @@ function mainLoop() {
       ctx.save();
       ctx.globalAlpha = t.alpha;
       ctx.translate(t.x, t.y);
-      ctx.scale(t.scale * 1.4, t.scale * 1.4); 
-      
+      ctx.scale(t.scale * 1.4, t.scale * 1.4);
+
       let syncGrad = ctx.createLinearGradient(-120, 0, 120, 0);
       syncGrad.addColorStop(0, '#22d3ee');   // Cyan
       syncGrad.addColorStop(0.35, '#c084fc'); // Lavender Purple
       syncGrad.addColorStop(0.7, '#f472b6');  // Pink
       syncGrad.addColorStop(1, '#fbbf24');   // Glowing Amber
-      
+
       ctx.fillStyle = syncGrad;
       ctx.font = `900 ${t.size}px "Plus Jakarta Sans", system-ui, -apple-system, sans-serif`;
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'center';
-      
+
       // Two-line layout logic
       const words = t.text.split(' ');
       if (words.length >= 2) {
@@ -3503,11 +3503,11 @@ function mainLoop() {
       ctx.globalAlpha = t.alpha;
       ctx.translate(t.x, t.y);
       ctx.scale(t.scale * 1.35, t.scale * 1.35);
-      
+
       let goldGrad = ctx.createLinearGradient(-50, 0, 50, 0);
-      goldGrad.addColorStop(0, '#facc15'); 
-      goldGrad.addColorStop(0.5, '#10b981'); 
-      goldGrad.addColorStop(1, '#06b6d4'); 
+      goldGrad.addColorStop(0, '#facc15');
+      goldGrad.addColorStop(0.5, '#10b981');
+      goldGrad.addColorStop(1, '#06b6d4');
       ctx.fillStyle = goldGrad;
       ctx.font = `black ${t.size}px "Share Tech Mono"`;
       ctx.textBaseline = 'middle';
@@ -3577,14 +3577,14 @@ function performRestart() {
     btn.classList.remove('opacity-60');
   }
 
-  initAudio(); 
+  initAudio();
   if (audioCtx && audioCtx.state === 'suspended') {
     audioCtx.resume();
   }
   playChimeSound();
-  
+
   gameState = STATE_INTRO;resize(); // Reset game state back to INTRO so clicks/taps on "Slash to Start Simulation" target register correctly
-  
+
   fruits = [];
   particles = [];
   slicesHistory = [];
@@ -3595,7 +3595,7 @@ function performRestart() {
   settledBloodPoolHeightRight = 0;
   leftCompromisedTriggered = false; // Reset compromise trigger on replay
   rightCompromisedTriggered = false;
-  
+
   scoreLeft = 0;
   scoreRight = 0;
   slicesLeft = 0;
@@ -3808,3 +3808,71 @@ window.onload = function () {
 <style>html,body{height:100dvh!important}</style>
 
 <style>@media(max-width:700px){.single-field #hudCenter{flex-direction:row;align-items:center;gap:4px}.single-field #stageControls{padding:0;background:transparent}.single-field #stage{display:none}.single-field #pauseBtn{font-size:0;min-width:44px;width:44px;min-height:44px;padding:0}.single-field #pauseBtn:before{content:'Ⅱ';font-size:20px;line-height:1}.single-field #btnRefresh,.single-field #btnMuteToggle{min-width:44px;min-height:44px}}</style>
+
+<script>
+// RPG expansion: persisted inside growth so existing cloud snapshots include it.
+const RPG_CLASSES=[['cutter','⚔','Cutter','Kesici','Wider cuts and a sweeping energy wave.','Geniş kesim ve enerji dalgası.'],['guardian','⬡','Guardian','Koruyucu','Repair rhythm and a protective shield.','Onarım ritmi ve koruyucu kalkan.'],['energy','✦','Energy Master','Enerji Ustası','Faster energy and a gathering field.','Hızlı enerji ve çekim alanı.']];
+const RPG_BLADES=[['balanced','◈','Balanced','Dengeli','+0.20 s combo'],['wide','⚔','Broad edge','Geniş ağız','+6 px'],['resonant','✦','Resonator','Rezonatör','+1 energy / enerji']];
+const RPG_RUNES=[['rhythm','♫','Rhythm','Ritim'],['guard','⬡','Protection','Koruma'],['flow','ϟ','Flow','Akış']];
+const RPG_TITLES=[['explorer','✧','Explorer','Kaşif'],['combo','⚡','Combo Master','Kombo Ustası'],['precise','◈','Flawless Cutter','Kusursuz Kesici'],['guardian','♜','Region Guardian','Bölge Koruyucusu']];
+function rpgState(){if(!growth.rpg||typeof growth.rpg!=='object')growth.rpg={};const r=growth.rpg;for(const [k,v]of Object.entries({classId:'cutter',blade:'balanced',rune:'rhythm',drone:'repair',materials:0,levels:{balanced:0,wide:0,resonant:0},runes:['rhythm'],rare:[],mastery:{},claims:[],title:'',titles:[],rivals:[],risk:false}))if(r[k]===undefined)r[k]=v;if(!RPG_CLASSES.some(c=>c[0]===r.classId))r.classId='cutter';if(!RPG_BLADES.some(c=>c[0]===r.blade))r.blade='balanced';for(const k of ['runes','rare','claims','titles','rivals'])if(!Array.isArray(r[k]))r[k]=[];for(const k of ['levels','mastery'])if(!r[k]||typeof r[k]!=='object'||Array.isArray(r[k]))r[k]={};for(const b of RPG_BLADES)r.levels[b[0]]=Math.max(0,Math.min(5,Math.floor(Number(r.levels[b[0]])||0)));r.materials=Math.max(0,Math.min(99999,Number(r.materials)||0));return r;}
+function rpgSave(){growthDirty=true;saveGrowth();}
+let rpgRun=null,rpgRoute=null,rpgNotice='',rpgLastHUD=-1;
+function rpgSolo(){return mode==='campaign'&&rpgRun&&!rpgRun.practice&&!rpgRun.rival;}
+function rpgClass(){return rpgRun?.classId||rpgState().classId;}
+function rpgCanEdit(){return gameState!==STATE_PLAY;}
+function rpgEquip(kind,id){if(!rpgCanEdit())return false;const r=rpgState();if(kind==='classId'&&!RPG_CLASSES.some(c=>c[0]===id)||kind==='blade'&&!RPG_BLADES.some(c=>c[0]===id)||kind==='rune'&&!r.runes.includes(id)||kind==='drone'&&!['repair','collector'].includes(id)||kind==='title'&&id&&!r.titles.includes(id))return false;if(!['classId','blade','rune','drone','title'].includes(kind))return false;r[kind]=id;rpgSave();renderMenu();return true;}
+function rpgForge(kind,id){if(!rpgCanEdit())return false;const r=rpgState();let cost=0;if(kind==='blade'&&RPG_BLADES.some(b=>b[0]===id)){const level=r.levels[id]||0;if(level>=5)return false;cost=20*(level+1);if(r.materials<cost)return false;r.levels[id]=level+1;}else if(kind==='rune'&&RPG_RUNES.some(b=>b[0]===id)&&!r.runes.includes(id)){cost=30;if(r.materials<cost)return false;r.runes.push(id);}else return false;r.materials-=cost;rpgNotice=L('Upgrade ready!','Geliştirme hazır!');rpgSave();renderMenu();return true;}
+function rpgCharacterView(){const r=rpgState(),info=growthInfo();return `<section class="rpg-sheet"><span class="eyebrow">RPG · LV. ${info.level} · ◇ ${r.materials} ${L('materials','malzeme')}</span><h2>${L('Your hero','Kahramanın')}</h2><p>${L('Restore five regions. Choose your style between missions; use one ability button during play. Online race power is equal.','Beş bölgeyi kurtar. Görevler arasında tarzını seç; oynarken tek beceri düğmesini kullan. Çevrim içi yarışta güçler eşittir.')}</p><div class="rpg-grid">${RPG_CLASSES.map(([id,icon,en,tr,de,dt])=>`<button data-rpg-equip="classId:${id}" aria-pressed="${r.classId===id}"><b>${icon} ${L(en,tr)}</b><small>${L(de,dt)}</small></button>`).join('')}</div><h3>${L('Blades · choose a sidegrade','Bıçaklar · tarzını seç')}</h3><div class="rpg-grid">${RPG_BLADES.map(([id,icon,en,tr,desc])=>`<article><h4>${icon} ${L(en,tr)} +${r.levels[id]||0}</h4><p>${desc}</p><small>${L('Each upgrade: +1 energy at mission start. Solo only.','Her geliştirme: görev başında +1 enerji. Yalnızca tek oyunculu.')}</small><button data-rpg-equip="blade:${id}" aria-pressed="${r.blade===id}">${L('Equip','Kuşan')}</button><button data-rpg-forge="blade:${id}" ${(r.levels[id]||0)>=5||r.materials<20*((r.levels[id]||0)+1)?'disabled':''}>↑ ${(r.levels[id]||0)>=5?'MAX':20*((r.levels[id]||0)+1)+' ◇'}</button></article>`).join('')}</div><h3>${L('Runes','Rünler')}</h3><div class="rpg-grid">${RPG_RUNES.map(([id,icon,en,tr])=>`<button ${r.runes.includes(id)?`data-rpg-equip="rune:${id}" aria-pressed="${r.rune===id}"`:`data-rpg-forge="rune:${id}" ${r.materials<30?'disabled':''}`}><b>${icon} ${L(en,tr)}</b><small>${id==='rhythm'?L('+0.15 s combo','+0,15 sn kombo'):id==='guard'?L('One extra shield charge','Bir ek kalkan hakkı'):L('+1 energy per synergy','Sinerji başına +1 enerji')} · ${r.runes.includes(id)?'✓':'30 ◇'}</small></button>`).join('')}</div><h3>${L('Drone companion','Yardımcı drone')}</h3><div class="rpg-grid">${[['repair',L('Repair · +1 integrity each 8 seconds','Onarım · 8 saniyede +1 bütünlük')],['collector',L('Collector · +3 materials on victory','Toplayıcı · zaferde +3 malzeme')]].map(([id,title])=>`<button data-rpg-equip="drone:${id}" aria-pressed="${r.drone===id}">◉ ${title}</button>`).join('')}</div><h3>${L('Rare relics','Nadir yadigârlar')}</h3><p>${L('First regional victories unlock optional sidegrades, never mandatory power. Equip from this collection.','İlk bölge zaferleri farklı oynanışlar açar. Koleksiyondan kuşanabilirsin.')}</p>${r.rare.map(id=>`<button data-rpg-relic="${id}" aria-pressed="${r.relic===id}">${id==='prism'?L('Prism: +2 synergy energy, −1 cut energy','Prizma: +2 sinerji enerjisi, −1 kesim enerjisi'):L('Anchor: +2 shield charges, ability costs +10','Çapa: +2 kalkan hakkı, beceri bedeli +10')}</button>`).join('')||`<p>🔒 ${L('Clear a regional final','Bir bölge finalini tamamla')}</p>`}<h3>${L('Titles','Unvanlar')}</h3><button data-rpg-equip="title:" aria-pressed="${!r.title}">${L('No title','Unvansız')}</button>${RPG_TITLES.map(([id,icon,en,tr])=>`<button data-rpg-equip="title:${id}" ${!r.titles.includes(id)?'disabled':''} aria-pressed="${r.title===id}">${r.titles.includes(id)?icon:'🔒'} ${L(en,tr)}</button>`).join('')}<h3>${L('Next objective','Sonraki hedef')}</h3><p>${L('Complete stage ','Tamamla: aşama ')}${campaignUnlocked()}/25 · ${L('Earn materials, unlock a class build and collect mastery stars.','Malzeme kazan, karakterini geliştir ve ustalık yıldızları topla.')}</p><p role="status">${rpgNotice}</p></section>`;}
+function rpgAdventureView(){const r=rpgState();return `<section class="rpg-sheet"><h2>${L('Expeditions & practice','Keşif ve antrenman')}</h2><div class="rpg-grid"><button data-rpg-route="practice"><b>☝ ${L('Training room','Antrenman alanı')}</b><small>${L('90 seconds · no damage, rewards or leaderboard','90 saniye · hasar, ödül ve sıralama yok')}</small></button><button data-rpg-route="expedition"><b>✧ ${L('Three-stage expedition','Üç aşamalık keşif')}</b><small>${L('Choose a temporary power after each victory','Her zaferden sonra geçici güç seç')}</small></button></div><label class="rpg-risk"><input id="rpgRisk" type="checkbox" ${r.risk?'checked':''}> ${L('Risk contract: ≥10 combo, +15 materials; targets expire sooner.','Risk sözleşmesi: ≥10 kombo, +15 malzeme; hedefler daha erken kaybolur.')}</label><h3>${L('Friend challenge','Arkadaş meydan okuması')}</h3><p>${L('Share a code: same 35-second target schedule and equal powers. Scores are compared on this device after importing the result code.','Kodu paylaş: aynı 35 saniyelik hedef dizilimi, eşit güçler. Sonuç kodunu içe aktararak bu cihazda karşılaştır.')}</p><label>${L('Challenge or result code','Meydan okuma veya sonuç kodu')}<input id="rpgRivalCode" maxlength="150" placeholder="AB4-…"></label><button id="rpgNewRival">${L('New challenge','Yeni meydan okuma')}</button><button id="rpgPlayRival">${L('Play code','Kodla oyna')}</button><button id="rpgImportRival">${L('Compare result','Sonucu karşılaştır')}</button><p role="status">${rpgNotice}</p>${r.rivals.slice(-5).map(a=>`<p>${escapeText(a.name)} · ${a.score} · ${escapeText(a.code)}</p>`).join('')}<h3>${L('Mastery collection','Ustalık koleksiyonu')}</h3><p>${L('One star each: clean victory, 8 targets in one swipe, 10 combo. Replay to improve.','Her biri bir yıldız: hatasız zafer, bir kaydırmada 8 hedef, 10 kombo. Geliştirmek için tekrar oyna.')}</p>${campaignRegions.map((region,i)=>`<p>${L(...region)} · ${Array.from({length:5},(_,j)=>{const a=r.mastery[i*5+j+1]||0;return '★'.repeat(a)+'☆'.repeat(3-a)}).join(' · ')}</p>`).join('')}</section>`;}
+const rpgOriginalMenu=renderMenu;
+renderMenu=function(){rpgOriginalMenu();const root=document.getElementById('newMenu');const main=root.querySelector?.('.hub-main');if(!main)return;if(hubTab==='hero')main.innerHTML=rpgCharacterView();if(hubTab==='journeys')main.innerHTML=rpgAdventureView();if(['play','more','skills'].includes(hubTab)){const entry=document.createElement('div');entry.className='rpg-entry';entry.innerHTML=`<button data-rpg-tab="hero">⚔ ${L('Hero & equipment','Kahraman ve ekipman')}</button><button data-rpg-tab="journeys">✧ ${L('Expeditions & practice','Keşif ve antrenman')}</button>`;main.append(entry);}root.querySelectorAll('[data-rpg-tab]').forEach(b=>b.onclick=()=>{hubTab=b.dataset.rpgTab;renderMenu()});root.querySelectorAll('[data-rpg-equip]').forEach(b=>b.onclick=()=>rpgEquip(...b.dataset.rpgEquip.split(':')));root.querySelectorAll('[data-rpg-forge]').forEach(b=>b.onclick=()=>rpgForge(...b.dataset.rpgForge.split(':')));root.querySelectorAll('[data-rpg-relic]').forEach(b=>b.onclick=()=>{if(!rpgCanEdit()||!rpgState().rare.includes(b.dataset.rpgRelic))return;rpgState().relic=rpgState().relic===b.dataset.rpgRelic?'':b.dataset.rpgRelic;rpgSave();renderMenu()});root.querySelectorAll('[data-rpg-route]').forEach(b=>b.onclick=()=>rpgLaunch(b.dataset.rpgRoute));const risk=document.getElementById('rpgRisk');if(risk)risk.onchange=()=>{rpgState().risk=risk.checked;rpgSave()};const input=document.getElementById('rpgRivalCode');if(input){document.getElementById('rpgNewRival').onclick=()=>{input.value='AB4-'+Math.floor(Math.random()*0xffffff).toString(36).toUpperCase();rpgNotice=L('Copy and share this code.','Bu kodu kopyalayıp paylaş.');};document.getElementById('rpgPlayRival').onclick=()=>{const code=input.value.trim().toUpperCase();if(!/^AB4-[0-9A-Z]{1,7}$/.test(code)){rpgNotice=L('Enter a valid AB4 code.','Geçerli AB4 kodu gir.');renderMenu();return;}rpgLaunch('rival',code)};document.getElementById('rpgImportRival').onclick=()=>rpgImportResult(input.value);}const title=RPG_TITLES.find(t=>t[0]===rpgState().title&&rpgState().titles.includes(t[0]));const profile=root.querySelector?.('.hub-profile>span');if(title&&profile)profile.textContent+=' · '+title[1]+' '+L(title[2],title[3]);};
+function rpgLaunch(kind,code=''){if(!rpgCanEdit()||!languageChosen||!nameAccepted)return false;rpgRoute={kind,code,leg:1,boons:[],risk:rpgState().risk};mode='campaign';selectedCampaignStage=1;startPlay();return gameState===STATE_PLAY;}
+const rpgOriginalStart=startPlay;startPlay=function(){if(gameState!==STATE_INTRO)return rpgOriginalStart();rpgRun=null;rpgOriginalStart();if(gameState!==STATE_PLAY)return;const r=rpgState();rpgRun={classId:r.classId,blade:r.blade,rune:r.rune,drone:r.drone,relic:r.relic||'',practice:rpgRoute?.kind==='practice',rival:rpgRoute?.kind==='rival',route:rpgRoute?{...rpgRoute,boons:[...rpgRoute.boons]}:null,cuts:0,synergies:0,energy:0,lastAbility:-99,droneAt:0,lastTick:0,settled:false,misses:0,damage:0,marks:[],armorClock:0};if(mode==='campaign'){const practice=rpgRun.practice,rival=rpgRun.rival;if(rpgRoute){campaignRun.stage={...campaignStages[0],n:0,boss:false,rule:'collect',duration:practice?90:rival?35:25,waves:1,cuts:practice||rival?0:12+(rpgRoute.leg-1)*4,capture:0,combo:0,synergy:0,priority:0,integrity:0,region:Math.min(4,rpgRoute.leg-1)};campaignRun.boss=null;durationLimit=campaignRun.stage.duration;gameTimeRemaining=durationLimit;}activeSkills.energy=practice?100:Math.min(100,15+(r.levels[r.blade]||0));if(rpgSolo()&&r.rune==='guard'){activeSkills.charges=1;activeSkills.shieldUntil=999;}if(rpgRun.route?.boons.includes('energy'))activeSkills.energy+=25;if(rpgRun.route?.boons.includes('repair')){activeSkills.charges+=1;activeSkills.shieldUntil=999;}}rpgLastHUD=-1;};
+const rpgOriginalRestart=performRestart;performRestart=function(){rpgRoute=null;rpgRun=null;const out=rpgOriginalRestart();const h=document.getElementById('rpgCombat');if(h)h.hidden=true;return out;};
+function rpgAbilityCost(){return rpgRun?.relic==='anchor'?60:50;}
+function rpgAbility(){if(mode!=='campaign'||gameState!==STATE_PLAY||paused||!rpgRun||rpgRun.rival||activeSkills.energy<rpgAbilityCost()||comboTime()-rpgRun.lastAbility<6)return false;activeSkills.energy-=rpgAbilityCost();rpgRun.lastAbility=comboTime();const now=comboTime(),cls=rpgClass();if(cls==='guardian'){activeSkills.charges=2+(rpgRun.rune==='guard'?1:0)+(rpgRun.relic==='anchor'?2:0);activeSkills.shieldUntil=now+6;}else if(cls==='energy'){activeSkills.slowUntil=now+4;for(const f of fruits)if(!f.sliced&&!f.healthy){const center=f.panel==='right'?width*.75:width*.25;f.vx=(center-f.x)*.008;f.vy=(height*.48-f.y)*.008;}}else{let count=0;for(const f of [...fruits])if(!f.sliced&&!f.healthy&&f.panel==='right'&&count<6){f.rpgArmor=0;f.slice(0);count++;}rpgRun.waveUntil=now+.45;}playSynergySound();return true;}
+const rpgOriginalActiveUI=updateActiveSkillUI;updateActiveSkillUI=function(){if(!rpgRun||mode!=='campaign')return rpgOriginalActiveUI();const old=document.getElementById('activeSkillBar');if(old)old.hidden=true;let node=document.getElementById('rpgCombat');if(!node)node=make('rpgCombat',document.body,'');node.hidden=gameState!==STATE_PLAY;if(node.hidden)return;const now=comboTime();if(now-rpgLastHUD<.2)return;rpgLastHUD=now;const cooldown=Math.max(0,6-(now-rpgRun.lastAbility)),title=rpgClass()==='guardian'?L('Shield','Kalkan'):rpgClass()==='energy'?L('Gather','Çekim'):L('Energy wave','Enerji dalgası');node.innerHTML=`<small>${rpgRun.practice?L('PRACTICE · NO REWARDS','ANTRENMAN · ÖDÜL YOK'):rpgRun.rival?L('EQUAL POWERS','EŞİT GÜÇLER'):L('ENERGY','ENERJİ')+' '+Math.floor(activeSkills.energy)+'/100'}</small>${rpgRun.rival?'':`<button id="rpgCast" ${paused||activeSkills.energy<rpgAbilityCost()||cooldown?'disabled':''}>${RPG_CLASSES.find(c=>c[0]===rpgClass())[1]} ${title}<small>${cooldown?Math.ceil(cooldown)+' sn':rpgAbilityCost()+' ⚡'}</small></button>`}<button id="rpgExit">${L('Leave','Çık')}</button>`;const cast=document.getElementById('rpgCast');if(cast)cast.onclick=rpgAbility;document.getElementById('rpgExit').onclick=()=>{performRestart();hubTab='journeys';renderMenu()};};
+const rpgOriginalSkillActive=skillActive;skillActive=function(id){if(rpgRun?.rival)return false;return rpgOriginalSkillActive(id);};
+const rpgOriginalComboWindow=comboWindow;comboWindow=function(){return rpgOriginalComboWindow()+(rpgSolo()?((rpgRun.blade==='balanced'?.2:0)+(rpgRun.rune==='rhythm'?.15:0)+(rpgRun.route?.boons.includes('rhythm')?.3:0)):0)};
+const rpgOriginalDamage=campaignDamage;campaignDamage=function(value){if(rpgRun?.practice)return;if(rpgRun)rpgRun.damage+=value;rpgOriginalDamage(value)};
+const rpgOriginalAwardXP=awardXP;awardXP=function(base,source){if(rpgRun?.practice||rpgRun?.rival)return 0;return rpgOriginalAwardXP(base,source)};
+const rpgOriginalCombo=registerCombo;registerCombo=function(panel,x,y){if(rpgRun?.practice||rpgRun?.rival){const state=combo[panel],now=comboTime();state.count=now-state.last<=2?state.count+1:1;state.last=now;state.best=Math.max(state.best,state.count);const bonus=Math.round(100*(comboMultiplier(state.count)-1));state.bonus+=bonus;if(panel==='right')rpgRun.cuts++;return bonus;}const oldSyn=synergies,bonus=rpgOriginalCombo(panel,x,y);if(panel==='right'&&[5,10,20].includes(combo.right.count))rpgTone(combo.right.count===5?520:combo.right.count===10?660:880,.12,'sine',.045);if(rpgRun&&panel==='right'&&mode==='campaign'){rpgRun.cuts++;const newSyn=Math.max(0,synergies-rpgRun.synergies);rpgRun.synergies=synergies;activeSkills.energy=Math.min(100,Math.max(0,activeSkills.energy+(rpgClass()==='energy'?1:0)+(rpgRun.blade==='resonant'?1:0)+(rpgRun.relic==='prism'?-1:0)+newSyn*((rpgRun.rune==='flow'?1:0)+(rpgRun.relic==='prism'?2:0))));if(rpgClass()==='guardian')campaignRun.integrity=Math.min(100,campaignRun.integrity+.25);}return bonus;};
+const rpgOriginalSpawn=campaignSpawnItem;campaignSpawnItem=function(...args){const before=fruits.length;rpgOriginalSpawn(...args);if(rpgSolo()&&rpgRun.route?.risk)for(const f of fruits.slice(before))f.campaignExpires-=1;if(!rpgSolo()||rpgRun.route||selectedCampaignStage<6)return;const serial=campaignRun.serial||0;for(const f of fruits.slice(before)){if(f.healthy)continue;f.rpgKind=['runner','splitter','armored','protector'][Math.floor(serial/2)%4];f.rpgArmor=f.rpgKind==='armored'?1:0;if(rpgState().risk)f.campaignExpires-=1;if(f.rpgKind==='runner'){f.vx*=1.2;f.vy*=1.2;}}};
+const rpgOriginalSlice=GameItem.prototype.slice;GameItem.prototype.slice=function(angle){if(this.sliced||paused||gameState!==STATE_PLAY)return;const now=comboTime();if(mode==='campaign'&&rpgSolo()){if(this.rpgArmor>0){if(now-(this.rpgArmorAt??-9)<.25)return;this.rpgArmor--;this.rpgArmorAt=now;this.rpgCrackUntil=now+.6;playDeflectSound();molecularRenderer.cut(this);return;}const protector=fruits.find(f=>f!==this&&!f.sliced&&f.panel===this.panel&&f.rpgKind==='protector'&&Math.hypot(f.x-this.x,f.y-this.y)<90);if(protector&&this.rpgKind!=='protector'&&Math.floor(now)%4<2){this.rpgCrackUntil=now+.2;return;}}const before=this.sliced;rpgOriginalSlice.call(this,angle);if(!before&&this.sliced&&!this.healthy){this.rpgHitAt=hitFeel.time;this.impactHold=reducedGraphicsMotion()?0:.055;const weight=this.radius>24?.72:1.12;this.halfLeftVx*=weight;this.halfRightVx*=weight;if(this.rpgKind==='splitter'&&rpgSolo()){const child=new GameItem(this.type,this.x+20,this.y,1,-1,this.panel);child.radius=this.radius*.65;child.campaignExpires=now+3;child.hasEnteredPanel=true;child.rpgKind='child';fruits.push(child);if(this.panel==='right'){if(this.type==='cyan')s2SpawnedVegf++;else s2SpawnedAng2++;}else{if(this.type==='cyan')s1SpawnedVegf++;else s1SpawnedAng2++;}}}};
+const rpgOriginalDraw=molecularRenderer.drawTarget;molecularRenderer.drawTarget=function(item){const hold=item.sliced&&item.impactHold>0&&!reducedGraphicsMotion();if(hold){const saved=item.sliced;item.sliced=false;ctx.save();ctx.translate(item.x,item.y);ctx.rotate(item.sliceAngle||0);ctx.scale(1.16,.78);ctx.rotate(-(item.sliceAngle||0));ctx.translate(-item.x,-item.y);rpgOriginalDraw.call(this,item);ctx.restore();item.sliced=saved;}else rpgOriginalDraw.call(this,item);if(item.healthy)return;ctx.save();ctx.beginPath();ctx.rect(item.panel==='left'?0:width/2,0,width/2,height);ctx.clip();if(item.sliced&&hitFeel.time-(item.rpgHitAt||-9)<.23){const age=hitFeel.time-item.rpgHitAt;ctx.translate(item.x,item.y);ctx.rotate(item.sliceAngle||0);ctx.globalAlpha=Math.max(0,1-age/.23);ctx.strokeStyle='#f2ffff';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(-item.radius*1.1,0);ctx.lineTo(item.radius*1.1,0);ctx.stroke();}else if(!item.sliced&&item.rpgKind){ctx.strokeStyle=item.rpgArmor?'#fbbf24':item.rpgKind==='protector'?'#c4b5fd':'#a5f3fc';ctx.lineWidth=2;ctx.setLineDash(item.rpgKind==='protector'?[4,4]:[]);ctx.beginPath();ctx.arc(item.x,item.y,item.radius+5,0,Math.PI*2);ctx.stroke();ctx.font='bold 14px sans-serif';ctx.textAlign='center';ctx.fillStyle=ctx.strokeStyle;ctx.fillText(item.rpgArmor?'⬡':item.rpgKind==='protector'?'✧':item.rpgKind==='runner'?'»':item.rpgKind==='splitter'?'Ⅱ':'',item.x,item.y+5);if(item.rpgCrackUntil>comboTime()){ctx.beginPath();ctx.moveTo(item.x-10,item.y-12);ctx.lineTo(item.x+2,item.y);ctx.lineTo(item.x-4,item.y+7);ctx.lineTo(item.x+12,item.y+15);ctx.stroke();}}ctx.restore();};
+function rpgTone(freq,duration=.05,kind='sine',volume=.035){if(!audioCtx||isMuted)return;try{const at=audioCtx.currentTime,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=kind;o.frequency.setValueAtTime(freq,at);o.frequency.exponentialRampToValueAtTime(freq*.6,at+duration);g.gain.setValueAtTime(volume,at);g.gain.exponentialRampToValueAtTime(.001,at+duration);o.connect(g);g.connect(audioCtx.destination);o.start(at);o.stop(at+duration);}catch{}}
+const rpgOriginalFeelCut=hitFeel.cut;hitFeel.cut=function(item){rpgOriginalFeelCut.call(this,item);if(item.panel==='right'&&this.time-(this.rpgSoundAt||-1)>.065){this.rpgSoundAt=this.time;rpgTone(item.priority?160:item.radius>24?210:item.type==='plum'?280:380,.07,'triangle');}if(rpgRun?.waveUntil>comboTime())this.shake=Math.min(2.2,this.shake+.2);};
+const rpgOriginalFeelLink=hitFeel.link;hitFeel.link=function(from,to){rpgOriginalFeelLink.call(this,from,to);if(feelOptions.haptic&&!reducedGraphicsMotion()&&typeof navigator!=='undefined'&&navigator.vibrate)try{navigator.vibrate([8,15,12])}catch{}};
+const rpgOriginalBoss=tryBossCut;tryBossCut=function(...args){const before=campaignRun?.boss?.hp;const result=rpgOriginalBoss(...args);const boss=campaignRun?.boss;if(before>0&&boss?.hp===0&&rpgRun){rpgRun.finisherUntil=hitFeel.time+.65;for(let i=0;i<3;i++){const p=bossPoint();hitFeel.cut({x:p.x+Math.cos(i*2)*30,y:p.y+Math.sin(i*2)*30,panel:'right',sliceAngle:i});}rpgTone(90,.35,'triangle',.06);}return result;};
+const rpgOriginalFrameTick=hitFeel.tick;hitFeel.tick=function(dt){rpgOriginalFrameTick.call(this,dt);if(!rpgRun||gameState!==STATE_PLAY||paused)return;const now=comboTime();if(rpgRun.practice)activeSkills.energy=100;if(rpgSolo()&&now-rpgRun.droneAt>=8){rpgRun.droneAt=now;if(rpgRun.drone==='repair')campaignRun.integrity=Math.min(100,campaignRun.integrity+1);}if(rpgRun.finisherUntil>this.time&&!reducedGraphicsMotion()){for(const f of fruits)if(f.sliced){f.halfLeftVx*=.98;f.halfRightVx*=.98;}}};
+const rpgOriginalDrawFeel=hitFeel.draw;hitFeel.draw=function(g){rpgOriginalDrawFeel.call(this,g);if(!rpgRun||gameState!==STATE_PLAY||mode!=='campaign')return;g.save();const x=width*.75+Math.sin(this.time*1.5)*24,y=height-115;g.strokeStyle=rpgRun.drone==='repair'?'#86efac':'#fbbf24';g.lineWidth=2;g.beginPath();g.arc(x,y,9,0,Math.PI*2);g.stroke();g.beginPath();g.moveTo(x-16,y);g.lineTo(x-10,y);g.moveTo(x+10,y);g.lineTo(x+16,y);g.stroke();g.restore();};
+function rpgTitleUnlock(id){const r=rpgState();if(!r.titles.includes(id))r.titles.push(id);}
+function rpgSettle(passed){if(!rpgRun||rpgRun.settled||!rpgSolo())return 0;rpgRun.settled=true;const r=rpgState();if(!passed)return 0;const s=campaignRun.stage,id=s.n;let reward=8+(rpgRun.drone==='collector'?3:0);if(!rpgRun.route){const old=r.mastery[id]||0,stars=Number(campaignRun.healthyCuts===0)+Number(campaignRun.bestSwipe>=8)+Number(combo.right.best>=10);r.mastery[id]=Math.max(old,stars);reward+=Math.max(0,stars-old)*5;if(!r.claims.includes(id)){r.claims.push(id);reward+=12;if(s.boss){const relic=s.region%2?'anchor':'prism';if(!r.rare.includes(relic))r.rare.push(relic);rpgTitleUnlock('guardian');}}}if(r.risk&&combo.right.best>=10)reward+=15;r.materials=Math.min(99999,r.materials+reward);rpgTitleUnlock('explorer');if(combo.right.best>=20)rpgTitleUnlock('combo');if(campaignRun.healthyCuts===0&&campaignRun.missed===0)rpgTitleUnlock('precise');rpgSave();return reward;}
+const rpgOriginalFinishCampaign=finishCampaign;finishCampaign=function(){if(!rpgRun||!rpgRoute){const passed=campaignRun&&!campaignRun.settled&&campaignAssessment().passed,loot=rpgSettle(passed);rpgOriginalFinishCampaign();if(loot)document.getElementById('newResults').innerHTML+=`<p>◇ +${loot} ${L('materials · mastery recorded','malzeme · ustalık kaydedildi')}</p>`;return;}if(rpgRun.settled)return;const route=rpgRun.route,passed=gameTimeRemaining===0&&slicesRight>=campaignRun.stage.cuts;if(route.kind==='rival'){rpgRun.settled=true;const score=Math.round(scoreRight),code=route.code,result='ABR4|'+code+'|'+score+'|'+encodeURIComponent(playerNick||'Player');document.getElementById('newResults').innerHTML=`<h3>${L('Challenge result','Meydan okuma sonucu')}</h3><p>${score} · ${L('Best combo','En iyi kombo')} ${combo.right.best}</p><p>${L('Share this result code. Local comparison is for friendly play and is not a verified ranking.','Bu sonuç kodunu paylaş. Yerel karşılaştırma arkadaş oyunu içindir; doğrulanmış sıralama değildir.')}</p><code class="rpg-code">${escapeText(result)}</code>`;rpgState().rivals.push({name:playerNick||'Player',score,code});rpgState().rivals=rpgState().rivals.slice(-20);rpgSave();}else if(route.kind==='practice'){rpgRun.settled=true;document.getElementById('newResults').innerHTML=`<h3>${L('Practice complete','Antrenman tamamlandı')}</h3><p>${slicesRight} ${L('cuts','kesim')} · ${L('Best combo','En iyi kombo')} ${combo.right.best}</p><p>${L('No rewards or leaderboard submission.','Ödül veya sıralama kaydı yok.')}</p>`;}else{const loot=rpgSettle(passed);if(!passed)rpgRun.settled=true;document.getElementById('newResults').innerHTML=`<h3>${passed?L('Expedition victory','Keşif zaferi'):L('Expedition ended','Keşif sona erdi')}</h3><p>${route.leg}/3 · ◇ +${loot}</p>${passed&&route.leg<3?`<p>${L('Choose one power for the next stage','Sonraki aşama için bir güç seç')}</p><div class="rpg-grid">${[['energy',L('Start with +25 energy','+25 enerjiyle başla')],['rhythm',L('+0.3 second combo window','+0,3 saniye kombo süresi')],['repair',L('Start with a protection charge','Bir koruma hakkıyla başla')]].map(([id,name])=>`<button data-rpg-boon="${id}">${name}</button>`).join('')}</div>`:passed?`<p>🏆 ${L('Three-stage expedition complete!','Üç aşamalık keşif tamamlandı!')}</p>`:''}`;document.getElementById('newResults').querySelectorAll('[data-rpg-boon]').forEach(b=>b.onclick=()=>{const next={...route,leg:route.leg+1,boons:[...route.boons,b.dataset.rpgBoon]};performRestart();rpgRoute=next;mode='campaign';startPlay();});}renderMenu();};
+function rpgImportResult(value){try{const parts=value.trim().split('|');if(parts.length!==4||parts[0]!=='ABR4'||!/^AB4-[0-9A-Z]{1,7}$/.test(parts[1])||!/^\d{1,8}$/.test(parts[2]))throw Error();const score=Number(parts[2]),name=decodeURIComponent(parts[3]).slice(0,24),r=rpgState();const mine=r.rivals.filter(x=>x.code===parts[1]&&x.name===(playerNick||'Player')).sort((a,b)=>b.score-a.score)[0];if(!mine){rpgNotice=L('Play the same challenge first.','Önce aynı meydan okumayı oyna.');renderMenu();return false;}r.rivals.push({code:parts[1],score,name});r.rivals=r.rivals.slice(-20);rpgNotice=`${playerNick}: ${mine.score} · ${name}: ${score} · `+(mine.score===score?L('Draw','Berabere'):mine.score>score?L('You win!','Kazandın!'):L('Friend wins','Arkadaşın kazandı'));rpgSave();renderMenu();return true;}catch{rpgNotice=L('Invalid result code.','Geçersiz sonuç kodu.');renderMenu();return false;}}
+// Rival/practice/expedition use their own fixed wave schedule, independent of rendering RNG.
+const rpgOriginalSpawner=spawnCampaign;spawnCampaign=function(){if(!rpgRoute||!rpgRun)return rpgOriginalSpawner();const now=comboTime();if(now<campaignRun.nextSpawn||gameTimeRemaining<2)return;const serial=campaignRun.serial++;campaignRun.nextSpawn=1+serial*.6+.6;let seed=777;for(const ch of rpgRun.route.code||'TRAIN')seed=(seed*31+ch.charCodeAt(0))>>>0;const local=new SeededRNG((seed+serial*977)>>>0);for(let i=0;i<2;i++){const before=fruits.length;rpgOriginalSpawn(local.next()>.65?'plum':'cyan',.12+local.next()*.7,.15+local.next()*.65,false,false,now,0);for(const f of fruits.slice(before)){f.rpgFixed=rpgRun.rival;f.rpgOrigin={x:f.x,y:f.y};if(rpgSolo()&&rpgRun.route.risk)f.campaignExpires-=1;}}};
+const rpgOriginalCampaignMiss=campaignMiss;campaignMiss=function(item){if(rpgRun?.practice){item.campaignLogged=true;return;}rpgOriginalCampaignMiss(item)};
+const rpgOriginalFinishRecord=finishRecord;finishRecord=function(){if(rpgRun&&(rpgRun.practice||rpgRun.rival)){finishCampaign();return;}rpgOriginalFinishRecord();};
+// Stable region story and phase tells, localized and kept outside the action field.
+const rpgOriginalBriefing=campaignBriefing;campaignBriefing=function(n){rpgOriginalBriefing(n);const host=document.getElementById('campaignBrief'),card=host?.querySelector?.('article'),s=getCampaignStage(n);if(!card||!s)return;const story=[L('Restore flow in the quiet capillaries.','Sakin kılcallarda akışı yeniden kur.'),L('Break the imbalance and stop dividing threats.','Dengesizliği gider, bölünen tehditleri durdur.'),L('Defend living cells from armored invaders.','Canlı hücreleri zırhlı istilacılardan koru.'),L('Break the protectors before their allies.','Önce koruyucuları, ardından yanlarındaki hedefleri kes.'),L('Face the source of the crisis.','Krizin kaynağıyla yüzleş.')][s.region];const p=document.createElement('p');p.textContent=story+(s.boss?' '+L('Below half health, attacks come sooner. A warning ring appears first.','Yarı canın altında saldırılar sıklaşır. Uyarı çizgisi önceden görünür.'):'');card.append(p);};
+const rpgOriginalBossTick=tickCampaignBoss;tickCampaignBoss=function(){rpgOriginalBossTick();const b=campaignRun?.boss;if(!rpgSolo()||!b||b.hp<=0||b.hp>b.max/2)return;const now=comboTime(),cycle=Math.floor(now/7);if(now%7>=5.6&&now%7<6&&b.cancelCycle!==cycle&&b.rpgPhaseCycle!==cycle){b.rpgPhaseCycle=cycle;campaignDamage(2);createFloatingText(L('PHASE 2','2. EVRE'),width*.75,height*.3,'#fbbf24',16,.6);}};
+const rpgOriginalCampaignHUD=updateCampaignHUD;updateCampaignHUD=function(){rpgOriginalCampaignHUD();if(!rpgRoute||!rpgRun)return;const node=document.getElementById('campaignHUD');if(node)node.innerHTML=`<strong>${rpgRun.practice?L('TRAINING','ANTRENMAN'):rpgRun.rival?rpgRun.route.code:L('EXPEDITION','KEŞİF')+' '+rpgRun.route.leg+'/3'}</strong><small>◈ ${slicesRight}/${campaignRun.stage.cuts||'∞'} · ♥ ${Math.round(campaignRun.integrity)}%</small>`;};
+rpgState();renderMenu();
+
+</script>
+<style>
+ .rpg-sheet h2{font-size:26px;font-weight:850}.rpg-sheet h3{font-size:18px;margin:22px 0 12px}.rpg-sheet p{font-size:14px!important}.rpg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.rpg-grid article,.rpg-grid>button{background:#172b3b!important;border:1px solid #456274!important;border-radius:16px;padding:16px!important;text-align:left}.rpg-grid b,.rpg-grid small{display:block}.rpg-grid small{font-size:12px;line-height:1.6;color:#b8d6db;margin-top:8px}.rpg-sheet input:not([type=checkbox]){display:block;width:100%;padding:14px;background:#0c1c2c;border:1px solid #577484;border-radius:12px;color:white;margin:10px 0}.rpg-sheet button{margin:4px 0}.rpg-risk{display:block;padding:16px;border:1px solid #b99b50;border-radius:14px;margin-top:18px;font-size:14px}.rpg-risk input{width:22px;height:22px;vertical-align:middle}.rpg-entry{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.rpg-entry button{flex:1}.rpg-code{display:block;overflow-wrap:anywhere;padding:14px;background:#0a1728;color:#a5f3fc}#rpgCombat{position:fixed;right:12px;bottom:90px;width:146px;z-index:28;padding:8px;background:#102b39ef;border:1px solid #6bd6cc;border-radius:16px;color:#dcfff7}#rpgCombat>small{font-size:10px;display:block;text-align:center}#rpgCombat button{width:100%;border:1px solid #67c8b7;background:#20565a;color:#fff;min-height:48px;border-radius:12px;font-size:14px;margin-top:6px}#rpgCombat button small{display:block;font-size:10px}#rpgCombat button:disabled{opacity:.45}#rpgCombat #rpgExit{min-height:32px;background:transparent;font-size:12px;border-color:#688491}@media(max-width:600px){.rpg-grid{grid-template-columns:1fr}.rpg-grid>button{min-height:85px}#rpgCombat{right:6px;bottom:86px;width:112px}.rpg-sheet h2{font-size:23px}}
+</style>
+
+<script>
+function rpgTeamRole(seat){return ['guardian','cutter','energy'][(seat-1)%3];}
+function rpgTeamRoleName(seat){const id=rpgTeamRole(seat),c=RPG_CLASSES.find(c=>c[0]===id);return c[1]+' '+L(c[2],c[3]);}
+const rpgOriginalCoopSummary=coOpSummary;coOpSummary=function(room){const html=rpgOriginalCoopSummary(room);if(!room?.coop)return html;return html+`<div class="rpg-team"><strong>${L('Shared pulse','Ortak enerji dalgası')}: ${room.coop.pulses||0} ✦</strong><small>${room.coop.cuts%(room.coop.pulseStep||12)}/${room.coop.pulseStep||12} ⚡ · +${room.coop.repair||0} ♥</small><p>${L('Guardian strengthens repair. Cutter repairs every five cuts. Energy Master charges the pulse sooner. Roles follow room seats.','Koruyucu onarımı güçlendirir. Kesici beş kesimde onarır. Enerji Ustası dalgayı daha erken doldurur. Roller oda sırasına göre verilir.')}</p>${room.players.filter(p=>p.name&&!p.left).map(p=>`<small>${escapeText(p.name)} · ${rpgTeamRoleName(p.seat)}</small>`).join('')}</div>`;};
+const rpgOriginalDuelTick=tickDuel;tickDuel=function(){rpgOriginalDuelTick();const room=duel.room;if(!room?.coop||!duel.started||room.status!=='playing')return;const pulses=room.coop.pulses||0;if(duel.rpgPulseCode!==room.code+':'+room.startMs){duel.rpgPulseCode=room.code+':'+room.startMs;duel.rpgPulses=pulses;return;}if(pulses>(duel.rpgPulses||0)){duel.rpgPulses=pulses;const from={x:width*.6,y:height*.55},to={x:width*.9,y:height*.55};hitFeel.link(from,to);rpgTone(440,.15,'triangle');createFloatingText(L('TEAM PULSE','TAKIM DALGASI'),width*.75,height*.38,'#a7f3d0',16,.7);}};
+</script><style>.rpg-team{border:1px solid #466e72;border-radius:12px;background:#15333d;padding:10px;font-size:12px;margin-top:8px}.rpg-team strong,.rpg-team small{display:block}.rpg-team p{font-size:11px;margin:6px 0;line-height:1.5}#arenaLiveList .rpg-team p,#arenaLiveList .rpg-team>small~small{display:none}</style>
+
+<script>
+const rpgOriginalItemUpdate=GameItem.prototype.update;GameItem.prototype.update=function(){if(this.rpgFixed&&!this.sliced){this.x=this.rpgOrigin.x;this.y=this.rpgOrigin.y;this.vx=0;this.vy=0;if(this.campaignExpires&&comboTime()>=this.campaignExpires)this.isOffscreen=true;return;}return rpgOriginalItemUpdate.call(this);};
+</script>

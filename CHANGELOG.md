@@ -1,5 +1,12 @@
 # Changes
 
+## 4.0.0
+- Three RPG classes, one combat ability, blade upgrades, runes, boss relic sidegrades, drone companions and selectable earned titles.
+- Directional squash/release, exposed cut surfaces, weighted fragments, layered impact tones, combo accents and armored/protected threats.
+- Training isolation, three-leg expeditions with boon choices, risk contracts, mastery stars and deterministic friend challenge/result codes.
+- Server-validated cooperative roles and shared energy/repair pulse; competitive rules and existing progress retained.
+- Full 30-item scope and validation documented in RPG_RELEASE.md.
+
 ## 3.0.0
 - Direction-correct slicing, short visual target hold, bounded camera kick/haptics, cached impact audio and synergy energy links.
 - Five distinct cosmetic fragment styles and a short victory celebration.

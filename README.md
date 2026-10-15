@@ -1,3 +1,12 @@
+# AngioBlade Arena v4.0 — RPG ve Güçlü Kesim Tepkisi
+
+- Ana menü → **Kahraman ve ekipman**: üç sınıf, sınıfa özel tek beceri, bıçak geliştirme, rün, drone, nadir yadigâr ve unvanlar.
+- **Keşif ve antrenman**: ödülsüz deneme alanı, üç aşamalık güç seçimli keşif, risk sözleşmesi ve AB4 koduyla arkadaş meydan okuması.
+- 55 ms görsel esneme, belirgin kesik yüzeyi, hedef ağırlığına uygun parçalar, katmanlı sesler, zırh çatlama ve final darbeleri. Saatler durmaz.
+- Sunucu tarafında takım rolleri ve doğrulanmış kesimlerle dolan ortak enerji/onarım dalgası. Yarış kuralları eşit kalır.
+- Ayrıntılı 30 maddelik kapsam: [RPG_RELEASE.md](RPG_RELEASE.md). Backend: v5 ardından `backend/rpg_team_v6.sql`.
+- RPG kayıtları mevcut büyüme kaydına eklenir; eski ilerleme ve bulut kayıt sistemi korunur.
+
 # AngioBlade Arena v3.0 — Vuruş Hissi ve Birlikte Oyun
 
 ## v3.0 Paketi
