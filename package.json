@@ -1,6 +1,6 @@
 {
   "name": "angioblade-arena",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "description": "Bilingual molecular arcade with progression, skill trees and online duels",
   "engines": {
