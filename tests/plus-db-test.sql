@@ -1,0 +1,38 @@
+begin;
+do $$
+declare r jsonb;i integer;first_hash text:=repeat('a',64);plan jsonb:='[{"id":"1","at":0,"type":"cyan"},{"id":"2","at":0,"type":"plum"},{"id":"3","at":0,"type":"cyan"},{"id":"4","at":0,"type":"plum"}]';before_lp integer;
+begin
+ for i in 1..5 loop perform public.angio_profile_action(lpad(i::text,64,'a'),jsonb_build_object('name','QA Team '||i));end loop;
+ select league_points into before_lp from public.angio_player_profiles where profile_hash=lpad('1',64,'a');
+ r:=public.angio_arena_action('create','QT2345',lpad('1',64,'b'),jsonb_build_object('profile',lpad('1',64,'a'),'name','QA1','seed',42,'plan',plan,'roomMode','coop'));
+ if r->>'roomMode'<>'coop' or (r->>'capacity')::int<>4 then raise exception 'test team capacity';end if;
+ for i in 2..4 loop perform public.angio_arena_action('join','QT2345',lpad(i::text,64,'b'),jsonb_build_object('profile',lpad(i::text,64,'a'),'name','QA'||i));end loop;
+ begin perform public.angio_arena_action('join','QT2345',lpad('5',64,'b'),jsonb_build_object('profile',lpad('5',64,'a')));raise exception 'test missed capacity';exception when others then if SQLERRM<>'ROOM_FULL' then raise;end if;end;
+ for i in 1..4 loop perform public.angio_arena_action('ready','QT2345',lpad(i::text,64,'b'));end loop;
+ perform public.angio_arena_action('start','QT2345',lpad('1',64,'b'));
+ update public.angio_arena_rooms set start_ms=(extract(epoch from clock_timestamp())*1000)::bigint-2000 where code='QT2345';
+ perform public.angio_arena_action('update','QT2345',lpad('1',64,'b'),'{"hits":[{"id":"1","t":1000}]}');
+ r:=public.angio_arena_action('update','QT2345',lpad('2',64,'b'),'{"hits":[{"id":"1","t":1000},{"id":"2","t":1100}]}');
+ if (r->'coop'->>'cuts')::int<>2 or (r->'players'->1->>'cuts')::int<>1 then raise exception 'test duplicate shared hit';end if;
+ perform public.angio_arena_action('update','QT2345',lpad('3',64,'b'),'{"hits":[{"id":"3","t":1200}]}');
+ update public.angio_arena_rooms set start_ms=(extract(epoch from clock_timestamp())*1000)::bigint-54000 where code='QT2345';
+ r:=public.angio_arena_action('state','QT2345',lpad('1',64,'b'));
+ if r->>'status'<>'finished' or not (r->'coop'->>'success')::boolean or jsonb_array_length(r->'winners')<>4 or (r->'coop'->>'integrity')::int<>98 then raise exception 'test shared victory %',r;end if;
+ if (select league_points from public.angio_player_profiles where profile_hash=lpad('1',64,'a'))<>before_lp then raise exception 'test team league farming';end if;
+ r:=public.angio_arena_action('create','QT9876',lpad('1',64,'c'),jsonb_build_object('profile',lpad('1',64,'a'),'seed',1,'plan',plan,'roomMode','coop'));
+ perform public.angio_arena_action('join','QT9876',lpad('2',64,'c'),jsonb_build_object('profile',lpad('2',64,'a')));
+ perform public.angio_arena_action('ready','QT9876',lpad('1',64,'c'));perform public.angio_arena_action('ready','QT9876',lpad('2',64,'c'));perform public.angio_arena_action('start','QT9876',lpad('1',64,'c'));
+ update public.angio_arena_rooms set start_ms=(extract(epoch from clock_timestamp())*1000)::bigint-54000 where code='QT9876';r:=public.angio_arena_action('state','QT9876',lpad('1',64,'c'));
+ if (r->'coop'->>'success')::boolean or jsonb_array_length(r->'winners')<>0 then raise exception 'test false team victory';end if;
+ r:=public.angio_cloud_action('cloud_create',first_hash,'{"angio-player-name":"QA Cloud","angio-growth-v1":{"xp":120,"skills":["focus"]}}',0,'qa-rate');
+ if (r->>'revision')::int<>1 then raise exception 'test cloud create';end if;
+ r:=public.angio_cloud_action('cloud_load',first_hash);if r->'snapshot'->>'angio-player-name'<>'QA Cloud' then raise exception 'test cloud restore';end if;
+ begin perform public.angio_cloud_action('cloud_load',repeat('f',64));raise exception 'test missed account auth';exception when others then if SQLERRM<>'ACCOUNT_NOT_FOUND' then raise;end if;end;
+ r:=public.angio_cloud_action('cloud_save',first_hash,'{"angio-player-name":"QA Cloud New"}',1);
+ begin perform public.angio_cloud_action('cloud_save',first_hash,'{}',1);raise exception 'test missed conflict';exception when others then if SQLERRM<>'SAVE_CONFLICT' then raise;end if;end;
+ begin perform public.angio_cloud_action('cloud_save',first_hash,'{"private-secret":"no"}',2);raise exception 'test missed key whitelist';exception when others then if SQLERRM<>'INVALID_SAVE' then raise;end if;end;
+ if has_table_privilege('anon','public.angio_cloud_saves','SELECT') or has_function_privilege('anon','public.angio_cloud_action(text,text,jsonb,integer,text)','EXECUTE') then raise exception 'test exposed account data';end if;
+ if not (select relrowsecurity from pg_class where oid='public.angio_cloud_saves'::regclass) then raise exception 'test missing RLS';end if;
+end $$;
+rollback;
+select 'PASS: 4-player capacity, duplicate claim isolation, shared victory/failure/integrity, no league farming, account restore/isolation/CAS/whitelist and RLS' as result;

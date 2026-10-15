@@ -1,5 +1,15 @@
 # Changes
 
+## 3.0.0
+- Direction-correct slicing, short visual target hold, bounded camera kick/haptics, cached impact audio and synergy energy links.
+- Five distinct cosmetic fragment styles and a short victory celebration.
+- Stage rules: target hunt, 30-second survival, clean play and five-target sweeps.
+- Five shield/core regional enemies with telegraphed attacks and five star-gated hidden stages.
+- Cooperative 2–4-player rooms with server-validated shared targets/integrity and no league rewards; competitive 2–16 rooms retained.
+- Optional private-recovery-key cloud accounts, conflict-aware auto-save, explicit restore and local import backup.
+- Installable PWA with local compiled CSS, app icons and public-asset-only offline cache.
+- Desktop/mobile campaign, hidden-stage, impact, cloud, cooperative SQL and offline tests.
+
 ## 2.2.0
 - Simple home with three large play choices and four primary tabs.
 - Mobile single-field rendering with correctly mapped touches and compact HUD.

@@ -6,7 +6,7 @@ run("selectLanguage('tr');nameAccepted=true");assert.equal(run('campaignStages.l
 for(const viewport of [1200,390]){run("window.innerWidth="+viewport);for(let n=1;n<=25;n++){
  run('performRestart();mode="campaign";selectedCampaignStage='+n+';startPlay()');assert.equal(run('durationLimit'),run('campaignStages['+(n-1)+'].duration'));
  const duration=run('durationLimit');
- for(let frame=0;frame<duration*10+3;frame++){clock+=100;run('mainLoop()');if(run('gameState===STATE_PLAY'))run('for(const f of [...fruits])if(!f.healthy&&!f.sliced)f.slice(0)');}
+ for(let frame=0;frame<duration*10+3;frame++){clock+=100;run('mainLoop()');if(run('gameState===STATE_PLAY'))run('for(const f of [...fruits])if(!f.healthy&&!f.sliced)f.slice(0);if(campaignRun.boss?.hp){const p=bossPoint();if(p.open)tryBossCut({x:p.x-45,y:p.y},{x:p.x+45,y:p.y},0)}');}
  assert.equal(run('gameState'),2);assert.ok(run('campaign.stars['+(n-1)+']')>=1,'unachievable stage '+n);assert.ok(run('campaignRun.wave')===run('campaignRun.stage.waves'));assert.ok(run('campaignRun.healthyCuts')===0);
 }}
 assert.equal(run('campaignUnlocked()'),25);assert.equal(run('campaign.rewarded.length'),5);assert.equal(run('skinUnlocked("region5")'),true);assert.ok(run('campaignTrophies()').includes('earned'));const xp=run('growth.xp'),wallet=run('crystals');run('finishCampaign()');assert.equal(run('growth.xp'),xp);assert.equal(run('crystals'),wallet);

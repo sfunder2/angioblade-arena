@@ -1,4 +1,19 @@
-# AngioBlade Arena v2.2 — Mobil ve Sade
+# AngioBlade Arena v3.0 — Vuruş Hissi ve Birlikte Oyun
+
+## v3.0 Paketi
+
+- Kesim düzlemi parmağın yönünü izler. Kesilen parçalar 35 ms görsel beklemeden sonra ayrılır; oyun saati ve diğer hedefler durmaz. Hafif kamera tepkisi ve destekli telefon titreşimi Ayarlar’dan kapatılabilir; azaltılmış harekette devre dışıdır. Ses tamponu yeniden kullanılır ve sesler sınırlandırılır.
+- Hedef avı, 30 saniye dayanma, sağlıklı hücre kesmeme ve hedefler arasında 180 ms’den fazla ara verilmeyen kaydırmada beş hedef kesme kuralları. 25 temel aşama korunur.
+- Beş final düşmanı: kalkan 6 saniyelik döngünün ilk saniyesinde kapalıdır; 1–4 saniye arası çekirdek açıktır. Vuruş aralığı 650 ms. Saldırılar 7 saniyelik döngüde bildirilir; çekirdeğe vurarak o döngünün saldırısı engellenebilir. Bölgeye göre hücre, öncelikli hedef ve bütünlük saldırıları vardır.
+- Bölge finalini geçip o bölgede 10/15 yıldız kazanıldığında bir gizli aşama açılır. Beş gizli aşama ayrı yıldız kaydı tutar ve buz, elektrik, yıldız tozu, fırtına ve nova görünümlerini açar. İlk başarı +120 XP verir.
+- Arkadaşlarla oyna → Takım: 2–4 kişi, 50 saniye, tek ortak hedef listesi. İlk doğrulanan oyuncu hedefi alır; mükerrer kesimler sayılmaz. Hedeflerin %65’i kesilmeli ve bütünlük sıfırın üstünde kalmalıdır. Kaçan hedef 2 bütünlük kaybettirir. Takım oyununda lig puanı verilmez. Katkı veren oyuncular başarılı maçta bir kez 100 XP kazanır. Yarış modu 2–16 kişidir.
+- Diğer → Hesabım: e-posta olmadan rastgele 256 bit kurtarma anahtarıyla isteğe bağlı bulut hesabı. Anahtarın yalnızca SHA-256 özeti veritabanında tutulur. Anahtarı bilen hesaba erişebilir; e-posta ile sıfırlama yoktur. Anahtarı güvenli saklamak gerekir.
+- Bulut kayıt; XP, yetenekler/düzenler, temel ve gizli aşamalar, kupalar, görünümler, kristaller, günlük görevler ve lig profil anahtarını kapsar. Hesap anahtarı ve cihaz ayarları buluta kopyalanmaz. Değişiklikler oyun sırasında en erken 15 saniyede, menüde 1,5 saniyede kaydedilir. Sürüm uyuşmazlığında otomatik üzerine yazılmaz; kullanıcı bulut kaydını yükleyebilir veya bu cihazdakini seçebilir. Yükleme öncesi yerel yedek alınır.
+- Diğer → Ayarlar: ana ekrana yükleme açıklaması ve çevrim dışı hazırlık durumu. İlk açılışta internet gerekir. PWA uygulama kabuğu, CSS ve simgeleri önbelleğe alır; tek oyunculu modlar sonra çevrim dışı kullanılabilir. Odalar, bulut kayıt ve sıralama internet ister. Hesap POST istekleri ve uzak API yanıtları önbelleğe alınmaz.
+
+### Yerel kontroller
+
+`npm ci`, `npm run build`, `npm test`. Derlenmiş `assets/app.css` depoya dahildir; ziyaretçinin Tailwind CDN’e erişmesi gerekmez. `tests/plus-db-test.sql` ve `tests/arena-db-test.sql` işlemleri geri alarak canlı şemayı sınar. `backend/cloud_coop_v5.sql` v5 şemasının kaynak kopyasıdır. Edge Function v5 dağıtılmıştır.
 
 ## v2.2 Mobil arayüz
 
@@ -31,15 +46,15 @@
 
 ## Kullanım
 
-1. Her iki oyuncu aynı güncel HTML dosyasını tarayıcıda açar ve dil seçer.
-2. Çevrim içi · 2 oyuncu düğmesine basılır.
-3. İlk oyuncu adını yazar ve Oda aç düğmesine basar.
-4. İkinci oyuncu adını ve 6 karakterli oda kodunu yazar, Katıl düğmesine basar.
-5. İki oyuncu Hazırım dediğinde ortak 5 saniyelik geri sayım başlar.
-6. Karşılaşma 50 saniye sürer. Hedef dizisi iki oyuncu için aynıdır; her hedef 8 saniye erişilebilir kalır.
-7. İki oyuncu birbirinin skorunu yaklaşık 500 ms aralıklarla alır. Kazanan sunucunun doğruladığı skorlarla belirlenir. Son vuruşları almak için 3 saniyelik sonuç doğrulama süresi bulunur.
+1. Oyunu aç, dilini ve takma adını seç.
+2. Hemen oyna ile hızlı oyuna gir; ilk oyunda kısa anlatımı takip et.
+3. Serüven’den 25 ana aşamayı oyna. Bölge finali ve 10 yıldız, bir gizli yol açar.
+4. Arkadaşlarla oyna’da Yarış (2–16) veya Takım (2–4) seç; oda aç ya da altı karakterli kodla katıl.
+5. Herkes Hazırım dediğinde oda sahibi maçı başlatır. Ortak geri sayımın ardından 50 saniye oynanır.
+6. Diğer → Hesabım bölümünden isteğe bağlı bulut hesabı aç. Başka cihazda kurtarma anahtarıyla giriş yap; anahtarı gizli ve güvenli sakla.
+7. Diğer → Ayarlar bölümünden vuruş tepkisini ayarla, çevrim dışı hazırlık durumunu gör ve ana ekrana ekle.
 
-Çevrim içi maçta duraklatma yoktur. Odadan ayrılan oyuncu karşılaşmayı kaybeder. Bağlantı kesilmesi görünür şekilde belirtilir; süre devam eder. Sayfa yenilendiğinde aynı sekmedeki oda oturumuna geri dönme seçeneği bulunur.
+Çevrim içi maçta duraklatma yoktur. Bağlantı kesilirse süre devam eder. Tek oyunculu ilerleme cihazda korunur; bulut bağlantısı varsa değişiklikler sıraya alınır.
 
 ## Kurulum için hazırlanmış kod
 
