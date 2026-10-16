@@ -1,3 +1,7 @@
+# Expedition 6.0.0
+
+New default mode: 100 seeded stages, enemy AI, drone dodging and counters, local tactical coach, roguelite powers, mastery and mobile-first controls. See [the release notes](EXPEDITION_RELEASE.md) and [100-item implementation ledger](EXPEDITION_100.md). AI runs on-device; no external AI API key is needed.
+
 # AngioBlade Arena v5 — Sade Roguelite Macera
 
 Oyna → beş karşılaşma → güç kartı seç → bölge düşmanını yen → kahramanını geliştir. Ana menü: **Oyna / Kahramanım / Arkadaşlarla**.

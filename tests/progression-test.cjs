@@ -7,8 +7,8 @@ assert.equal(run('awardXP(120,"quest")'),120);assert.equal(run('growthInfo().lev
 run('awardXP(200,"quest")');assert.equal(run('growthInfo().level'),3);assert.equal(run('unlockSkill("synergy_wisdom")'),true);
 run('growth.xp=1400');assert.equal(run('growthInfo().level'),6);assert.equal(run('unlockSkill("research")'),true);
 assert.equal(run('awardXP(100,"quest")'),110);assert.equal(run('awardXP(100,"hit")'),121);
-run('awardXP(999999,"completion")');assert.equal(run('growthInfo().level'),30);assert.equal(run('growth.xp'),run('maxPlayerXP'));assert.equal(run('growthInfo().percent'),100);
-const xp=run('growth.xp');assert.equal(run('resetSkills()'),true);assert.equal(run('growth.xp'),xp);assert.equal(run('skillPoints()'),30);
+run('awardXP(999999,"completion")');assert.equal(run('growthInfo().level'),100);assert.equal(run('growth.xp'),run('maxPlayerXP'));assert.equal(run('growthInfo().percent'),100);
+const xp=run('growth.xp');assert.equal(run('resetSkills()'),true);assert.equal(run('growth.xp'),xp);assert.equal(run('skillPoints()'),100);
 run('growth.skills=["target_guide","combo_rhythm","training_time"];mode="comparison";startPlay()');assert.equal(run('durationLimit'),55);assert.equal(run('comboWindow()'),2.4);assert.equal(run('resetSkills()'),false);assert.equal(run('unlockSkill("prism_trail")'),false);
 run('growth.skills=[]');assert.equal(run('comboWindow()'),2.4);run('performRestart();growth.skills=["target_guide","combo_rhythm","training_time"];mode="challenge";startPlay()');assert.equal(run('durationLimit'),125);
 run('s2SpawnedVegf=10;slicesRight=8;gameTimeRemaining=101;advanceLevel()');assert.equal(run('level'),1);run('gameTimeRemaining=100;advanceLevel()');assert.equal(run('level'),2);

@@ -1,3 +1,11 @@
+# 6.0.0 — Expedition
+
+- Added a dedicated 100-stage offline expedition with fair telegraphed enemies, counters, traps and failure states.
+- Added seeded room generation, progression variants, local coaching, comfort settings and isolated practice.
+- Increased shared hero level cap to 100.
+- Corrected corrupted transitive dependency ranges in the lockfile; clean installation and build verified.
+- See EXPEDITION_100.md for the complete implementation map.
+
 # Changes
 
 ## 5.0.0
