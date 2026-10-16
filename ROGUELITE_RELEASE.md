@@ -1,7 +1,7 @@
 # v5 — A clear, repeatable adventure
 
 ## Main flow
-Only three top-level choices: Play, My Hero, Friends. Play starts/resumes a five-encounter run: two target hunts, survival, combo, regional guardian. Normal encounters last 32 seconds; final lasts 40 seconds. Four fights plus a boss take about three minutes of combat, plus short choices. The first encounter has no protected cells. Later cells and armor are introduced gradually.
+Only three top-level choices: Play, My Hero, Friends. Play starts/resumes a five-encounter run: two target hunts, survival, combo, regional guardian. Normal encounters allow up to 32 seconds; final allows up to 40 seconds. Target/combo/boss goals finish early once completed after 12 seconds, avoiding idle time. Survival always runs its full 32 seconds. The first encounter has no protected cells. Later cells and armor are introduced gradually.
 
 ## Run progression
 After each non-final victory choose exactly one of three deterministic, shuffled power offers. Cards have three levels: wide cuts, lightning, chain, barrier, rhythm, healing, focus; drone and prism cards unlock through lifetime shards. Lightning + chain increases jumps; recursion is guarded and extra targets capped at six. One class ability button remains.
