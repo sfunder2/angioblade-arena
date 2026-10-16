@@ -1,3 +1,9 @@
+# AngioBlade Arena v5 — Sade Roguelite Macera
+
+Oyna → beş karşılaşma → güç kartı seç → bölge düşmanını yen → kahramanını geliştir. Ana menü: **Oyna / Kahramanım / Arkadaşlarla**.
+
+Can taşınır; dinlenme, normal/zorlu yollar, bedelli yadigâr ve birbiriyle birleşen güç kartları bulunur. Eski kristal ve malzeme bakiyeleri tek seferde enerji parçasına birleşir. Kalıcı ilerleme korunur; geçici kartlar her macerada sıfırlanır. Ayrıntılar: [ROGUELITE_RELEASE.md](ROGUELITE_RELEASE.md).
+
 # AngioBlade Arena v4.0 — RPG ve Güçlü Kesim Tepkisi
 
 - Ana menü → **Kahraman ve ekipman**: üç sınıf, sınıfa özel tek beceri, bıçak geliştirme, rün, drone, nadir yadigâr ve unvanlar.

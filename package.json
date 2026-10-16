@@ -1,13 +1,13 @@
 {
   "name": "angioblade-arena",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "private": true,
   "description": "Bilingual molecular arcade with progression, skill trees and online duels",
   "engines": {
     "node": ">=24"
   },
   "scripts": {
-    "test": "node tests/progression-test.cjs && node tests/combo-test.cjs && node tests/duel-test.cjs && node tests/leaderboard-test.cjs && node tests/arena-test.cjs && node tests/campaign-test.cjs && node tests/skills-expanded-test.cjs && node tests/graphics-test.cjs && node tests/mobile-test.cjs && node tests/impact-campaign-test.cjs && node tests/cloud-team-test.cjs && node tests/offline-test.cjs && node tests/rpg-test.cjs",
+    "test": "node tests/progression-test.cjs && node tests/combo-test.cjs && node tests/duel-test.cjs && node tests/leaderboard-test.cjs && node tests/arena-test.cjs && node tests/campaign-test.cjs && node tests/skills-expanded-test.cjs && node tests/graphics-test.cjs && node tests/mobile-test.cjs && node tests/impact-campaign-test.cjs && node tests/cloud-team-test.cjs && node tests/offline-test.cjs && node tests/rpg-test.cjs && node tests/rogue-test.cjs",
     "build": "tailwindcss -i tailwind.input.css -o assets/app.css --minify"
   },
   "devDependencies": {

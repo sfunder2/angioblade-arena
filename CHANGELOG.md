@@ -1,5 +1,11 @@
 # Changes
 
+## 5.0.0
+- Three-choice hub, drone hero, next unlock, calm combat background and objective-only run HUD.
+- Five-encounter roguelite with three-card drafts, stacking powers/synergies, carried health, camp, elite paths and tradeoff relic.
+- Five-region permanent goals, unified legacy currency migration, limited partial defeat rewards, mastery, run checkpoint/resume and one-click retry.
+- Local-only behavior counters, no analytics uploads. Details in ROGUELITE_RELEASE.md.
+
 ## 4.0.0
 - Three RPG classes, one combat ability, blade upgrades, runes, boss relic sidegrades, drone companions and selectable earned titles.
 - Directional squash/release, exposed cut surfaces, weighted fragments, layered impact tones, combo accents and armored/protected threats.
