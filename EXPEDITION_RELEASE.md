@@ -1,4 +1,4 @@
-# AngioBlade Expedition 6.0.0
+# AngioBlade Expedition 6.0.1
 
 The default Play flow now launches a dedicated mobile-first expedition with a visible drone, dodgeable enemy attacks, counter windows, real defeat conditions and 100 regenerated campaign stages across ten regions.
 
@@ -12,3 +12,7 @@ The default Play flow now launches a dedicated mobile-first expedition with a vi
 Implementation-to-requirement mapping: [EXPEDITION_100.md](EXPEDITION_100.md).
 
 Validation: regression suites and expedition tests; 4,000 generated maps validated and all 100 campaign stages completed by a deterministic legal-input bot. Human difficulty tuning remains iterative; the bot is a feasibility check.
+
+Browser validation on GitHub Pages: Turkish name entry and new home; real pointer cut, trap avoidance, hunter dodge and recovery counter; 320 px mobile menu, carried-health resume and pause summary. Expedition progress also contributes to existing daily quests and trophies; expedition records are labelled local.
+
+Performance: the hidden legacy arena renderer is suspended while Expedition is open. Tutorial time is unlimited; the normal encounter clock starts after the required counter.
