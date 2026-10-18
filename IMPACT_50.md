@@ -13,7 +13,7 @@ This release extends Expedition v6. It keeps the molecular theme and adds a boun
 | 7 | Boss final-hit emphasis | Dedicated finisher ring, radial fragments, bass/chime and longer finish presentation. |
 | 8 | Distinct blade traces | Curved fading blade ribbons vary by blade; power particles retain card identity. |
 | 9 | Adjustable controlled shake | Bounded camera shift with a 0–1 strength control; essential UI stays fixed. |
-| 10 | Precise cut reward | Center-crossing physical strokes earn +10, a clean-hit cue and precision stats. Not awarded to automatic chain cuts. |
+| 10 | Precise cut reward | Center-aligned physical strokes earn +10, a clean-hit cue and precision stats. Not awarded to automatic chain cuts. |
 | 11 | Clear primary combat indicators | Objective and health remain at top; one thumb ability at bottom. Optional mastery is secondary. |
 | 12 | One-sentence stage brief | Goal-specific start panel before a fresh encounter. Required tutorial and resume remain separate. |
 | 13 | Short card explanation | Card name and metric are immediate; effect/tradeoff expands on demand. |

@@ -46,6 +46,9 @@ begin
  d:=public.angio_series_action('state',qa_coop_code,hashes[1],'{}');
  if (d#>>'{coop,openings}')::integer<>1 then raise exception 'team opening missing';end if;
  if (d#>>'{coop,repair}')::integer<2 then raise exception 'team opening reward missing';end if;
+ update public.angio_arena_rooms rr set status='finished' where rr.code=qa_room_code;
+ d:=public.angio_series_action('leave',qa_room_code,hashes[1],'{}');
+ if (d->>'hostSeat')::integer<>2 then raise exception 'terminal host migration failed';end if;
  if has_function_privilege('anon','public.angio_series_action(text,text,text,jsonb)','execute') then raise exception 'anon RPC exposed';end if;
 end $$;
 rollback;

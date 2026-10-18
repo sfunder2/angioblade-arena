@@ -4,6 +4,7 @@ function tick(e,seconds){for(let n=0;n<Math.ceil(seconds/.05);n++)e.update(.05);
 function cut(e,x=180,y=300){const f=e.spawn('target',{x,y});e.swipe({x:x-25,y},{x:x+25,y});return f;}
 {
  const e=fresh();cut(e);assert.equal(e.stats.precise,1);assert.ok(e.animations.some(a=>a.type==='split'));assert.ok(e.animations.some(a=>a.type==='precision'));assert.ok(e.slashes.length);assert.ok(e.score>=35);
+ const edge=fresh();edge.spawn('target',{x:180,y:300});edge.swipe({x:150,y:300},{x:158,y:300});assert.equal(edge.stats.precise,1,'center-aligned short pointer segments are recognized');
  const a=e.spawn('target',{x:80,y:280,armor:1});e.swipe({x:50,y:280},{x:110,y:280});assert.equal(a.armor,0);assert.ok(e.animations.some(a=>a.type==='crack'));assert.equal(e.hitstop,.04);
  for(let n=0;n<140;n++)cut(e,100+n%50,320);assert.ok(e.animations.length<=70);assert.ok(e.slashes.length<=10);tick(e,1.5);assert.ok(e.animations.length<=18);
 }

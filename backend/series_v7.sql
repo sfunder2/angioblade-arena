@@ -35,7 +35,7 @@ begin
    if me.left_room then
     if s.code is null or not(s.eliminated @> jsonb_build_array(me.seat)) or p_action not in ('state','rematch','leave') then raise exception 'ELIMINATED';end if;
     select token_hash into delegate from public.angio_arena_players where code=p_code and seat=r.host_seat and not left_room;
-    if delegate is null then raise exception 'ROOM_NOT_FOUND';end if;
+    if delegate is null then select token_hash into delegate from public.angio_arena_players where code=p_code and not left_room order by seat limit 1;end if;if delegate is null then raise exception 'ROOM_NOT_FOUND';end if;
    end if;
    if p_action='advance' then
     if mine<>r.host_seat then raise exception 'NOT_HOST';end if;
@@ -75,7 +75,8 @@ begin
  end if;
  select * into s from public.angio_arena_series where code=p_code;
  if s.code is null then return result;end if;
- select * into r from public.angio_arena_rooms where code=p_code;
+ update public.angio_arena_rooms rr set host_seat=(select min(p.seat) from public.angio_arena_players p where p.code=p_code and not p.left_room) where rr.code=p_code and not exists(select 1 from public.angio_arena_players p where p.code=p_code and p.seat=rr.host_seat and not p.left_room) and exists(select 1 from public.angio_arena_players p where p.code=p_code and not p.left_room);
+ select * into r from public.angio_arena_rooms where code=p_code;result:=result||jsonb_build_object('hostSeat',r.host_seat);
  if s.format='tournament' and r.status in ('finished','forfeit') and not exists(select 1 from jsonb_array_elements(s.history) q where (q->>'round')::integer=s.round_no) then
   select count(*) into participants from public.angio_arena_players where code=p_code and not left_room;
   keep_count:=greatest(1,ceil(participants/2.0)::integer);

@@ -1,4 +1,4 @@
-# AngioBlade Impact 7.0.0
+# AngioBlade Impact 7.0.1
 
 New animations focus on contact: directional split halves, spawn unfolding, armor cracks, precision flashes, curved blade ribbons, shield bursts, parry ripples, combo pulses, card demonstrations, story trophies and boss finishers. Motion-reduction and shake controls cover the new effects, and animation tracks are bounded.
 
@@ -11,3 +11,5 @@ Implementation ledger: `IMPACT_50.md`. Actual participant study remains pending;
 Backend: `backend/series_v7.sql`, `backend/team_openings_v7.sql`, Edge `angio-duel` v6. Original room clients continue using their existing actions; new clients add `seriesVersion: 1`.
 
 Checks: complete Node test suite, 100-stage impact bot, bounded renderer tests, UTF-8 ghost validation, challenge reward/campaign restoration tests, and a rollback-only live database test covering a complete 16-player four-round bracket and rematch. See final browser validation record below.
+
+Live validation: new workshop selections, variant preview, real pointer target cut, server HTTPS rematch with two independently authenticated clients. Follow-up fixes normalize short touch segments for center-aligned cuts, show the actual ability cost, and replace practice implementation counters with a three-action goal and unlimited time. Series host migration also covers terminal rounds.

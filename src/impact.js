@@ -45,7 +45,7 @@ class ImpactEngine extends Base{
  swipe(a,b){
   if(this.status!=='playing'||this.intro>0)return;
   this.currentStroke++;const len=distance(a,b);
-  for(const e of this.entities)e.precise=len>2&&A.segmentDistance(e,a,b)<=Math.max(3,e.r*.23);
+  for(const e of this.entities)e.precise=len>2&&Math.abs((b.x-a.x)*(e.y-a.y)-(b.y-a.y)*(e.x-a.x))/len<=Math.max(3,e.r*.23);
   super.swipe(a,b);
   if(len>2){this.slashes.push({ax:a.x,ay:a.y,bx:b.x,by:b.y,age:0,blade:this.blade});if(this.slashes.length>10)this.slashes.shift();}
  }
