@@ -68,5 +68,5 @@ for(let n=1;n<=100;n++){
 }
 assert.deepEqual(failed,[],'all campaign stages must be completable by the input bot');assert.equal(victories,100);
 // Inline deploy artifacts must exactly match their editable sources, including the offline engine.
-const html=fs.readFileSync(require('node:path').join(__dirname,'../index.html'),'utf8');for(const f of ['adventure.js','adventure-ui.js','adventure.css'])assert.ok(html.includes(fs.readFileSync(require('node:path').join(__dirname,'../src',f),'utf8')));
+const html=fs.readFileSync(require('node:path').join(__dirname,'../index.html'),'utf8');for(const f of ['adventure.js','adventure-ui.js','adventure.css'])assert.ok(html.includes(fs.readFileSync(require('node:path').join(__dirname,'../src',f),'utf8').replace('/* IMPACT_UI_EXTENSIONS */',fs.readFileSync(require('node:path').join(__dirname,'../src/impact-ui.inc.js'),'utf8'))));
 console.log(`PASS: ${generated} generated layouts, deterministic seeds, 100 full-stage bot victories, loss states, fair tells, counters, enemy teams, card limits, bounded effects and interactive tutorial`);

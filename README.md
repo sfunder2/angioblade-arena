@@ -1,3 +1,7 @@
+# Impact 7.0.0
+
+Contact animations, clearer card choices, new class builds, daily/weekly and ghost trials, private 16-player elimination and rematches. See [Impact release notes](IMPACT_RELEASE.md) and [50-request ledger](IMPACT_50.md). The voluntary usability study is ready; participant results are pending.
+
 # Expedition 6.0.0
 
 New default mode: 100 seeded stages, enemy AI, drone dodging and counters, local tactical coach, roguelite powers, mastery and mobile-first controls. See [the release notes](EXPEDITION_RELEASE.md) and [100-item implementation ledger](EXPEDITION_100.md). AI runs on-device; no external AI API key is needed.

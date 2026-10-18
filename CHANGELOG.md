@@ -1,3 +1,10 @@
+# 7.0.0 — Impact
+
+- Added material-specific hit reactions, directional halves, boss finishers and reduced-motion-safe transitions.
+- Added specialization/variant previews, actual card comparisons, risk artifacts, fair daily/weekly/ghost trials and collection appearances.
+- Added server-coordinated elimination and consensual rematches, plus complementary team repair openings.
+- Added local usability/performance observations; real participant research is pending.
+
 # 6.0.0 — Expedition
 
 - Added a dedicated 100-stage offline expedition with fair telegraphed enemies, counters, traps and failure states.

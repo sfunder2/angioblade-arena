@@ -85,7 +85,7 @@ class Engine{
   this.drone.vx=clamp((this.drone.x-old.x)*15,-180,180);this.drone.vy=clamp((this.drone.y-old.y)*15,-180,180);this.stats.travel+=dist(old,this.drone);
  }
  swipe(a,b){
-  if(this.status!=='playing'||this.intro>0)return;this.stats.swipes++;const angle=Math.atan2(b.y-a.y,b.x-a.x);const width=8+this.level('wide')*5+(this.blade==='wide'?7:0)+this.bladeLevel*.8;
+  if(this.status!=='playing'||this.intro>0)return;this.stats.swipes++;const angle=Math.atan2(b.y-a.y,b.x-a.x);const width=Math.max(2,8+(this.cutWidth||0)+this.level('wide')*5+(this.blade==='wide'?7:0)+this.bladeLevel*.8);
   for(const e of [...this.entities])if(!e.dead&&segmentDistance(e,a,b)<e.r+width)this.cut(e,angle,a,b);
   for(const e of this.entities)if(e.kind==='linked'&&e.partner&&!e.dead){const p=this.entities.find(x=>x.id===e.partner&&!x.dead);if(p){const mid={x:(e.x+p.x)/2,y:(e.y+p.y)/2};if(segmentDistance(mid,a,b)<20){e.unlinked=true;p.unlinked=true;this.effect(mid,'#cbb3ff','⌁',10);}}}
   for(const p of this.props)if(p.hp&&segmentDistance(p,a,b)<13){p.hp--;this.effect(p,'#507d7b','',4,angle);}
@@ -114,7 +114,7 @@ class Engine{
   }
   if(e.armor){e.armor--;this.effect(e,'#cad4e4','CRACK',10,angle);this.emit('armor',1);return;}
   e.dead=true;this.stats.cuts++;this.score+=25+(this.has('precision')?5:0)+(e.priority&&this.has('priority_bonus')?(this.has('execution')?75:25):0)+(this.combo>=5?Math.min(50,this.combo*2):0);this.energy=clamp(this.energy+(this.blade==='resonant'?5:3)+this.level('focus')*2+(this.has('energy_flow')?2:0)+Math.min(2,Math.floor(this.mastery/500)),0,100);
-  const window=1.9+(this.has('combo_rhythm')?.4:0)+this.level('rhythm')*.4+this.level('chain')*.2;this.combo=this.t-this.lastCut<window?this.combo+1:1;this.lastCut=this.t;this.lastAngle=angle;this.bestCombo=Math.max(this.bestCombo,this.combo);
+  const window=1.9+(this.comboOffset||0)+(this.has('combo_rhythm')?.4:0)+this.level('rhythm')*.4+this.level('chain')*.2;this.combo=this.t-this.lastCut<window?this.combo+1:1;this.lastCut=this.t;this.lastAngle=angle;this.bestCombo=Math.max(this.bestCombo,this.combo);
   this.hitstop=this.options.motion?0:.025;this.effect(e,this.combo>=10?'#ffdf86':'#68efdd','+'+(25+Math.min(50,this.combo*2)),this.combo>=10?18:10,angle);this.emit('cut',this.combo);
   if(this.level('heal')&&this.stats.cuts%10===0&&this.heals<this.healBudget){this.heals++;this.hp=Math.min(100,this.hp+3*this.level('heal'));}
   if(!chain){let hits=this.level('volt')&&this.stats.cuts%5===0?this.level('volt')+this.level('chain'):0;if(this.level('burst')&&this.stats.cuts%8===0)hits+=2*this.level('burst');if(hits){this.stats.synergy++;if(this.has('synergy_charge'))this.energy=Math.min(100,this.energy+6);this.emit('synergy',hits);for(const other of this.entities.filter(x=>!x.dead&&x.kind==='target').sort((a,b)=>dist(a,e)-dist(b,e)).slice(0,hits))this.cut(other,angle,e,other,true);}}
@@ -140,7 +140,7 @@ class Engine{
   const n=this.stage.n;if(n<3)return;
   const count=this.entities.filter(e=>!e.dead&&e.kind!=='target'&&e.kind!=='trap').length;if(count>=Math.min(6,1+Math.floor(n/12)))return;
   const pool=n<6?['hunter']:n<12?['hunter','scout','directional','loot']:n<25?['hunter','ambusher','sniper','shield','healer','loot','linked']:Object.keys(ENEMIES);
-  const regional=this.stage.region%3===0?'hunter':this.stage.region%3===1?'sniper':'shield';let kind=this.rng.next()<.3&&pool.includes(regional)?regional:this.rng.pick(pool);if(n>=25&&this.entities.some(e=>!e.dead&&e.kind==='scout'))kind='sniper';else if(n>=25&&this.entities.some(e=>!e.dead&&e.kind==='shield'))kind='healer';if(this.stage.kind==='siege'&&count===0&&n>20)kind='leader';
+  const regional=this.stage.region%3===0?'hunter':this.stage.region%3===1?'sniper':'shield';let kind=this.rng.next()<.3&&pool.includes(regional)?regional:this.rng.pick(pool);if(n>=25&&(!this.learned||this.learned.scout&&this.learned.sniper)&&this.entities.some(e=>!e.dead&&e.kind==='scout'))kind='sniper';else if(n>=25&&(!this.learned||this.learned.shield&&this.learned.healer)&&this.entities.some(e=>!e.dead&&e.kind==='shield'))kind='healer';if(this.stage.kind==='siege'&&count===0&&n>20)kind='leader';
   const e=this.spawn(kind,{expires:Infinity,arrow:this.rng.next()<.5?0:Math.PI});if(!e)return;
   if(n>50&&this.rng.next()<.25)e.affix=this.rng.pick(['swift','armored','charged']);
   if(e.affix==='armored')e.hp=2;

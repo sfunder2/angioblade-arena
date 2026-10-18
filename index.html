@@ -3111,7 +3111,7 @@ function advancePlayGuide(){if(guideStep<2){guideStep++;renderPlayGuide();}else 
 function finishPlayGuide(){db.set('angio-guide-seen-v1',true);document.getElementById('playGuide').hidden=true;const action=guideAction;guideAction=null;if(action)action();}
 function renderMenu(){
  ensureDay();const root=document.getElementById('newMenu');if(!root)return;const rows=db.get('angio-records-'+mode,[]);const tabs=[['play',L('Play','Oyna')],['campaign',L('Adventure','Serüven')],['skills',L('Skills','Yetenekler')],['more',L('More','Diğer')]];
- root.innerHTML=`<header class="hub-header"><div class="hub-brand"><div class="brand-mark">✦</div><div><span>DUAL STRIKE</span><h1>AngioBlade <em>Arena</em></h1></div></div><div class="hub-profile"><span>${profileBadge(displayTrophy)+escapeText(playerNick||career.name||L('Player','Oyuncu'))}${campaign.stars[24]?' · '+L('Vessel Guardian','Damar Koruyucusu'):''}</span><b>◇ ${crystals}</b></div></header><nav class="hub-nav">${tabs.map(([id,label])=>`<button data-hub-tab="${id}" aria-pressed="${hubTab===id||(id==='more'&&['daily','trophies','skins','leaderboard','account','settings'].includes(hubTab))}">${label}</button>`).join('')}</nav><div class="hub-layout"><section class="hub-main">${hubTab==='play'?simpleHome():hubTab==='campaign'?campaignMap():hubTab==='more'?moreMenu():hubTab==='account'?accountView():hubTab==='settings'?settingsView():hubTab==='daily'?`<div class="section-heading"><span class="eyebrow">${ensureDay().day} · ${L('ISTANBUL TIME','İSTANBUL SAATİ')}</span><h2>${L('Daily missions','Günlük görevler')}</h2><p>${L('Play, complete goals and claim cosmetic crystals. Resets at midnight.','Oynayın, hedefleri tamamlayın ve kozmetik kristalleri alın. Gece yarısı yenilenir.')}</p></div>${questCards()}`:hubTab==='leaderboard'?leaderboardView():hubTab==='skills'?skillTreeView():hubTab==='trophies'?`<div class="section-heading"><span class="eyebrow">${progress.unlocked.length}/${trophies.length}</span><h2>${L('Your trophy showcase','Kupa vitrininiz')}</h2></div>${trophyShowcase()}`:`<div class="section-heading"><span class="eyebrow">${L('LOOKS ONLY · EQUAL PLAY','SADECE GÖRÜNÜM · EŞİT OYUN')}</span><h2>${L('Blade & trail collection','Bıçak ve iz koleksiyonu')}</h2></div>${wardrobe()}`}</section><details class="hub-player-details"><summary>👤 ${L('Player details','Oyuncu bilgilerim')}</summary><aside class="hub-aside">${growthCard()}${leagueCard()}<div class="hub-mini"><h3>${L('Player identity','Oyuncu kimliği')}</h3><div class="nick-row"><input id="profileName" maxlength="24" placeholder="${L('Your name','Adınız')}" value="${escapeText(playerNick||career.name||'')}"><button id="saveProfileName">✓</button></div><p id="careerMessage">${careerStatus}</p><p>${L('Keep this browser’s game data to retain access to your league profile.','Lig profilinize erişimi korumak için bu tarayıcının oyun verilerini saklayın.')}</p></div><div class="hub-mini"><h3>${L('Personal records','Kişisel rekorlar')}</h3>${rows.length?rows.slice(0,3).map((r,i)=>`<div class="hub-record"><span>0${i+1}</span><strong>${escapeText(r.name||playerNick)} · ${r.score.toLocaleString()}</strong></div>`).join(''):`<p>${L('Your next match could be a new record.','Bir sonraki maç yeni rekorunuz olabilir.')}</p>`}</div></aside></details></div><footer class="hub-footer"><span>v6.0.1 · ${L('Progression · skills · arena','İlerleme · yetenekler · arena')}</span><div><button id="switchLanguage">🌐 ${lang==='tr'?'Türkçe':'English'}</button><button id="qualityBtn">⚙ ${renderQuality==='lite'?L('Lightweight','Hafif'):renderQuality==='cinematic'?L('Cinematic','Sinematik'):L('Standard','Standart')}</button></div></footer>`;
+ root.innerHTML=`<header class="hub-header"><div class="hub-brand"><div class="brand-mark">✦</div><div><span>DUAL STRIKE</span><h1>AngioBlade <em>Arena</em></h1></div></div><div class="hub-profile"><span>${profileBadge(displayTrophy)+escapeText(playerNick||career.name||L('Player','Oyuncu'))}${campaign.stars[24]?' · '+L('Vessel Guardian','Damar Koruyucusu'):''}</span><b>◇ ${crystals}</b></div></header><nav class="hub-nav">${tabs.map(([id,label])=>`<button data-hub-tab="${id}" aria-pressed="${hubTab===id||(id==='more'&&['daily','trophies','skins','leaderboard','account','settings'].includes(hubTab))}">${label}</button>`).join('')}</nav><div class="hub-layout"><section class="hub-main">${hubTab==='play'?simpleHome():hubTab==='campaign'?campaignMap():hubTab==='more'?moreMenu():hubTab==='account'?accountView():hubTab==='settings'?settingsView():hubTab==='daily'?`<div class="section-heading"><span class="eyebrow">${ensureDay().day} · ${L('ISTANBUL TIME','İSTANBUL SAATİ')}</span><h2>${L('Daily missions','Günlük görevler')}</h2><p>${L('Play, complete goals and claim cosmetic crystals. Resets at midnight.','Oynayın, hedefleri tamamlayın ve kozmetik kristalleri alın. Gece yarısı yenilenir.')}</p></div>${questCards()}`:hubTab==='leaderboard'?leaderboardView():hubTab==='skills'?skillTreeView():hubTab==='trophies'?`<div class="section-heading"><span class="eyebrow">${progress.unlocked.length}/${trophies.length}</span><h2>${L('Your trophy showcase','Kupa vitrininiz')}</h2></div>${trophyShowcase()}`:`<div class="section-heading"><span class="eyebrow">${L('LOOKS ONLY · EQUAL PLAY','SADECE GÖRÜNÜM · EŞİT OYUN')}</span><h2>${L('Blade & trail collection','Bıçak ve iz koleksiyonu')}</h2></div>${wardrobe()}`}</section><details class="hub-player-details"><summary>👤 ${L('Player details','Oyuncu bilgilerim')}</summary><aside class="hub-aside">${growthCard()}${leagueCard()}<div class="hub-mini"><h3>${L('Player identity','Oyuncu kimliği')}</h3><div class="nick-row"><input id="profileName" maxlength="24" placeholder="${L('Your name','Adınız')}" value="${escapeText(playerNick||career.name||'')}"><button id="saveProfileName">✓</button></div><p id="careerMessage">${careerStatus}</p><p>${L('Keep this browser’s game data to retain access to your league profile.','Lig profilinize erişimi korumak için bu tarayıcının oyun verilerini saklayın.')}</p></div><div class="hub-mini"><h3>${L('Personal records','Kişisel rekorlar')}</h3>${rows.length?rows.slice(0,3).map((r,i)=>`<div class="hub-record"><span>0${i+1}</span><strong>${escapeText(r.name||playerNick)} · ${r.score.toLocaleString()}</strong></div>`).join(''):`<p>${L('Your next match could be a new record.','Bir sonraki maç yeni rekorunuz olabilir.')}</p>`}</div></aside></details></div><footer class="hub-footer"><span>v7.0.0 · ${L('Progression · skills · arena','İlerleme · yetenekler · arena')}</span><div><button id="switchLanguage">🌐 ${lang==='tr'?'Türkçe':'English'}</button><button id="qualityBtn">⚙ ${renderQuality==='lite'?L('Lightweight','Hafif'):renderQuality==='cinematic'?L('Cinematic','Sinematik'):L('Standard','Standart')}</button></div></footer>`;
  root.querySelectorAll('[data-hub-tab]').forEach(button=>button.onclick=()=>{hubTab=button.dataset.hubTab;if(hubTab==='play'&&mode==='campaign')mode='comparison';renderMenu();if(hubTab==='leaderboard')loadLeaderboard()});root.querySelectorAll('[data-unlock-skill]').forEach(button=>button.onclick=()=>unlockSkill(button.dataset.unlockSkill));if(hubTab==='skills'){document.getElementById('resetSkills').onclick=resetSkills;root.querySelectorAll('[data-loadout-save]').forEach(b=>b.onclick=()=>saveSkillLoadout(Number(b.dataset.loadoutSave)));root.querySelectorAll('[data-loadout-load]').forEach(b=>b.onclick=()=>loadSkillLoadout(Number(b.dataset.loadoutLoad)));}root.querySelectorAll('[data-claim]').forEach(button=>button.onclick=()=>claimQuest(button.dataset.claim));root.querySelectorAll('[data-trophy]').forEach(button=>button.onclick=()=>chooseDisplayTrophy(button.dataset.trophy));root.querySelectorAll('[data-skin]').forEach(button=>button.onclick=()=>selectSkin(...button.dataset.skin.split(':')));root.querySelectorAll('[data-buy]').forEach(button=>button.onclick=()=>buySkin(button.dataset.buy));
  root.querySelectorAll('[data-campaign-stage]').forEach(button=>button.onclick=()=>campaignBriefing(Number(button.dataset.campaignStage)));
  if(hubTab==='play'){document.getElementById('campaignEntry').onclick=()=>{hubTab='campaign';renderMenu()};document.getElementById('compare').onclick=()=>{mode='comparison';renderMenu()};document.getElementById('challenge').onclick=()=>{mode='challenge';renderMenu()};document.getElementById('duelModeButton').onclick=openDuelLobby;document.getElementById('introSlashTarget').onclick=requestPlay;document.getElementById('learnToPlay').onclick=()=>showPlayGuide();}
@@ -3974,6 +3974,16 @@ rgMeta();saveGrowth();renderMenu();
 
 
 
+
+
+
+
+
+
+
+
+
+
 <!-- EXPEDITION V6 START -->
 <style>
 /* Expedition: one goal, one thumb, a quiet high-contrast arena. */
@@ -3985,6 +3995,14 @@ rgMeta();saveGrowth();renderMenu();
 @media(prefers-reduced-motion:reduce){.ax-emblem>span,.ax-mini>i,.ax-guide-demo>span,.ax-status .danger{animation:none}.ax-home button,.ax-dialog button,.ax-goal>i{transition:none}}#axRoot.ax-reduced *{animation:none!important;transition:none!important}
 /* Preserve the primary action against the classic hub's button theme. */
 #newMenu .ax-home .ax-primary{background:#a0efc4!important;color:#0b302e!important;border:0!important;font-size:22px!important;font-weight:800!important;box-shadow:0 5px 0 #407d61,0 12px 28px #0003!important}#newMenu .ax-home .ax-primary:hover{background:#bbffd9!important}.ax-open> :not(#axRoot){visibility:hidden!important}.ax-open>#axRoot{visibility:visible!important}.ax-resume-cards{color:#c5d6bf;font-size:11px;max-width:75%;line-height:1.5}
+
+.ax-new-row{display:flex;gap:8px;margin:18px 0 5px}.ax-new-row>button{flex:1;min-width:0;padding:10px 8px!important;font-size:12px!important;background:#23483e!important;color:#d9f5de!important}.ax-dialog{animation:axDialogIn .24s ease-out}.ax-power-list{display:grid;gap:12px;margin:18px 0}.ax-power-choice{display:grid;grid-template-columns:66px 1fr 60px;gap:12px;align-items:center;padding:15px 12px;background:linear-gradient(130deg,#23454b,#1a353f);border:1px solid #90bfa650;border-radius:18px;animation:axCardDeal .3s ease-out backwards}.ax-power-choice:nth-child(2){animation-delay:.06s}.ax-power-choice:nth-child(3){animation-delay:.12s}.ax-power-choice b{font-size:16px;color:#ecfff3}.ax-power-choice p{font-size:12px;color:#c1d5ce;line-height:1.45;margin:6px 0}.ax-power-choice small{color:#c8dca9;font-size:11px}.ax-power-choice summary{font-size:11px;color:#aac9c0;cursor:pointer;min-height:32px;padding-top:5px}.ax-power-choice .ax-pick{font-size:12px;background:#a8ecc9;color:#153e32;padding:10px 8px;min-height:46px}.ax-stat-change{display:flex;flex-wrap:wrap;gap:7px;align-items:center}.ax-stat-change>span{color:#9bb2ac;text-decoration:line-through;font-size:12px}.ax-stat-change>strong{font-size:16px;color:#c9f8b5}.ax-demo{position:relative;display:block;height:65px;width:64px;background:#08262e66;border-radius:15px;overflow:hidden}.ax-demo>.cell{position:absolute;background:#73d4b9;border:1px solid #b3ffe3;width:18px;height:18px;border-radius:50%;top:22px;left:23px;animation:demoCell 2.6s ease-in-out infinite}.ax-demo>.cell.b{left:46px;top:12px;width:11px;height:11px;opacity:.7}.ax-demo>.blade{position:absolute;height:2px;width:44px;left:8px;top:33px;background:#f0ffe8;transform:rotate(-25deg);animation:demoBlade 2.6s ease-in-out infinite;box-shadow:0 0 5px #c9fff6}.ax-demo>b{position:absolute;bottom:3px;left:6px;color:#e7ffde;font-size:13px}.ax-demo>em{position:absolute;border:1px solid #b5f3dc;border-radius:50%;width:25px;height:25px;left:19px;top:18px;animation:demoRing 2.6s ease-out infinite}.ax-demo-guard>.blade{display:none}.ax-demo-guard>em{border-width:2px;border-color:#cae8ff;animation:demoGuard 2.6s ease-in-out infinite}.ax-demo-guard>.cell{background:#7da5c1}.ax-demo-heal>.blade{display:none}.ax-demo-heal>em{border-color:#e6b4d5}.ax-demo-heal>b{color:#ffccd8;animation:demoHeal 2.6s ease-in-out infinite}.ax-demo-volt>.blade,.ax-demo-burst>.blade{background:#dabaff;box-shadow:0 0 7px #be9aff}.ax-demo-chain>.blade{width:27px;left:31px;top:22px;transform:rotate(-40deg)}.ax-demo-rhythm>.cell{animation:demoBeat 1.3s ease-in-out infinite}.ax-demo-focus>em{animation:demoFocus 2.6s ease-in-out infinite}.ax-demo-drone>.cell.b{animation:demoOrbit 2.6s linear infinite}.ax-demo-burst>em{border-color:#e3c5ff;animation:demoBurst 2.6s ease-out infinite}.ax-dialog textarea,.ax-dialog>input{display:block;width:100%;max-width:100%;padding:12px;margin:10px 0;background:#09212c;color:#d7f2e0;border:1px solid #799f8f66;border-radius:12px;font:12px system-ui;resize:vertical}.ax-dialog textarea[aria-invalid=true]{border-color:#ffb2be}.ax-specializations,.ax-event-list{display:grid;gap:9px;margin:16px 0}.ax-specializations>button,.ax-event-list>button{display:flex;flex-direction:column;text-align:left;gap:7px}.ax-specializations small,.ax-event-list span{font-size:12px;font-weight:400;color:#a9cabd}.ax-specializations>[aria-pressed=true]{border-color:#c4ecaf;background:#345945}.ax-event-list>button:hover{transform:translateX(3px)}.ax-artifacts{display:grid;gap:7px}.ax-artifacts>button{display:grid;gap:7px;text-align:left}.ax-artifacts span{font-size:12px;color:#beeac2}.ax-artifacts small{color:#ffccbd;font-size:12px}.ax-story{border-left:2px solid #d5b87c;padding:12px;background:#dbb96208;border-radius:0 12px 12px 0;margin:0 0 18px}.ax-story>span{color:#e7d3a1;font-weight:700;font-size:13px}.ax-story p{color:#cad9ca;font-size:13px;line-height:1.6}.ax-brief-visual{display:flex;justify-content:center;align-items:center;gap:30px;padding:25px 0;color:#b2f8d6;font-size:40px}.ax-brief-visual>span{animation:demoBeat 1.6s ease-in-out infinite}.ax-brief-visual>i{font-size:20px;color:#b3d4bc;font-style:normal}.ax-table-scroll{overflow-x:auto}.ax-table-scroll table{border-collapse:collapse;width:100%;font-size:12px;color:#c5e0d0}.ax-table-scroll th,.ax-table-scroll td{padding:12px 8px;border-bottom:1px solid #789b8544;text-align:left}.ax-save-time{font-size:11px!important;color:#8daea1!important}.ax-left #axControls{flex-direction:row-reverse}.ax-left #axControls>span{text-align:right}.ax-contrast #axCanvas{filter:contrast(1.22) brightness(1.08)}.ax-contrast .ax-goal,.ax-contrast .ax-status{color:#f4fffa}.ax-contrast #axControls>span{color:#d8eee5}.ax-contrast .ax-hud-top>span{color:#d7e7df}.ax-contrast .ax-dialog p{color:#e7f5ee}
+@keyframes axDialogIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}@keyframes axCardDeal{from{opacity:0;transform:translateY(12px) rotate(-1deg)}to{opacity:1;transform:none}}@keyframes demoBlade{0%,15%{transform:translate(-55px,30px) rotate(-25deg);opacity:0}35%,45%{transform:translate(0,0) rotate(-25deg);opacity:1}65%,100%{transform:translate(55px,-30px) rotate(-25deg);opacity:0}}@keyframes demoCell{0%,30%,100%{transform:scale(1);opacity:1}40%{transform:scale(1.18,.75);opacity:1}60%,80%{transform:translate(3px,-4px) scale(.6);opacity:0}}@keyframes demoRing{0%,35%,100%{transform:scale(.6);opacity:0}45%{opacity:1}75%{transform:scale(2);opacity:0}}@keyframes demoGuard{0%,100%{transform:scale(1);opacity:.5}40%{transform:scale(1.16);opacity:1}60%{transform:scale(.9)}}@keyframes demoHeal{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(-15px);opacity:1}}@keyframes demoBeat{50%{transform:scale(1.18)}}@keyframes demoFocus{0%{transform:translate(20px,-10px) scale(.25);opacity:0}50%{opacity:1}100%{transform:translate(0) scale(.5);opacity:0}}@keyframes demoOrbit{from{transform:translate(-30px,17px)}50%{transform:translate(1px,-8px)}to{transform:translate(-30px,17px)}}@keyframes demoBurst{0%,25%{transform:scale(.2);opacity:0}35%{opacity:1}80%,100%{transform:scale(2.4);opacity:0}}
+@media(max-width:360px){.ax-power-choice{grid-template-columns:45px 1fr 49px;gap:8px;padding:12px 9px}.ax-demo{width:42px;height:58px}.ax-demo>.cell{left:13px}.ax-demo>.cell.b{left:28px}.ax-demo>.blade{left:0;width:38px}.ax-demo>em{left:9px}.ax-power-choice b{font-size:14px}.ax-stat-change>strong{font-size:14px}.ax-new-row>button{font-size:11px!important}.ax-dialog>h2{font-size:24px}.ax-power-choice .ax-pick{font-size:11px;padding:8px 4px}}
+.ax-reduced .ax-dialog,.ax-reduced .ax-power-choice,.ax-reduced .ax-demo *,.ax-reduced .ax-brief-visual>span{animation:none!important}.ax-reduced .ax-event-list>button:hover{transform:none}@media(prefers-reduced-motion:reduce){.ax-dialog,.ax-power-choice,.ax-demo *,.ax-brief-visual>span{animation:none!important}}#newMenu:has(.ax-home){margin-left:auto!important;margin-right:auto!important;max-width:680px!important}
+.series-banner{margin:12px 0;padding:14px;border:1px solid #a8d3b544;background:#153c3433;border-radius:15px;color:#c7e7d0}.series-banner>b{color:#e6d19d}.series-banner p,.series-banner small{font-size:12px;line-height:1.5}.series-banner details{font-size:11px;line-height:1.8;max-height:220px;overflow:auto}.series-actions button{background:#b1eac7;color:#164236;border-radius:12px;padding:13px 18px;margin-top:12px;font-weight:800;min-height:46px}.series-choice button[aria-pressed=true]{border-color:#dfc783;background:#554a2b!important}.team-opening{font-size:12px;padding:9px 12px;border-left:2px solid #c7efb0;color:#d8f6ca}.ax-power-choice details[open]{animation:axDialogIn .2s ease-out}
+.ax-region-trophy{display:flex;gap:18px;align-items:center;margin-bottom:18px}.ax-region-trophy>svg{width:70px;min-width:70px;height:80px;animation:trophyArrive .5s ease-out}.ax-region-trophy>p{font-size:12px;line-height:1.6;color:#c6dacb}.ax-trophy-shelf{display:flex;gap:6px;flex-wrap:wrap}.ax-trophy-shelf svg{width:53px;height:64px}.ax-risk-door{font-size:12px!important;border-color:#b79a7e!important;background:#6e48342b!important}.cosmetic-researcher>span{outline:2px solid #c1ffe8;outline-offset:5px}.cosmetic-alchemist>span{outline:2px dashed #dbb1ff;outline-offset:7px}.cosmetic-rescuer>span{box-shadow:inset 0 0 0 5px #bfffe35e,0 8px 0 #155158,0 0 45px #ffd3c950!important}@keyframes trophyArrive{from{opacity:0;transform:scale(.5) rotate(-12deg)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ax-region-trophy>svg{animation:none}}.ax-reduced .ax-region-trophy>svg{animation:none}
 
 </style>
 <script>
@@ -4075,7 +4093,7 @@ class Engine{
   this.drone.vx=clamp((this.drone.x-old.x)*15,-180,180);this.drone.vy=clamp((this.drone.y-old.y)*15,-180,180);this.stats.travel+=dist(old,this.drone);
  }
  swipe(a,b){
-  if(this.status!=='playing'||this.intro>0)return;this.stats.swipes++;const angle=Math.atan2(b.y-a.y,b.x-a.x);const width=8+this.level('wide')*5+(this.blade==='wide'?7:0)+this.bladeLevel*.8;
+  if(this.status!=='playing'||this.intro>0)return;this.stats.swipes++;const angle=Math.atan2(b.y-a.y,b.x-a.x);const width=Math.max(2,8+(this.cutWidth||0)+this.level('wide')*5+(this.blade==='wide'?7:0)+this.bladeLevel*.8);
   for(const e of [...this.entities])if(!e.dead&&segmentDistance(e,a,b)<e.r+width)this.cut(e,angle,a,b);
   for(const e of this.entities)if(e.kind==='linked'&&e.partner&&!e.dead){const p=this.entities.find(x=>x.id===e.partner&&!x.dead);if(p){const mid={x:(e.x+p.x)/2,y:(e.y+p.y)/2};if(segmentDistance(mid,a,b)<20){e.unlinked=true;p.unlinked=true;this.effect(mid,'#cbb3ff','⌁',10);}}}
   for(const p of this.props)if(p.hp&&segmentDistance(p,a,b)<13){p.hp--;this.effect(p,'#507d7b','',4,angle);}
@@ -4104,7 +4122,7 @@ class Engine{
   }
   if(e.armor){e.armor--;this.effect(e,'#cad4e4','CRACK',10,angle);this.emit('armor',1);return;}
   e.dead=true;this.stats.cuts++;this.score+=25+(this.has('precision')?5:0)+(e.priority&&this.has('priority_bonus')?(this.has('execution')?75:25):0)+(this.combo>=5?Math.min(50,this.combo*2):0);this.energy=clamp(this.energy+(this.blade==='resonant'?5:3)+this.level('focus')*2+(this.has('energy_flow')?2:0)+Math.min(2,Math.floor(this.mastery/500)),0,100);
-  const window=1.9+(this.has('combo_rhythm')?.4:0)+this.level('rhythm')*.4+this.level('chain')*.2;this.combo=this.t-this.lastCut<window?this.combo+1:1;this.lastCut=this.t;this.lastAngle=angle;this.bestCombo=Math.max(this.bestCombo,this.combo);
+  const window=1.9+(this.comboOffset||0)+(this.has('combo_rhythm')?.4:0)+this.level('rhythm')*.4+this.level('chain')*.2;this.combo=this.t-this.lastCut<window?this.combo+1:1;this.lastCut=this.t;this.lastAngle=angle;this.bestCombo=Math.max(this.bestCombo,this.combo);
   this.hitstop=this.options.motion?0:.025;this.effect(e,this.combo>=10?'#ffdf86':'#68efdd','+'+(25+Math.min(50,this.combo*2)),this.combo>=10?18:10,angle);this.emit('cut',this.combo);
   if(this.level('heal')&&this.stats.cuts%10===0&&this.heals<this.healBudget){this.heals++;this.hp=Math.min(100,this.hp+3*this.level('heal'));}
   if(!chain){let hits=this.level('volt')&&this.stats.cuts%5===0?this.level('volt')+this.level('chain'):0;if(this.level('burst')&&this.stats.cuts%8===0)hits+=2*this.level('burst');if(hits){this.stats.synergy++;if(this.has('synergy_charge'))this.energy=Math.min(100,this.energy+6);this.emit('synergy',hits);for(const other of this.entities.filter(x=>!x.dead&&x.kind==='target').sort((a,b)=>dist(a,e)-dist(b,e)).slice(0,hits))this.cut(other,angle,e,other,true);}}
@@ -4130,7 +4148,7 @@ class Engine{
   const n=this.stage.n;if(n<3)return;
   const count=this.entities.filter(e=>!e.dead&&e.kind!=='target'&&e.kind!=='trap').length;if(count>=Math.min(6,1+Math.floor(n/12)))return;
   const pool=n<6?['hunter']:n<12?['hunter','scout','directional','loot']:n<25?['hunter','ambusher','sniper','shield','healer','loot','linked']:Object.keys(ENEMIES);
-  const regional=this.stage.region%3===0?'hunter':this.stage.region%3===1?'sniper':'shield';let kind=this.rng.next()<.3&&pool.includes(regional)?regional:this.rng.pick(pool);if(n>=25&&this.entities.some(e=>!e.dead&&e.kind==='scout'))kind='sniper';else if(n>=25&&this.entities.some(e=>!e.dead&&e.kind==='shield'))kind='healer';if(this.stage.kind==='siege'&&count===0&&n>20)kind='leader';
+  const regional=this.stage.region%3===0?'hunter':this.stage.region%3===1?'sniper':'shield';let kind=this.rng.next()<.3&&pool.includes(regional)?regional:this.rng.pick(pool);if(n>=25&&(!this.learned||this.learned.scout&&this.learned.sniper)&&this.entities.some(e=>!e.dead&&e.kind==='scout'))kind='sniper';else if(n>=25&&(!this.learned||this.learned.shield&&this.learned.healer)&&this.entities.some(e=>!e.dead&&e.kind==='shield'))kind='healer';if(this.stage.kind==='siege'&&count===0&&n>20)kind='leader';
   const e=this.spawn(kind,{expires:Infinity,arrow:this.rng.next()<.5?0:Math.PI});if(!e)return;
   if(n>50&&this.rng.next()<.25)e.affix=this.rng.pick(['swift','armored','charged']);
   if(e.affix==='armored')e.hp=2;
@@ -4226,6 +4244,241 @@ if(typeof module!=='undefined'&&module.exports)module.exports=API;root.AngioAdve
 
 </script>
 <script>
+/* Impact v7: bounded animation tracks and encounter extensions; no DOM or network. */
+(function(root){
+'use strict';
+const A=root.AngioAdventure,Base=A.Engine,clamp=(n,a,b)=>Math.max(a,Math.min(b,n)),distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+const SPECIALIZATIONS={cutter:['precision','momentum','execution'],guardian:['bastion','parry','rescue'],energy:['conductor','battery','stasis']};
+const ARTIFACTS={glass:{en:'Glass edge',tr:'Cam ağız',good:'+25% cut score',gt:'+%25 kesim puanı',bad:'+25% damage taken',bt:'+%25 alınan hasar'},anchor:{en:'Anchor core',tr:'Çapa çekirdek',good:'+1 barrier per room',gt:'Her odada +1 bariyer',bad:'−8 cut width',bt:'−8 kesim genişliği'},spark:{en:'Spark prism',tr:'Kıvılcım prizması',good:'+3 energy per cut',gt:'Kesim başına +3 enerji',bad:'−0.3 s combo window',bt:'−0,3 sn kombo süresi'}};
+const STORIES=[['The first capillaries breathe again. Follow the fading signal upstream.','İlk kılcallar yeniden nefes alıyor. Zayıflayan sinyali akıntının yukarısına kadar izle.'],['The crystals were storing stolen pulses. One still points to the living wall.','Kristaller çalınan nabızları saklıyordu. Biri hâlâ canlı duvarı işaret ediyor.'],['The wall remembers every rescue. Its passage opens toward the furnace.','Duvar her kurtarışı hatırlıyor. Geçit nabız ocağına açılıyor.'],['The furnace is quiet. A second heartbeat answers from the great vessel.','Ocak sakinleşti. Büyük damardan ikinci bir kalp atışı geliyor.'],['Two cores, one stolen rhythm. The neural mist hides their source.','İki çekirdek, çalınmış tek ritim. Kaynakları sinir sisinde saklı.'],['The helper carries a memory of light through the coral maze.','Yardımcı, ışığın hatırasını mercan labirentine taşıyor.'],['The maze reveals a storm fed by every lost pulse.','Labirent, kayıp nabızlarla beslenen fırtınayı açığa çıkarıyor.'],['The ion storm breaks. Beyond it, an orbit has gone silent.','İyon fırtınası dağılıyor. Ötesindeki yörünge sessizliğe bürünmüş.'],['The silent orbit wakes. Its last gate leads to the heart of light.','Sessiz yörünge uyanıyor. Son kapı ışığın kalbine çıkıyor.'],['The network beats as one again. Now keep its light alive.','Ağ yeniden tek kalp gibi atıyor. Şimdi ışığını canlı tut.']];
+function dailyCode(day){return 'DAILY-'+day;}
+function weeklyRule(day){const i=Math.floor(Date.parse(day+'T12:00:00Z')/604800000)%3;return ['counter','onehp','nocards'][i];}
+function fixedOptions(){return {adaptive:false,motion:false,speed:1,sensitivity:1,helper:'warn'};}
+function collectionGoals(meta){return [{id:'researcher',value:Object.keys(meta.discovered||{}).length,goal:10,en:'Enemy researcher',tr:'Düşman araştırmacısı'},{id:'alchemist',value:Object.keys(meta.fusions||{}).length,goal:3,en:'Fusion alchemist',tr:'Birleşim ustası'},{id:'rescuer',value:Object.values(meta.masteryTasks||{}).reduce((a,b)=>a+b,0),goal:50,en:'Rescuer',tr:'Kurtarıcı'}];}
+class ImpactEngine extends Base{
+ constructor(config={}){
+  if(config.fair)config={...config,hero:'cutter',blade:'balanced',bladeLevel:0,skills:[],cards:{},mastery:0,starting:'',specialization:'',variant:'standard',artifact:'',options:{...config.options,...fixedOptions(),motion:!!config.options?.motion}};super(config);this.animClock=0;this.animations=[];this.slashes=[];this.trail=[];this.ripples=[];this.shake=0;this.flash=0;this.lastAnimDelta=.016;this.specialization=config.specialization||'';this.variant=config.variant||'standard';this.artifact=config.artifact||'';this.rule=config.rule||'';this.fair=!!config.fair;this.phase='prepare';this.phaseAt=0;this.phaseNotice=0;this.miniSpawned=false;this.finalSpawned=false;this.rescueUntil=0;this.parryUntil=0;this.supportWindow=0;this.opener=0;this.stats.precise=0;this.stats.interrupt=0;this.stats.clutch=0;this.stats.powerUses=0;this.stats.phaseClears=0;this.lastSavedInput=-1;this.trace=[];this.motionSample=[];this.inputStroke=false;this.currentStroke=0;this.learned={...(config.learned||{})};this.newEnemy=null;this.reactionId=0;
+  if(this.artifact==='anchor')this.shields++;if(this.rule==='onehp')this.hp=1;
+  this.cutWidth=this.artifact==='anchor'?-8:0;this.comboOffset=this.artifact==='spark'?-.3:0;this.basePattern=this.stage.patterns.slice();this.fixedWaves=!!config.fixedWaves;
+ }
+ addAnimation(type,p,fields={}){
+  const max=this.options.motion?18:this.lowFX?32:70;
+  if(this.animations.length>=max)this.animations.splice(0,this.animations.length-max+1);
+  this.animations.push({id:++this.reactionId,type,x:p.x,y:p.y,r:p.r||16,age:0,duration:.6,angle:0,color:'#8bf4de',...fields});
+ }
+ animate(dt){
+  dt=clamp(dt,0,.05);this.lastAnimDelta=dt;this.animClock+=dt;this.shake=Math.max(0,this.shake-dt*16);this.flash=Math.max(0,this.flash-dt*3);
+  for(const a of this.animations)a.age+=dt;this.animations=this.animations.filter(a=>a.age<a.duration);
+  for(const a of this.slashes)a.age+=dt;this.slashes=this.slashes.filter(a=>a.age<.24);
+  this.trail=this.trail.filter(a=>this.animClock-a.at<.4);
+ }
+ spawn(kind,fields={}){
+  const e=super.spawn(kind,fields);if(!e)return e;
+  e.born=this.animClock||0;e.squashAt=-9;e.hitFlash=-9;e.material=e.armor?'metal':e.priority?'energy':kind==='target'?'organic':'metal';
+  if(this.animations)this.addAnimation('spawn',e,{duration:.35,color:kind==='target'?'#79f3dc':'#ffc58a'});
+  return e;
+ }
+ sampleInput(type,p){
+  if(this.trace.length>=2200)return;const at=Math.round(this.t*1000);
+  if(type==='move'&&at-this.lastSavedInput<60)return;this.lastSavedInput=at;
+  this.trace.push({t:at,k:type,x:Math.round(p.x*10)/10,y:Math.round(p.y*10)/10});
+ }
+ move(x,y){
+  const old={...this.drone};super.move(x,y);
+  if(this.trail){this.trail.push({x:this.drone.x,y:this.drone.y,at:this.animClock});if(this.trail.length>24)this.trail.shift();}
+  if(this.motionSample&&this.t-(this.motionSample.at(-1)?.t||-1)>=.12){this.motionSample.push({t:this.t,x:this.drone.x,y:this.drone.y});if(this.motionSample.length>600)this.motionSample.shift();}
+ }
+ swipe(a,b){
+  if(this.status!=='playing'||this.intro>0)return;
+  this.currentStroke++;const len=distance(a,b);
+  for(const e of this.entities)e.precise=len>2&&A.segmentDistance(e,a,b)<=Math.max(3,e.r*.23);
+  super.swipe(a,b);
+  if(len>2){this.slashes.push({ax:a.x,ay:a.y,bx:b.x,by:b.y,age:0,blade:this.blade});if(this.slashes.length>10)this.slashes.shift();}
+ }
+ cut(e,angle,a,b,chain=false){
+  const wasDead=e.dead,armor=e.armor||0,hp=e.hp||0,cuts=this.stats.cuts,counters=this.stats.counter,combo=this.combo;
+  // Skilled interruption: a narrow late-windup parry, never random early sweeping.
+  if(!chain&&e.kind!=='target'&&e.kind!=='trap'&&e.kind!=='mimic'&&e.state==='windup'&&this.t-e.since>=e.tell-.2&&this.t>=e.since+.6){
+   e.state='recover';e.since=this.t;this.stats.interrupt++;this.addAnimation('parry',e,{color:'#fff0b6',duration:.5});this.emit('interrupt',e.kind);
+  }
+  super.cut(e,angle,a,b,chain);
+  if(wasDead)return;
+  const cracked=(e.armor||0)<armor||e.hp<hp&&!e.dead;
+  if(cracked){e.hitFlash=this.animClock;e.squashAt=this.animClock;this.addAnimation('crack',e,{color:'#d4e5ff',angle,duration:.45});if(!this.options.motion)this.hitstop=.04;this.emit('material','metal');}
+  if(e.dead){
+   const reward=e.kind==='target'||this.stats.counter>counters,color=reward?(e.material==='energy'?'#d5b8ff':e.kind==='target'?'#7df4d9':'#d6b4ff'):'#ff9db7';
+   this.addAnimation('split',e,{angle,color,shape:e.kind==='target'?'cell':'triangle',duration:this.options.motion?.22:.7,material:e.material});
+   this.addAnimation('impact',e,{angle,color,duration:.35});this.shake=this.options.motion?0:Math.min(2.8,this.shake+(this.stats.counter>counters?1.8:.4));
+   if(this.stats.counter>counters){if(!this.options.motion)this.hitstop=.055;this.emit('material','metal');}
+   if(this.stats.cuts>cuts){
+    if(e.precise&&!chain){this.stats.precise++;this.score+=10;this.addAnimation('precision',e,{color:'#f7e5a8',duration:.65});this.emit('precise',this.stats.precise);}
+    if(this.artifact==='glass')this.score+=Math.round(25*.25);if(this.artifact==='spark')this.energy=clamp(this.energy+3,0,100);
+    if(this.specialization==='precision'&&e.precise)this.energy=clamp(this.energy+4,0,100);
+    if(this.specialization==='momentum'&&this.combo>=5)this.skillAt=Math.max(this.t,this.skillAt-.1);
+    if(this.specialization==='execution'&&e.priority)this.score+=30;
+    if(this.specialization==='conductor'&&this.stats.cuts%5===0)this.energy=clamp(this.energy+5,0,100);
+    if(this.specialization==='battery')this.energy=clamp(this.energy+1,0,100);
+    if(this.artifact==='spark'&&this.t-this.lastCut>1.6)this.combo=1;
+    this.emit('material',e.material);if([5,10,20,30].includes(this.combo)&&combo<this.combo)this.addAnimation('combo',e,{color:'#ffe7a0',count:this.combo,duration:.8});
+   }
+  }
+  if(this.stats.synergy&&(this.stats.cuts>cuts)&&this.stats.cuts%5===0){this.addAnimation('fusion',e,{color:'#dfbdff',duration:.65});}
+ }
+ hurt(amount,cause){
+  const before=this.hp,barriers=this.shields;
+  if(this.artifact==='glass')amount=Math.ceil(amount*1.25);
+  const result=super.hurt(amount,cause);
+  if(this.shields<barriers){this.addAnimation('barrier',this.drone,{color:'#b6e7ff',duration:.5});
+   if(before<=amount){this.stats.clutch++;this.addAnimation('clutch',this.drone,{duration:.8,color:'#ffe3b3'});this.emit('clutch',1);}
+  }
+  if(this.hp<before){this.flash=.16;this.shake=this.options.motion?0:2;}
+  return result;
+ }
+ ability(){
+  const old=this.energy;if(this.hero==='cutter'&&this.variant==='orbit'&&this.energy>=75&&this.t>=this.skillAt){this.energy-=75;this.skillAt=this.t+8;for(const e of this.entities.filter(e=>e.kind==='target'&&!e.dead).slice(0,8))this.cut(e,0,this.drone,e,true);this.addAnimation('cleave',this.drone,{duration:.9,color:'#beffe1'});this.stats.powerUses++;return true;}
+  if(this.variant==='fortify'&&this.hero==='guardian'&&this.energy>=50&&this.t>=this.skillAt){this.energy-=50;this.shields=Math.min(4,this.shields+3);this.skillAt=this.t+10;this.addAnimation('barrier',this.drone,{duration:.9,color:'#bceaff'});this.stats.powerUses++;return true;}
+  if(this.variant==='sustain'&&this.hero==='guardian'&&this.energy>=50&&this.t>=this.skillAt){this.energy-=50;this.shields=Math.min(2,this.shields+1);this.skillAt=this.t+4;this.addAnimation('barrier',this.drone,{duration:.6,color:'#bceaff'});this.stats.powerUses++;return true;}
+  const ok=super.ability();if(!ok)return false;
+  this.stats.powerUses++;this.addAnimation(this.hero==='energy'?'stasis':this.hero==='guardian'?'barrier':'cleave',this.drone,{duration:.7,color:this.hero==='energy'?'#dbc7ff':'#b9f4e3'});
+  if(this.specialization==='bastion')this.invuln=Math.max(this.invuln,this.t+.5);
+  if(this.specialization==='parry')this.parryUntil=this.t+1;
+  if(this.specialization==='rescue'&&this.heals<2){this.hp=clamp(this.hp+5,0,100);this.heals++;}
+  if(this.specialization==='stasis')this.slow+=1;
+  if(this.variant==='surge'&&this.hero==='energy'){this.slow=this.t+1.5;this.shields=Math.min(2,this.shields+1);}
+  return old!==this.energy;
+ }
+ updateEnemy(e,dt){
+  if(this.t<this.parryUntil&&e.state==='attack'&&distance(e,this.drone)<45){e.state='recover';e.since=this.t;this.addAnimation('parry',e,{color:'#fff0b6'});this.stats.interrupt++;}
+  const before=e.state;super.updateEnemy(e,dt);
+  if(before!==e.state){e.transitionAt=this.animClock;if(e.state==='windup')this.addAnimation('intent',e,{duration:.28,color:'#ffcca0'});if(e.state==='recover')this.addAnimation('recover',e,{duration:.4,color:'#cfb3ff'});}
+ }
+ waveSpawn(){
+  super.waveSpawn();if(this.phase==='pressure')this.nextWave-=.1;if(this.phase==='final')this.nextWave-=.22;
+  if(this.rule==='counter'){this.entities=this.entities.filter(e=>e.kind!=='target');if(this.entities.filter(e=>e.kind==='hunter').length<3)this.spawn('hunter',{x:70+this.wave%3*90,y:220,expires:Infinity});}
+ }
+ enemySpawn(){
+  const before=this.entities.length;super.enemySpawn();
+  for(const e of this.entities.slice(before)){if(this.riskDoor)e.hp=Math.min(4,e.hp+1);if(e.kind==='loot'&&this.stage.n>10){this.spawn('trap',{x:e.x<180?50:310,y:Math.min(490,e.y+40),expires:this.t+7});}if(!this.learned[e.kind]){this.learned[e.kind]=true;this.newEnemy=e.kind;this.emit('discovery',e.kind);this.nextEnemy+=1.2;} }
+ }
+ objective(){if(this.rule==='counter')return {key:'counter',value:this.stats.counter,max:6};return super.objective();}
+ update(dt){
+  this.animate(dt);
+  if(this.tutorial){super.update(dt);return;}
+  const phase=this.t<this.stage.duration*.25?'prepare':this.t<this.stage.duration*.75?'pressure':'final';
+  if(phase!==this.phase){this.phase=phase;this.phaseAt=this.t;this.phaseNotice=this.animClock+1.2;this.emit('phase',phase);}
+  if(!this.miniSpawned&&this.stage.n>=8&&this.stage.n%5===0&&!this.stage.boss&&this.t>10){const e=this.spawn('shield',{x:180,y:250,expires:Infinity,hp:3});if(e){e.mini=true;e.affix='armored';this.miniSpawned=true;this.emit('miniboss',1);}}
+  if(this.phase==='final'&&!this.finalSpawned){this.finalSpawned=true;if(this.stage.n>=4&&!this.stage.boss){const e=this.spawn(this.stage.region%2?'sniper':'hunter',{x:70,y:220,expires:Infinity});if(e)e.finale=true;}this.addAnimation('phase',this.drone,{color:'#f4d9ad',duration:.8});}
+  // Each region adds an explicit hazard with a readable tell; all preserve the escape lane.
+  if(this.stage.n>=12&&Math.floor(this.t/11)!==Math.floor((this.t-dt)/11)){this.hazard={at:this.t,axis:this.stage.region%2?'x':'y',position:this.stage.region%2?(this.wave%2?75:285):350};this.addAnimation('biome',this.drone,{color:A.BIOMES[this.stage.region][2],duration:1});}if(this.hazard){const h=this.hazard,age=this.t-h.at;if(age>1.3&&age<3.4&&Math.abs((h.axis==='x'?this.drone.x:this.drone.y)-h.position)<13)this.hurt(5,'flow');}
+  super.update(dt);
+ }
+ end(won,cause){
+  const old=this.status;super.end(won,cause);if(old!=='playing')return;
+  if(won){const boss=this.bossMax>0;this.finisher=boss;this.addAnimation(boss?'finisher':'victory',{x:180,y:boss?205:340},{duration:boss?1.8:1.1,color:boss?'#ffe1a3':'#a4f5d0'});if(boss){this.shake=this.options.motion?0:2.5;this.emit('finisher',1);}}
+ }
+}
+// Small, bounded share codes contain only score/seed/path; names are supplied by the sender explicitly.
+function encodeGhost(data){const d={v:1,seed:String(data.seed).slice(0,24),stage:clamp(data.stage|0,1,100),score:clamp(data.score|0,0,100000),path:(data.path||[]).filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)&&Number.isFinite(p.t)).filter((_,i)=>i%3===0).slice(0,180).map(p=>[Math.round(p.t*10),Math.round(clamp(p.x,0,360)),Math.round(clamp(p.y,0,640))])};const json=JSON.stringify(d).replace(/[\u007f-\uffff]/g,c=>'\\u'+c.charCodeAt(0).toString(16).padStart(4,'0'));return typeof Buffer!=='undefined'?Buffer.from(json).toString('base64'):btoa(json);}
+function decodeGhost(code){if(typeof code!=='string'||code.length>12000)throw Error('Invalid ghost');const raw=typeof Buffer!=='undefined'?Buffer.from(code,'base64').toString():atob(code),d=JSON.parse(raw);if(d.v!==1||!Array.isArray(d.path)||d.path.length>180||typeof d.seed!=='string'||d.seed.length>24||!Number.isInteger(d.stage)||d.stage<1||d.stage>100||!Number.isFinite(d.score)||d.score<0||d.score>100000||d.path.some(p=>!Array.isArray(p)||p.length!==3||p.some(n=>!Number.isFinite(n))||p[0]<0||p[0]>10000||p[1]<0||p[1]>360||p[2]<0||p[2]>640))throw Error('Invalid ghost');return d;}
+A.Engine=ImpactEngine;Object.assign(A,{SPECIALIZATIONS,ARTIFACTS,STORIES,dailyCode,weeklyRule,fixedOptions,collectionGoals,encodeGhost,decodeGhost});
+if(typeof module!=='undefined'&&module.exports)module.exports=A;
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+</script>
+<script>
+/* All geometry is world-space and shares the simulation's bounded tracks. */
+(function(root){
+'use strict';const A=root.AngioAdventure,clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+function ring(g,x,y,r,color,w=1){g.beginPath();g.arc(x,y,Math.max(.1,r),0,Math.PI*2);g.strokeStyle=color;g.lineWidth=w;g.stroke();}
+function stroke(g,a,b,c,w=1){g.beginPath();g.moveTo(a.x,a.y);g.lineTo(b.x,b.y);g.strokeStyle=c;g.lineWidth=w;g.stroke();}
+function text(g,s,x,y,c='#e5fff2',size=12){g.font=`800 ${size}px system-ui`;g.textAlign='center';g.fillStyle=c;g.fillText(s,x,y);}
+function piece(g,a,side,k){
+ const nx=-Math.sin(a.angle),ny=Math.cos(a.angle),travel=(a.material==='metal'?32:48)*k,spin=(a.material==='metal'?.8:.45)*side*k;
+ const sx=Math.cos(a.angle)*k*10,sy=Math.sin(a.angle)*k*10;
+ g.save();g.translate(a.x+nx*side*travel+sx,a.y+ny*side*travel+sy+k*k*18);g.rotate(a.angle+spin);const squash=k<.18?1-Math.sin(k/.18*Math.PI)*.15:1;g.scale(1/squash,squash);
+ g.beginPath();g.rect(-a.r-4,side>0?0:-a.r-4,a.r*2+8,a.r+4);g.clip();
+ if(a.shape==='cell'){g.beginPath();g.arc(0,0,a.r,0,Math.PI*2);g.fillStyle=a.material==='energy'?'#a589d4':a.material==='metal'?'#758ea4':'#4ba99c';g.fill();g.strokeStyle=a.color;g.lineWidth=1.5;g.stroke();g.beginPath();g.arc(-4,-4,a.r*.55,0,Math.PI*2);g.fillStyle=a.color+'66';g.fill();}
+ else{g.beginPath();g.moveTo(0,-a.r);g.lineTo(a.r,a.r);g.lineTo(-a.r,a.r);g.closePath();g.fillStyle=a.color;g.fill();}
+ stroke(g,{x:-a.r,y:0},{x:a.r,y:0},'#effff4',2);g.restore();
+}
+A.drawImpact=function(g,e,{text:loc=(en)=>en,ghost=null,shake=1}={}){
+ if(!e.animations)return;
+ if(ghost&&Array.isArray(ghost.path)&&ghost.path.length){const target=e.t*10,p=ghost.path.reduce((best,p)=>Math.abs(p[0]-target)<Math.abs(best[0]-target)?p:best,ghost.path[0]);g.globalAlpha=.28;ring(g,p[1],p[2],13,'#e5ddff',2);text(g,'◇',p[1],p[2]+4,'#ddd5ff',17);g.globalAlpha=1;}
+ if(e.hazard){const h=e.hazard,t=e.t-h.at;if(t<3.4){g.save();g.setLineDash([5,7]);const c=t<1.3?'#ffd3a6':'#ffbfa0';if(h.axis==='x'){stroke(g,{x:h.position,y:170},{x:h.position,y:550},c,t<1.3?1:3);}else stroke(g,{x:30,y:h.position},{x:330,y:h.position},c,t<1.3?1:3);g.setLineDash([]);text(g,loc('FLOW SHIFT','AKIŞ DEĞİŞİMİ'),180,170,c,10);g.restore();}}
+ for(const s of e.slashes||[]){const k=clamp(s.age/.24,0,1),dx=s.bx-s.ax,dy=s.by-s.ay,len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len,col=s.blade==='resonant'?'#d7bdff':s.blade==='wide'?'#c5f5dd':'#8ff7e1';g.save();g.globalAlpha=(1-k)*.6;g.beginPath();g.moveTo(s.ax,s.ay);g.quadraticCurveTo((s.ax+s.bx)/2+nx*8,(s.ay+s.by)/2+ny*8,s.bx,s.by);g.lineTo(s.bx-nx*(1-k)*5,s.by-ny*(1-k)*5);g.quadraticCurveTo((s.ax+s.bx)/2-nx*3,(s.ay+s.by)/2-ny*3,s.ax,s.ay);g.fillStyle=col;g.fill();stroke(g,{x:s.ax,y:s.ay},{x:s.bx,y:s.by},'#edfff9',1);g.restore();}
+ for(const a of e.animations){const k=clamp(a.age/a.duration,0,1),alpha=Math.min(1,(1-k)*2);g.save();g.globalAlpha=alpha;
+  if(a.type==='split'){if(e.options.motion){ring(g,a.x,a.y,a.r+k*10,a.color,1);}else{piece(g,a,-1,k);piece(g,a,1,k);if(k<.3){stroke(g,{x:a.x-Math.cos(a.angle)*a.r*1.6,y:a.y-Math.sin(a.angle)*a.r*1.6},{x:a.x+Math.cos(a.angle)*a.r*1.6,y:a.y+Math.sin(a.angle)*a.r*1.6},'#faffee',2*(1-k));}}}
+  else if(['impact','parry','barrier','stasis','recover','intent','spawn','biome','cleave'].includes(a.type)){
+   const size=a.type==='stasis'?90:a.type==='cleave'?65:a.type==='barrier'?38:a.r+18;ring(g,a.x,a.y,a.r+(size-a.r)*k,a.color,a.type==='impact'?2*(1-k)+.5:1.5);
+   if(a.type==='cleave'){g.beginPath();g.arc(a.x,a.y,50,-Math.PI*.8,Math.PI*.3);g.strokeStyle='#d6fff4';g.lineWidth=4*(1-k);g.stroke();}
+   if(a.type==='stasis'){g.setLineDash([3,7]);ring(g,a.x,a.y,55+k*40,'#ddd0ff',1);g.setLineDash([]);}
+  }else if(a.type==='crack'){
+   for(let i=0;i<5;i++){const ang=i*Math.PI*.4+a.angle;stroke(g,{x:a.x+Math.cos(ang)*4,y:a.y+Math.sin(ang)*4},{x:a.x+Math.cos(ang)*(16+k*20),y:a.y+Math.sin(ang)*(16+k*20)},'#e4efff',1.5);}
+  }else if(a.type==='precision'){text(g,loc('CLEAN +10','TEMİZ +10'),a.x,a.y-25-k*20,'#ffe8b6',10);}
+  else if(a.type==='clutch'){text(g,loc('LAST-SECOND SAVE','SON ANDA KURTULUŞ'),180,330,'#ffe8b6',16);ring(g,a.x,a.y,25+k*45,'#ffe8b6',2);}
+  else if(a.type==='combo'){text(g,a.count+' '+loc('COMBO','KOMBO'),180,275-k*10,'#ffedb2',18+Math.sin(k*Math.PI)*4);}
+  else if(a.type==='fusion'){const ids=['ϟ','⌁','✦'];for(let i=0;i<3;i++){const ang=k*4+i*Math.PI*2/3;const x=a.x+Math.cos(ang)*(18+18*k),y=a.y+Math.sin(ang)*(18+18*k);text(g,ids[i],x,y,'#e7cfff',16);}}
+  else if(a.type==='finisher'||a.type==='victory'){
+   const boss=a.type==='finisher';ring(g,a.x,a.y,20+k*(boss?220:110),a.color,3*(1-k)+.5);if(!e.options.motion){for(let i=0;i<12;i++){const ang=i*Math.PI/6;const r=20+k*150;stroke(g,{x:a.x+Math.cos(ang)*r,y:a.y+Math.sin(ang)*r},{x:a.x+Math.cos(ang)*(r+12),y:a.y+Math.sin(ang)*(r+12)},a.color,2);}}
+   if(k>.3)text(g,boss?loc('CORE RESTORED','ÇEKİRDEK KURTARILDI'):loc('CLEARED','TAMAMLANDI'),180,325,a.color,boss?20:17);
+  }
+  g.restore();
+ }
+ if(e.phaseNotice>e.animClock){const labels={prepare:['Find the rhythm','Ritmi bul'],pressure:['Pressure rises','Baskı yükseliyor'],final:['Final push','Son mücadele']};text(g,loc(...labels[e.phase]),180,188,'#f6e4ba',12);}
+ if(e.flash>0&&!e.options.motion){g.globalAlpha=Math.min(.12,e.flash);g.fillStyle='#ffb0c2';g.fillRect(0,140,360,420);g.globalAlpha=1;}
+};
+A.actorTransform=function(g,e,f){g.save();const age=e.animClock-(f.born||0),appear=e.options.motion?1:clamp(age/.25,.1,1),h=e.animClock-(f.squashAt||-9),s=e.options.motion?0:h>=0&&h<.24?Math.sin(h/.24*Math.PI)*.18:0;g.translate(f.x,f.y);g.scale(appear*(1+s),appear*(1-s));g.translate(-f.x,-f.y);};
+})(typeof globalThis!=='undefined'?globalThis:this);
+
+</script>
+<script>
+/* Server-coordinated elimination and consensual rematches use validated arena hit schedules. */
+let chosenSeriesFormat='';
+(function(){
+'use strict';
+const request=duelRequest;
+duelRequest=async function(action,extra={}){
+ const previous=duel.room,round=previous?.series?.round||0;
+ const data=await request(action,{seriesVersion:1,...extra,...(action==='create'?{seriesFormat:chosenSeriesFormat,roomMode:chosenSeriesFormat==='tournament'?'versus':extra.roomMode||chosenRoomMode}:{})});
+ if(data.series&&((previous&&['finished','forfeit'].includes(previous.status)&&data.status==='waiting')||data.series.round>round&&round>0)){
+  duel.started=false;duel.done=false;duel.ended=false;duel.pending=[];duel.waveIndex=0;duel.lastHitTime=0;duel.verdictSignature='';duel.nextPoll=0;gameState=STATE_INTRO;mode='duel';
+  document.getElementById('screenResults').classList.add('hidden');document.getElementById('duelLobby').hidden=false;document.getElementById('overlayContainer').classList.remove('hidden');renderDuelLobby();
+ }
+ return data;
+};
+function seriesHTML(room){const s=room.series;if(!s)return '';const out=s.eliminated.includes(duel.seat),qualified=s.qualified.includes(duel.seat);return `<section class="series-banner"><b>${s.format==='tournament'?'🏆 '+L('Elimination','Eleme')+' · '+L('Round ','Tur ')+s.round:L('Rematch room','Rövanş odası')}</b><p>${s.format==='tournament'?L('Equal equipment · private event · no league points','Eşit ekipman · özel etkinlik · lig puanı yok'):''}</p>${out?`<strong>${L('You are spectating after elimination.','Elendiniz; izleyici olarak devam ediyorsunuz.')}</strong>`:''}${qualified&&room.status==='finished'?`<p>✓ ${L('You qualified.','Üst tura çıktınız.')}</p>`:''}<small>${L('Tie-break: score, cuts, then seat number.','Eşitlik: puan, kesim sayısı, ardından koltuk numarası.')}</small>${s.history.length?`<details><summary>${L('Round history','Tur geçmişi')}</summary>${s.history.map(h=>`<p>${L('Round','Tur')} ${h.round}: ${h.players.map(p=>escapeText(p.name)+' '+p.score+(h.qualified.includes(p.seat)?' ✓':'')).join(' · ')}</p>`).join('')}</details>`:''}</section>`;}
+const lobby=renderDuelLobby;renderDuelLobby=function(message=''){
+ lobby(message);const node=document.getElementById('duelLobby');
+ if(!duel.room){const choice=document.createElement('div');choice.className='room-mode-choice series-choice';choice.innerHTML=`<button id="seriesTournament" aria-pressed="${chosenSeriesFormat==='tournament'}">🏆 ${L('Elimination · up to 16','Eleme · en fazla 16')}</button>`;node.prepend(choice);document.getElementById('seriesTournament').onclick=()=>{chosenSeriesFormat=chosenSeriesFormat==='tournament'?'':'tournament';chosenRoomMode='versus';renderDuelLobby();};
+  const vs=document.getElementById('versusChoice'),co=document.getElementById('coopChoice');vs.onclick=()=>{chosenSeriesFormat='';chosenRoomMode='versus';renderDuelLobby();};co.onclick=()=>{chosenSeriesFormat='';chosenRoomMode='coop';renderDuelLobby();};
+ }else if(duel.room.series){const section=document.createElement('section');section.innerHTML=seriesHTML(duel.room);node.prepend(section);if(duel.room.series.eliminated.includes(duel.seat)){const b=document.getElementById('readyDuel');if(b)b.disabled=true;}}
+};
+const verdict=showDuelResult;showDuelResult=function(){
+ verdict();const r=duel.room;if(!r||!['finished','forfeit'].includes(r.status))return;const node=document.getElementById('duelVerdict');if(node.querySelector?.('.series-actions'))return;
+ const box=document.createElement('section');box.className='series-actions';const s=r.series;
+ box.innerHTML=seriesHTML(r)+(s?.format==='tournament'&&!s.complete?(duel.seat===r.hostSeat?`<button id="seriesAdvance">▶ ${L('Open next round','Sonraki turu aç')}</button>`:`<p>${L('The host will open the next round.','Oda sahibi sonraki turu açacak.')}</p>`):`<button id="seriesRematch">↻ ${L('Request a rematch','Rövanş iste')}</button><p>${s?.votes.length||0}/${r.players.filter(p=>!s?.departed.includes(p.seat)).length} ${L('rematch votes','rövanş onayı')}</p>`);
+ node.append(box);const advance=box.querySelector?.('#seriesAdvance'),rematch=box.querySelector?.('#seriesRematch');
+ const send=async(action)=>{try{await duelRequest(action);duel.verdictSignature='';box.remove?.();if(duel.room.status==='waiting')renderDuelLobby();else showDuelResult();}catch(e){const p=document.createElement('p');p.textContent=duelError(e.message);box.append(p);}};
+ if(advance)advance.onclick=()=>send('advance');if(rematch)rematch.onclick=()=>send('rematch');
+};
+const tick=tickDuel;tickDuel=function(){
+ const r=duel.room,s=r?.series;
+ if(mode==='duel'&&r&&s&&(['finished','forfeit'].includes(r.status)||s.eliminated.includes(duel.seat))){
+  if(Date.now()>=(duel.seriesPollAt||0)&&!duel.busy){duel.seriesPollAt=Date.now()+1800;duel.busy=true;duelRequest('state').then(()=>{duel.verdictSignature='';const old=document.querySelector?.('.series-actions');old?.remove();if(duel.room.status==='waiting'||duel.room.series?.eliminated.includes(duel.seat))renderDuelLobby();else showDuelResult();}).catch(()=>{}).finally(()=>duel.busy=false);}
+  if(s.eliminated.includes(duel.seat))return;
+ }
+ tick();
+};
+const growthAward=applyDuelGrowth;applyDuelGrowth=function(r){if(r?.series?.format==='tournament')return;return growthAward(r);};
+})();
+(function(){
+ const summary=coOpSummary;coOpSummary=function(r){const html=summary(r);if(!r?.coop)return html;return html+`<p class="team-opening">${r.coop.openingUntil>duelNow()?'✦ '+L('Guardian opening! Cutter: hit now for team repair.','Koruyucu fırsat açtı! Kesici: ortak onarım için şimdi vur.'):'⌁ '+L('Guardian → Cutter in 2 seconds: +2 shared repair.','Koruyucu → Kesici, 2 saniye içinde: +2 ortak onarım.')} · ${r.coop.openings||0}</p>`;};
+ const draw=molecularRenderer.drawTarget;molecularRenderer.drawTarget=function(item){draw.call(this,item);if(mode==='duel'&&duel.room?.coop?.openingUntil>duelNow()&&!item.sliced&&item.panel==='right'){ctx.save();ctx.strokeStyle='#c2f7a6';ctx.lineWidth=2;ctx.beginPath();ctx.arc(item.x,item.y,item.radius+6,0,Math.PI*2);ctx.stroke();ctx.restore();}};
+ const error=duelError;duelError=function(msg){return msg==='ELIMINATED'?L('You are spectating.','İzleyici olarak devam ediyorsunuz.'):error(msg);};
+})();
+
+</script>
+<script>
 /* The expedition view uses its own bounded renderer; legacy arenas keep their rules. */
 (function(){
 'use strict';
@@ -4250,12 +4503,12 @@ const oldRender=renderMenu;renderMenu=function(){oldRender();if(hubTab==='play')
 function ensure(){
  if(root)return;root=document.createElement('section');root.id='axRoot';root.hidden=true;root.setAttribute('aria-label',text('Expedition','Macera'));root.innerHTML='<canvas id="axCanvas" aria-label="Slicing arena"></canvas><div id="axHud"></div><div id="axControls"></div><div id="axModal"></div>';
  document.body.append(root);canvas=root.querySelector('canvas');g=canvas.getContext('2d');
- root.addEventListener('click',e=>{const b=e.target.closest('[data-ax]');if(b&&!b.disabled)action(b.dataset.ax);});
- root.addEventListener('change',e=>{const id=e.target.dataset.axOption;if(id){meta.settings[id]=e.target.type==='checkbox'?e.target.checked:Number(e.target.value)||e.target.value;if(engine)engine.options={...engine.options,...meta.settings};persist();settings();}});
+ root.addEventListener('click',e=>{const b=e.target.closest('[data-ax]');if(b&&!b.disabled&&Date.now()>=inputGate)action(b.dataset.ax);});
+ root.addEventListener('change',e=>{const id=e.target.dataset.axOption;if(id){meta.settings[id]=e.target.type==='checkbox'?e.target.checked:(e.target.value!==''&&Number.isFinite(Number(e.target.value))?Number(e.target.value):e.target.value);if(engine)engine.options={...engine.options,...meta.settings};persist();settings();}});
  const point=e=>{const rect=canvas.getBoundingClientRect();return {x:(e.clientX-rect.left)/rect.width*360,y:(e.clientY-rect.top)/rect.height*640-35*meta.settings.sensitivity};};
- canvas.addEventListener('pointerdown',e=>{if(!engine||pausedAX||countdown||modal)return;e.preventDefault();pressed=true;prev=point(e);canvas.setPointerCapture?.(e.pointerId);engine.move(prev.x,prev.y);});
- canvas.addEventListener('pointermove',e=>{if(!pressed||!engine||pausedAX||countdown||modal)return;e.preventDefault();const p=point(e);engine.move(p.x,p.y);engine.swipe(prev,p);prev=p;});
- const release=()=>{pressed=false;prev=null;};canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);
+ canvas.addEventListener('pointerdown',e=>{if(!engine||pausedAX||countdown||modal)return;e.preventDefault();pressed=true;prev=point(e);canvas.setPointerCapture?.(e.pointerId);engine.move(prev.x,prev.y);engine.sampleInput?.('down',prev);});
+ canvas.addEventListener('pointermove',e=>{if(!pressed||!engine||pausedAX||countdown||modal)return;e.preventDefault();const p=point(e);engine.move(p.x,p.y);engine.swipe(prev,p);engine.sampleInput?.('move',p);prev=p;});
+ const release=()=>{if(engine&&prev)engine.sampleInput?.('up',prev);pressed=false;prev=null;};canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);
  window.addEventListener('resize',resizeAX);window.addEventListener('keydown',e=>{if(root.hidden||!engine||modal)return;if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown',' '].includes(e.key)){e.preventDefault();if(e.key===' ')engine.ability();else{const dx=e.key==='ArrowLeft'?-22:e.key==='ArrowRight'?22:0,dy=e.key==='ArrowUp'?-22:e.key==='ArrowDown'?22:0,a={...engine.drone};engine.move(a.x+dx,a.y+dy);engine.swipe(a,engine.drone);}}});resizeAX();
  document.addEventListener('visibilitychange',()=>{if(document.hidden&&engine?.status==='playing'){pausedAX=true;checkpoint();pauseView();}});
  window.addEventListener('pagehide',()=>{checkpoint();persist();});
@@ -4319,7 +4572,7 @@ function result(won){
  const e=engine,st=e?.stats||{},tip=e?text(...e.coach()):'';
  showPanel(`<div class="ax-kicker">${won?'🏆 '+text('ALL REGIONS RESCUED','TÜM BÖLGELER KURTARILDI'):text('KEEP YOUR PROGRESS','KAZANIMLARIN SENDE')}</div><h2>${won?text('You are the guardian.','Koruyucu sensin.'):text('A stronger next attempt.','Bir sonraki deneme daha güçlü.')}</h2><div class="ax-summary"><div><b>${run.stage}/100</b><small>${text('Stage','Aşama')}</small></div><div><b>◇ ${run.shards}</b><small>${text('Kept shards','Kalıcı parçalar')}</small></div><div><b>${e?.bestCombo||0}</b><small>${text('Best combo','En iyi kombo')}</small></div></div><p class="ax-coach">${tip}</p><p>${text('Damage','Hasar')}: ${st.damage||0} · ${text('Trap cuts','Tuzak kesimi')}: ${st.trap||0} · ${text('Hunter hits','Avcı darbesi')}: ${st.hunter||0}</p>${button('retry','▶ '+text('Try again','Yeniden dene'),'class="ax-primary"')}${button('practice',text('Practice this weakness','Bu noktayı çalış'))}${button('home',text('Hero & upgrades','Kahraman ve yükseltmeler'))}${won?button('endless',text('Endless waves','Sonsuz dalgalar')):''}<details class="ax-details"><summary>${text('Match data & optional feedback','Maç verisi ve isteğe bağlı değerlendirme')}</summary><p>${text('Accuracy','İsabet')}: ${Math.round((st.cuts||0)/Math.max(1,(st.cuts||0)+(st.misses||0))*100)}% · ${text('Counters','Karşı saldırı')}: ${st.counter||0} · ${text('Synergies','Sinerji')}: ${st.synergy||0}</p><p>${text('How was the difficulty?','Zorluk nasıldı?')}</p>${['easy','balanced','hard'].map((k,i)=>button('feedback:'+k,text(['Easy','Balanced','Hard'][i],['Kolay','Dengeli','Zor'][i]))).join('')}<p>${text('Local rule-based coach. No data is uploaded.','Cihazda çalışan kural tabanlı koç. Veriler gönderilmez.')}</p></details>`);
 }
-function pauseView(){if(!engine)return;showPanel(`<div class="ax-kicker">${text('PAUSED · SAVED','DURAKLATILDI · KAYDEDİLDİ')}</div><h2>${text('Take a breath.','Bir nefes al.')}</h2>${saveOK?'':`<p role="alert">${text('Save failed. Free device storage before leaving.','Kayıt yapılamadı. Çıkmadan önce cihazda yer aç.')}</p>`}<p>${text('Stage','Aşama')} ${run.stage}/100 · ♥ ${Math.ceil(engine.hp)} · ${safe(run.seed)}</p><p>${Object.keys(run.cards).map(id=>text(A.CARDS.find(c=>c.id===id)?.en||id,A.CARDS.find(c=>c.id===id)?.tr||id)).join(' · ')||text('No cards yet','Henüz kart yok')}</p>${button('unpause','▶ '+text('Continue (3 s)','Devam et (3 sn)'),'class="ax-primary"')}${button('settings',text('Settings','Ayarlar'))}${button('coach',text('Ask the guide','Rehbere sor'))}${button('save',text('Save & leave','Kaydet ve çık'))}`);}
+function pauseView(){if(!engine)return;showPanel(`<div class="ax-kicker">${text('PAUSED · SAVED','DURAKLATILDI · KAYDEDİLDİ')}</div><h2>${text('Take a breath.','Bir nefes al.')}</h2>${saveOK?'':`<p role="alert">${text('Save failed. Free device storage before leaving.','Kayıt yapılamadı. Çıkmadan önce cihazda yer aç.')}</p>`}<p>${text('Stage','Aşama')} ${run.stage}/100 · ♥ ${Math.ceil(engine.hp)} · ${safe(run.seed)}</p><p class="ax-save-time">${text('Last saved','Son kayıt')}: ${new Date(lastSaveAt||meta.lastSaveAt||Date.now()).toLocaleTimeString()}</p><p>${Object.keys(run.cards).map(id=>text(A.CARDS.find(c=>c.id===id)?.en||id,A.CARDS.find(c=>c.id===id)?.tr||id)).join(' · ')||text('No cards yet','Henüz kart yok')}</p>${button('unpause','▶ '+text('Continue (3 s)','Devam et (3 sn)'),'class="ax-primary"')}${button('settings',text('Settings','Ayarlar'))}${button('coach',text('Ask the guide','Rehbere sor'))}${button('save',text('Save & leave','Kaydet ve çık'))}`);}
 function settings(){
  showPanel(`<div class="ax-kicker">${text('YOUR COMFORT','SANA GÖRE')}</div><h2>${text('Settings','Ayarlar')}</h2><div class="ax-settings">${[['sound','Effects sound','Efekt sesi'],['music','Ambient pulse','Ortam nabzı'],['haptic','Vibration','Titreşim'],['motion','Reduced motion','Azaltılmış hareket'],['bigText','Large text','Büyük yazı'],['adaptive','Adapt next encounter','Sonraki mücadeleyi uyarla'],['analytics','Local play statistics','Yerel oyun istatistikleri']].map(([id,en,tr])=>`<label><span>${text(en,tr)}</span><input type="checkbox" data-ax-option="${id}" ${meta.settings[id]?'checked':''}></label>`).join('')}<label>${text('Game speed','Oyun hızı')}<select data-ax-option="speed">${[.8,1,1.15].map(n=>`<option value="${n}" ${meta.settings.speed===n?'selected':''}>${n}×</option>`).join('')}</select></label><label>${text('Finger offset','Parmak uzaklığı')}<input type="range" data-ax-option="sensitivity" min="0.5" max="1.6" step="0.1" value="${meta.settings.sensitivity}"></label><label>${text('Helper mode','Yardımcı modu')}<select data-ax-option="helper">${[['protect','Protect','Koru'],['collect','Collect','Topla'],['warn','Warn','Uyar']].map(([id,en,tr])=>`<option value="${id}" ${meta.settings.helper===id?'selected':''}>${text(en,tr)}</option>`).join('')}</select></label></div><p>${text('Adaptation changes the next room only. Online matches always keep fixed rules. Statistics stay on this device.','Uyarlama yalnız sonraki odayı etkiler. Çevrim içi maçlarda kurallar sabittir. İstatistikler bu cihazda kalır.')}</p>${button('back',text('Done','Tamam'),'class="ax-primary"')}${button('clear-data',text('Clear local play statistics','Yerel oyun istatistiklerini temizle'),'class="ax-subtle"')}`);
  root.classList.toggle('ax-large',meta.settings.bigText);root.classList.toggle('ax-reduced',meta.settings.motion);
@@ -4354,7 +4607,7 @@ function action(value){
  else if(kind==='clear-data'){meta.analytics=[];persist();settings();}
 }
 function renderHUD(){
- if(!engine||modal)return;const e=engine,goal=e.objective(),labels={collect:['Slice targets','Hedefleri kes'],survive:['Survive','Hayatta kal'],escort:['Protect your helper','Yardımcını koru'],boss:['Defeat the guardian','Bölge düşmanını yen']},tip=e.tutorial==='target'?text('Swipe across the round target','Yuvarlak hedefin üzerinden kaydır'):e.tutorial==='trap'?text('Avoid spiked traps. Keep your finger away.','Dikenli tuzaktan uzaklaş. Parmağını kaydır.'):e.tutorial==='dodge'?text('Move out of the striped attack line','Çizgili saldırı hattından uzaklaş'):e.tutorial==='counter'?text('Cut the violet hunter now!','Şimdi mor avcıyı kes!'):'';
+ if(!engine||modal)return;const e=engine,goal=e.objective(),labels={collect:['Slice targets','Hedefleri kes'],survive:['Survive','Hayatta kal'],escort:['Protect your helper','Yardımcını koru'],boss:['Defeat the guardian','Bölge düşmanını yen'],counter:['Land counters','Karşı saldırı yap']},tip=e.tutorial==='target'?text('Swipe across the round target','Yuvarlak hedefin üzerinden kaydır'):e.tutorial==='trap'?text('Avoid spiked traps. Keep your finger away.','Dikenli tuzaktan uzaklaş. Parmağını kaydır.'):e.tutorial==='dodge'?text('Move out of the striped attack line','Çizgili saldırı hattından uzaklaş'):e.tutorial==='counter'?text('Cut the violet hunter now!','Şimdi mor avcıyı kes!'):'';
  document.getElementById('axHud').innerHTML=`<div class="ax-hud-top"><span>${run.practice?text('PRACTICE · NO REWARDS','ANTRENMAN · ÖDÜLSÜZ'):text('STAGE','AŞAMA')+' '+run.stage+'/100'}<b>${text(...biome(run.stage).slice(0,2))}</b></span>${button('pause','Ⅱ',`aria-label="${text('Pause','Duraklat')}"`)}</div><div class="ax-goal"><b>${tip||text(...labels[goal.key])}</b><span>${Math.min(goal.max,goal.value)}/${goal.max}</span><i style="width:${Math.min(100,goal.value/goal.max*100)}%"></i></div>${saveOK?'':`<p role="alert">${text('Save unavailable','Kayıt yapılamadı')}</p>`}<div class="ax-status"><span class="${e.hp<30?'danger':''}">♥ ${Math.ceil(e.hp)} ${e.shields?'⬡ '+e.shields:''}</span><span>✦ ${e.score}</span><span>◷ ${e.tutorial?'∞':Math.max(0,Math.ceil(e.stage.duration-e.t))}</span></div>${e.combo>1?`<div class="ax-combo">${e.combo}<small>${text('COMBO','KOMBO')}</small></div>`:''}${countdown>0?`<p class="ax-resume-cards">${Object.keys(run.cards).map(id=>text(A.CARDS.find(c=>c.id===id)?.en||id,A.CARDS.find(c=>c.id===id)?.tr||id)).join(' · ')}</p>`:''}${e.stats.damage===0&&e.t>5?`<div class="ax-mastery">✧ ${text('No hit','Darbe yok')}</div>`:''}`;
  document.getElementById('axControls').innerHTML=`<span>${text('Dodge lines · counter violet enemies','Çizgiden kaç · mor düşmana karşı saldır')}<small>${e.stage.side==='counter'?text('Bonus: 3 counters','Ek hedef: 3 karşı saldırı'):e.stage.side==='clean'?text('Bonus: no damage','Ek hedef: hasar alma'):text('Bonus: 10 combo','Ek hedef: 10 kombo')}</small></span>${button('ability',(e.hero==='guardian'?'⬡':e.hero==='energy'?'ϟ':'⚔')+' '+Math.floor(e.energy),`class="ax-ability ${e.energy>=50&&e.t>=e.skillAt?'ready':''}" ${e.energy<50||e.t<e.skillAt?'disabled':''} aria-label="${text('Ability: costs 50 energy','Beceri: 50 enerji harcar')}"`)}`;
 }
@@ -4363,7 +4616,7 @@ function tone(freq,duration=.06,volume=.025,type='triangle'){
 }
 function handleEvents(){
  for(const event of engine.events.splice(0)){
-  if(event.type==='cut'&&engine.t-soundAt>.07){soundAt=engine.t;tone(330+Math.min(18,event.value)*24,.05);}
+  if(event.type==='cut'&&engine.t-soundAt>.07){soundAt=engine.t;const notes=[261.63,293.66,329.63,392,440,523.25,587.33,659.25];tone(notes[Math.min(7,Math.floor((event.value-1)/2))],.09,.025);tone(120,.025,.012,'triangle');}if(event.type==='material'){tone(event.value==='metal'?170:event.value==='energy'?720:420,.05,.012,event.value==='metal'?'square':'sine');}if(event.type==='finisher'){tone(72,.35,.045,'triangle');tone(523,.25,.018,'sine');}if(event.type==='precise')tone(1046,.035,.012,'sine');
   if(event.type==='damage'){tone(105,.12,.05,'sawtooth');if(meta.settings.haptic&&typeof navigator!=='undefined')navigator.vibrate?.(18);}
   if(event.type==='counter')tone(620,.10,.035);if(event.type==='dodge')tone(860,.09,.025);if(event.type==='synergy')tone(1040,.12,.03);
   if(event.type==='bossHit')tone(150,.1,.05,'triangle');if(event.type==='armor')tone(240,.04,.03,'square');
@@ -4371,8 +4624,8 @@ function handleEvents(){
  if(meta.settings.music&&engine.t-musicAt>2){musicAt=engine.t;const danger=engine.hp<30||engine.stage.boss;rpgTone(danger?85:65,.5,'sine',.009);}
 }
 function loop(now){
- if(!root||root.hidden){raf=false;return;}const ms=last?now-last:16;last=now;const dt=Math.min(.05,ms/1000);frameAverage=frameAverage*.97+ms*.03;
- if(engine&&!modal&&!pausedAX){if(countdown>0)countdown=Math.max(0,countdown-dt);else{engine.lowFX=frameAverage>24;engine.update(dt);if(run?.practice&&!engine.entities.length)engine.spawn(engine.practiceType,{x:180,y:220,expires:Infinity});handleEvents();if(engine.status!=='playing'){if(run.practice){engine.hp=100;engine.status='playing';engine.t=0;engine.entities=[];engine.spawn(engine.practiceType,{x:180,y:220,expires:Infinity});}else{engine.finishAt+=dt;for(const f of engine.fx){f.life-=dt;f.x+=f.vx*dt;f.y+=f.vy*dt;}if(engine.finishAt>.75)settle();}}}
+ if(!root||root.hidden){raf=false;return;}const ms=last?now-last:16;last=now;const dt=Math.min(.05,ms/1000);frameAverage=frameAverage*.97+ms*.03;if(engine&&!modal&&performanceSamples.length<1200)performanceSamples.push(ms);
+ if(engine&&!modal&&!pausedAX){if(countdown>0)countdown=Math.max(0,countdown-dt);else{engine.lowFX=frameAverage>24;if(engine.status==='playing')engine.update(dt);else engine.animate?.(dt);if(run?.practice&&!engine.entities.length)engine.spawn(engine.practiceType,{x:180,y:220,expires:Infinity});handleEvents();if(engine.status!=='playing'){if(run.practice){engine.hp=100;engine.status='playing';engine.t=0;engine.entities=[];engine.spawn(engine.practiceType,{x:180,y:220,expires:Infinity});}else{engine.finishAt+=dt;for(const f of engine.fx){f.life-=dt;f.x+=f.vx*dt;f.y+=f.vy*dt;}if(engine.finishAt>(engine.finisher&&!meta.settings.motion?1.8:.8))settle();}}}
   if(now-drawAt>120){drawAt=now;renderHUD();}if(now-lastTickSave>1200&&!run?.practice){lastTickSave=now;checkpoint();}}
  draw();requestAnimationFrame(loop);
 }
@@ -4386,7 +4639,7 @@ function draw(){
  // Readability wins over decoration during an attack warning.
  g.globalAlpha=e?.warning?.09:.22;
  for(let i=0;i<6;i++){g.beginPath();g.moveTo(i*72-60,0);g.bezierCurveTo(120+Math.sin((meta.settings.motion?0:t)*.12+i)*20,220,40+i*62,420,i*85,640);g.strokeStyle=accent;g.lineWidth=1.5;g.stroke();}g.globalAlpha=1;
- if(!e)return;if(e.status==='won'){g.fillStyle='#c2ffe00b';g.fillRect(0,140,360,420);for(let i=0;i<9;i++)circle(35+i*37,520+Math.sin(i*2)*25,3,accent+'55');}
+ if(!e)return;g.save();if(!meta.settings.motion&&meta.settings.shake){g.translate(Math.sin(e.animClock*83)*(e.shake||0)*meta.settings.shake,Math.cos(e.animClock*71)*(e.shake||0)*meta.settings.shake);}if(e.status==='won'){g.fillStyle='#c2ffe00b';g.fillRect(0,140,360,420);for(let i=0;i<9;i++)circle(35+i*37,520+Math.sin(i*2)*25,3,accent+'55');}
  for(const p of e.props)if(p.hp){polygon(p.x,p.y,12,6,'#345354',Math.PI/6);circle(p.x,p.y,4,'#6a8e85');}
  for(const o of e.stage.obstacles){g.fillStyle='#335456';g.fillRect(o.x,o.y,o.w,o.h);g.strokeStyle='#98b7ae';g.lineWidth=2;g.strokeRect(o.x,o.y,o.w,o.h);}
  if(e.stage.flow){for(let i=0;i<5;i++)label(e.stage.flow>0?'›':'‹',65+i*55,375,'#75cfc844',25);}
@@ -4403,7 +4656,7 @@ function draw(){
   }
  }
  for(const f of e.entities){
-  const recovery=f.state==='recover',warn=f.state==='windup',col=recovery?'#c5a2ff':warn?'#ffba7f':'#90a8b7';
+  A.actorTransform?.(g,e,f);const recovery=f.state==='recover',warn=f.state==='windup',col=recovery?'#c5a2ff':warn?'#ffba7f':'#90a8b7';
   if(f.kind==='target'){
    const pulse=meta.settings.motion?0:Math.sin(t*3+f.id)*1.5;circle(f.x,f.y,f.r+4+pulse,'#68efdb10');circle(f.x,f.y,f.r,'#4cb9ac');circle(f.x-4,f.y-5,f.r*.55,'#bcfff070');circle(f.x,f.y,f.r+2,'#b6fff1',false);circle(f.x+4,f.y+4,3,'#eafff5');
    if(f.armor){circle(f.x,f.y,f.r+5,'#c9d3e7',false);label('⬡',f.x,f.y+5,'#fff');}if(f.priority)label('!',f.x,f.y-23,'#ffe3a0',18);
@@ -4417,7 +4670,7 @@ function draw(){
    if(f.kind==='directional')label(f.arrow===0?'→':'←',f.x,f.y-23,'#ffefbd',22);
    if(f.affix)label(f.affix==='swift'?'ϟ':f.affix==='armored'?'⬡':'✦',f.x,f.y-24,'#e8d09e',13);
    if(recovery)circle(f.x,f.y,23,'#c5a2ff',false);
-  }
+  }g.restore();
  }
  if(e.bossHP>0){for(const p of e.bossPoints()){
   circle(p.x,p.y,39,p.open?'#ffcb6940':'#59738b30');polygon(p.x,p.y,27,6,p.open?'#ffcd7b':'#697f91',meta.settings.motion?0:t*.13);circle(p.x,p.y,13,'#193139');label(p.open?'✦':'⬡',p.x,p.y+6,p.open?'#ffdc9a':'#bfd8e3',21);label(e.bossHP+'/'+e.bossMax,p.x,p.y-44,'#fff1d0',13);
@@ -4434,9 +4687,118 @@ function draw(){
  const chassis=1+Math.floor(level()/20);if(chassis>1)circle(d.x,d.y,16+chassis,c+'66',false);
  if(e.level('drone')){const h={x:d.x+Math.cos(meta.settings.motion?0:t)*31,y:d.y+Math.sin(meta.settings.motion?0:t)*22};circle(h.x,h.y,5,'#e9d7ff');}
  if(pressed&&prev){const trailColor=e.level('volt')?'#e1c0ff':e.level('heal')?'#b8ffb9':e.blade==='resonant'?'#d2bbff':'#97ffea';line({x:d.x-d.vx*.12,y:d.y-d.vy*.12},d,trailColor,3+e.level('wide'));}
+ if(meta.cosmetic){const color=meta.cosmetic==='alchemist'?'#e5beff':meta.cosmetic==='rescuer'?'#ffdbcb':'#a6f7e6';circle(d.x,d.y,26,color+'88',false);if(meta.cosmetic==='alchemist'){for(let i=0;i<3;i++)circle(d.x+Math.cos(i*2.094)*26,d.y+Math.sin(i*2.094)*26,3,color);}}A.drawImpact?.(g,e,{text,ghost:activeGhost,shake:meta.settings.shake});g.restore();
  if(countdown>0){g.fillStyle='#06191d88';g.fillRect(0,130,360,420);label(String(Math.ceil(countdown)),180,335,'#eafff6',55);label(text('Get ready','Hazır ol'),180,375,'#9abfb9',15);}
  if(e.intro>0){g.fillStyle='#091923dd';g.fillRect(0,185,360,160);label('♛',180,245,'#ffdda3',38);label(text('REGION GUARDIAN','BÖLGE KORUYUCUSU'),180,285,'#ffdda3',17);label(text('Watch. Dodge. Counter.','İzle. Kaçın. Karşı saldır.'),180,316,'#c6e2de',12);}
 }
+/* v7 UI extensions live inside the expedition closure, keeping save ownership in one place. */
+for(const [key,value]of Object.entries({specializations:{},variants:{},discovered:{},fusions:{},masteryTasks:{},collections:[],study:[],perf:{},metrics:{},ghost:null,lastSaveAt:0}))if(meta[key]===undefined)meta[key]=value;
+for(const [key,value]of Object.entries({leftHand:false,contrast:false,shake:1}))if(meta.settings[key]===undefined)meta.settings[key]=value;
+let inputGate=0,lastSaveAt=0,activeGhost=null,research=null,previewCard=null,pendingChallenge=null,performanceSamples=[];
+const v6Persist=persist;persist=function(){v6Persist();if(saveOK){lastSaveAt=Date.now();meta.lastSaveAt=lastSaveAt;}};
+const v6Modal=modalView;modalView=function(html){inputGate=Date.now()+220;v6Modal(html);};
+function fusionName(id){const c=A.CARDS.find(c=>c.id===id);return c?text(c.en,c.tr):id;}
+function cardMetric(id,n){
+ const cards=run?.cards||{},has=id=>(run?.skills||[]).includes(id),artifact=run?.artifact||'',mastery=meta.mastery[run?.hero]||0;
+ const width=Math.max(2,8+n*5+(run?.blade==='wide'?7:0)+(run?.bladeLevel||0)*.8+(artifact==='anchor'?-8:0));
+ const baseEnergy=(run?.blade==='resonant'?5:3)+(has('energy_flow')?2:0)+Math.min(2,Math.floor(mastery/500))+(artifact==='spark'?3:0)+(run?.specialization==='battery'?1:0);
+ if(id==='chain')return '+'+n+' '+text('jumps','atlama')+' / +'+Math.round(n*.2*10)/10+' '+text('s combo','sn kombo');
+ if(id==='drone')return n?text('Every 8 s','Her 8 sn'):text('Off','Kapalı');
+ const data={wide:[width,'px'],volt:[n?n+(cards.chain||0):0,' '+text('strikes','vuruş')],guard:[n+(run?.initial==='armored'?1:0)+(has('buffer')?1:0)+(has('shield_unlock')?1:0)+(artifact==='anchor'?1:0),' '+text('barriers','bariyer')],rhythm:[1.9+.4*n+(cards.chain||0)*.2+(has('combo_rhythm')?.4:0)+(artifact==='spark'?-.3:0),' '+text('seconds','saniye')],heal:[3*n,' HP'],focus:[baseEnergy+2*n,' '+text('energy','enerji')],burst:[2*n,' '+text('targets','hedef')]};const d=data[id]||[n,''];return Math.round(d[0]*10)/10+d[1];
+}
+function miniature(id){return `<span class="ax-demo ax-demo-${id}" aria-hidden="true"><i class="cell a"></i><i class="cell b"></i><i class="blade"></i><b>${A.CARDS.find(c=>c.id===id)?.icon||'✦'}</b><em></em></span>`;}
+const v6Menu=menu;menu=function(){let html=v6Menu();const insert=`<div class="ax-new-row">${button('challenges','✦ '+text('Daily & weekly','Günlük ve haftalık'))}${button('workshop','◈ '+text('Hero workshop','Kahraman atölyesi'))}</div>`;return html.replace('<div class="ax-menu-row">',insert+'<div class="ax-menu-row">');};rgHome=menu;
+const v6Run=defaultRun;defaultRun=function(seed){const r=v6Run(seed);r.specialization=meta.specializations[r.hero]||'';r.variant=meta.variants[r.hero]||'standard';r.artifact='';r.study=false;return r;};
+const v6StartRoom=startRoom;startRoom=function(fresh){
+ const hadSnapshot=!!run.snapshot;const fixed=!!run.fair;if(fixed){run.hero='cutter';run.blade='balanced';run.bladeLevel=0;run.skills=[];run.cards={};run.initial='';run.specialization='';run.variant='standard';run.artifact='';}
+ v6StartRoom(fresh);engine.specialization=run.specialization||'';engine.variant=run.variant||'standard';engine.artifact=run.artifact||'';engine.cutWidth=engine.artifact==='anchor'?-8:0;engine.comboOffset=engine.artifact==='spark'?-.3:0;engine.rule=run.rule||'';engine.fair=fixed;
+ if(!hadSnapshot&&!run.appliedArtifactStage?.includes(run.stage)){if(engine.artifact==='anchor')engine.shields++;run.appliedArtifactStage=[...(run.appliedArtifactStage||[]),run.stage];}
+ if(run.rule==='onehp')engine.hp=Math.min(1,engine.hp);
+ if(fixed){engine.options={...engine.options,...A.fixedOptions(),motion:meta.settings.motion};engine.stage=A.generatedStage(run.seed,run.stage,{adaptive:false});engine.mastery=0;}
+ if(run.rule==='nocards'){engine.cards={};run.cards={};}
+ for(const key of ['precise','interrupt','clutch','powerUses','phaseClears'])if(!Number.isFinite(engine.stats[key]))engine.stats[key]=0;
+ if(!engine.animations)engine.animations=[];if(!engine.slashes)engine.slashes=[];if(!engine.trail)engine.trail=[];if(!engine.motionSample)engine.motionSample=[];if(!engine.trace)engine.trace=[];
+ engine.learned={...meta.discovered,...engine.learned};engine.riskDoor=run.riskDoor===run.stage;activeGhost=run.ghost||null;soundAt=-9;musicAt=-9;performanceSamples=[];
+ root.classList.toggle('ax-left',meta.settings.leftHand);root.classList.toggle('ax-contrast',meta.settings.contrast);
+ if(fresh&&!engine.tutorial&&!run.practice&&!run.quickRetry){briefView();}else if(run.quickRetry)countdown=.65;
+ checkpoint();
+};
+function briefView(){const e=engine,o=e.objective(),verbs={collect:['Slice '+o.max+' targets',''+o.max+' hedef kes'],survive:['Survive '+o.max+' seconds',o.max+' saniye dayan'],escort:['Protect the helper','Yardımcıyı koru'],boss:['Break the guardian core','Koruyucunun çekirdeğini kır'],counter:['Land 6 counters','6 karşı saldırı yap']};showPanel(`<div class="ax-kicker">${text('ONE CLEAR GOAL','TEK NET HEDEF')} · ${run.stage}/100</div><h2>${text(...verbs[o.key])}</h2><p>${text('Round targets give points. Striped lines warn of attacks.','Yuvarlak hedefler puan verir. Çizgili hatlar saldırıyı haber verir.')}</p><div class="ax-brief-visual"><span>◉</span><i>→</i><b>✦</b></div>${button('fight','▶ '+text('Start','Başla'),'class="ax-primary"')}${button('save',text('Save & leave','Kaydet ve çık'),'class="ax-subtle"')}`);}
+const v6CardView=cardView;cardView=function(){
+ if(!run||run.done)return;show();
+ const rows=(run.offers||offers()).map(id=>{const c=A.CARDS.find(c=>c.id===id),old=run.cards[id]||0,next=Math.min(3,old+1),synergy=!!run.cards[c.synergy];return `<article class="ax-power-choice">${miniature(id)}<div><b>${text(c.en,c.tr)} ${next}/3</b><p class="ax-stat-change"><span>${cardMetric(id,old)}</span><strong>→ ${cardMetric(id,next)}</strong></p><details><summary>${text('Effect & tradeoff','Etki ve bedel')}</summary><p>${text(c.effect,c.et)}</p><small>${text(c.cost,c.ct)}</small><p>${synergy?'✦ '+text('Fusion with ','Birleşim: ')+fusionName(c.synergy):text('Combines with ','Uyumlu güç: ')+fusionName(c.synergy)}</p></details></div>${button('card:'+id,text('Choose','Seç'),'class="ax-pick"')}</article>`;}).join('');
+ showPanel(`<div class="ax-kicker">${text('VICTORY','TAMAMLANDI')} · ${run.stage}/100</div><h2>${text('Choose your next power','Sıradaki gücünü seç')}</h2><div class="ax-recap"><span>♥ ${Math.ceil(run.hp)}</span><b>◇ +${run.shards}</b></div><div class="ax-power-list">${rows||`<p>${text('All powers mastered.','Bütün güçlerde ustalaştın.')}</p>`}</div>${!rows?button('no-card',text('Continue','Devam et'),'class="ax-primary"'):''}${button('save',text('Save & leave','Kaydet ve çık'),'class="ax-subtle"')}`);
+};
+const v6Route=routeView;routeView=function(){
+ v6Route();if(!run||run.done)return;const box=document.getElementById('axModal').querySelector?.('.ax-dialog');if(box){const b=document.createElement('button');b.dataset.ax='risk-route';b.className='ax-risk-door';b.innerHTML='◈ '+text('Optional elite gate · extra armor, +6 shards','İsteğe bağlı seçkin kapısı · ek zırh, +6 parça');box.append(b);}
+ if(box&&run.stage%3===0&&!run.fair&&!run.artifact){const section=document.createElement('details');section.className='ax-details';section.innerHTML=`<summary>${text('Optional: take an artifact','İsteğe bağlı: bir yadigâr al')}</summary><div class="ax-artifacts">${Object.entries(A.ARTIFACTS).map(([id,a])=>button('artifact:'+id,`<b>${text(a.en,a.tr)}</b><span>+ ${text(a.good,a.gt)}</span><small>− ${text(a.bad,a.bt)}</small>`)).join('')}</div>`;box.append(section);}
+ if(box&&run.stage%10===0){const story=document.createElement('aside');story.className='ax-story';story.innerHTML=`<span>🏆 ${text(...A.BIOMES[Math.floor((run.stage-1)/10)].slice(0,2))}</span><p>${text(...A.STORIES[Math.floor((run.stage-1)/10)])}</p>`;box.prepend(story);}
+};
+const v6Settle=settle;settle=function(){
+ if(!engine||run?.phase!=='fight')return;const e=engine,wasWon=e.status==='won',isChallenge=!!run.challenge;
+ const region=e.stage.region;meta.discovered={...meta.discovered,...e.learned};
+ for(const c of A.CARDS)if(run.cards[c.id]&&run.cards[c.synergy])meta.fusions[[c.id,c.synergy].sort().join('+')]=true;
+ const mastery=run.hero==='guardian'?e.stats.blocked:run.hero==='energy'?e.stats.synergy:e.stats.precise;meta.masteryTasks[run.hero]=(meta.masteryTasks[run.hero]||0)+mastery;
+ for(const c of A.collectionGoals(meta))if(c.value>=c.goal&&!meta.collections.includes(c.id))meta.collections.push(c.id);
+ if(!meta.cosmetic&&meta.collections.length)meta.cosmetic=meta.collections[0];
+ if(meta.settings.analytics){const m=meta.metrics[run.stage]||(meta.metrics[run.stage]={attempts:0,wins:0,retries:0,damage:0,cuts:0,ms:0});m.attempts++;m.wins+=Number(wasWon);m.retries+=Number(!!run.quickRetry);m.damage+=e.stats.damage;m.cuts+=e.stats.cuts;
+ const avg=performanceSamples.length?performanceSamples.reduce((a,b)=>a+b,0)/performanceSamples.length:0;m.ms+=avg;meta.perf={frames:performanceSamples.length,average:avg,p95:performanceSamples.length?[...performanceSamples].sort((a,b)=>a-b)[Math.floor((performanceSamples.length-1)*.95)]:0};
+ }
+ const trace=e.motionSample||[];run.ghostCode=A.encodeGhost({seed:run.seed,stage:run.stage,score:e.score,path:trace});
+ if(run.study&&research){research.finished=Date.now();research.won=wasWon;research.damage=e.stats.damage;research.status='awaiting_feedback';meta.study.push(research);if(meta.study.length>30)meta.study.shift();}
+ if(isChallenge){
+  const key='challenge:'+run.challenge+':'+run.seed;run.snapshot=null;run.hp=e.hp;run.done=true;run.phase=wasWon?'won':'lost';const paid=rpgState().adventurePaid?.includes(key);run.shards=wasWon&&!paid&&run.challenge!=='study'?20:0;if(run.shards)grant(run.shards,100,key);record(wasWon?'event_win':'event_loss',{challenge:run.challenge,seed:run.seed,score:e.score});persist();result(wasWon);return;
+ }
+ v6Settle();
+ if(run.phase==='cards'&&run.rule==='nocards'){run.phase='route';run.cards={};persist();routeView();}
+ if(wasWon&&run.stage%10===0&&!isChallenge){meta.builds[meta.builds.length-1].trophy=region;}
+};
+const v6Result=result;result=function(won){
+ const e=engine,reason={timeout:['Time ran out','Süre doldu'],hunter:['A hunter caught you','Avcı seni yakaladı'],trap:['A trap broke your defense','Tuzak savunmanı kırdı'],priority:['A priority target escaped','Öncelikli hedef kaçtı'],miss:['Too many targets escaped','Çok fazla hedef kaçtı'],escort:['The helper was lost','Yardımcı kaybedildi'],flow:['The current caught you','Akıntı seni yakaladı'],complete:['Goal reached','Hedef tamamlandı']};
+ const r=reason[e?.lastCause]||reason.complete,doneCampaign=won&&run.stage===100&&!run.challenge;
+ showPanel(`<div class="ax-kicker">${run.challenge?text('CHALLENGE RESULT','MEYDAN OKUMA SONUCU'):doneCampaign?text('NETWORK RESTORED','AĞ KURTARILDI'):text('YOUR EXPEDITION','MACERAN')}</div><h2>${won?text('You did it!','Başardın!'):text(...r)}</h2>${won&&run.stage%10===0?`<div class="ax-region-trophy">${trophySVG(Math.floor((run.stage-1)/10))}<p>${text(...A.STORIES[Math.floor((run.stage-1)/10)])}</p></div>`:''}<p class="ax-coach">${e?text(...e.coach()):''}</p><div class="ax-summary"><div><b>◇ ${run.shards}</b><small>${text('Kept shards','Kalıcı parçalar')}</small></div><div><b>${e?.score||0}</b><small>${text('Score','Puan')}</small></div><div><b>${e?.bestCombo||0}</b><small>${text('Combo','Kombo')}</small></div></div>${button('retry','▶ '+text('Play again','Yeniden oyna'),'class="ax-primary"')}${button('home',text('Hero & rewards','Kahraman ve ödüller'),'class="ax-subtle"')}<details class="ax-details"><summary>${text('Report, ghost & feedback','Rapor, hayalet ve değerlendirme')}</summary><p>${text('Precise cuts','Hassas kesim')}: ${e?.stats.precise||0} · ${text('Interrupts','Saldırı kesme')}: ${e?.stats.interrupt||0} · ${text('Damage','Hasar')}: ${e?.stats.damage||0}</p>${activeGhost?`<p>${text('Shared ghost score','Paylaşılan hayalet puanı')}: ${activeGhost.score} · ${text('Your difference','Farkın')}: ${(e?.score||0)-activeGhost.score}</p>`:''}<label>${text('Copy this ghost code to a friend','Bu hayalet kodunu arkadaşına kopyala')}<textarea readonly rows="3" aria-label="${text('Ghost code','Hayalet kodu')}">${safe(run.ghostCode||'')}</textarea></label>${button('practice',text('Practice my weakness','Eksik olduğum noktayı çalış'))}<p>${text('Difficulty','Zorluk')}</p>${['easy','balanced','hard'].map((k,i)=>button('feedback:'+k,text(['Easy','Balanced','Hard'][i],['Kolay','Dengeli','Zor'][i]))).join('')}${run.study?`<p>${text('Was the objective clear?','Hedef anlaşılır mıydı?')}</p>${button('study-answer:clear',text('Yes','Evet'))}${button('study-answer:unclear',text('No','Hayır'))}`:''}</details>`);
+};
+function workshop(){
+ const cls=rpgState().classId,selected=meta.specializations[cls]||'',descs={precision:['Precise cuts give +4 energy','Hassas kesim +4 enerji'],momentum:['5+ combo reduces ability cooldown','5+ kombo beceri beklemesini azaltır'],execution:['Priority targets give +30 score','Öncelikli hedef +30 puan'],bastion:['Ability also grants 0.5 s safety','Beceri ayrıca 0,5 sn korur'],parry:['Ability parries nearby attacks for 1 s','Beceri 1 sn yakındaki saldırıları savuşturur'],rescue:['Ability heals 5 HP, at most twice','Beceri 5 can verir; en fazla iki kez'],conductor:['Every five cuts: +5 energy','Her beş kesimde +5 enerji'],battery:['Every cut: +1 energy','Her kesimde +1 enerji'],stasis:['Slow ability lasts 1 s longer','Yavaşlatma 1 sn uzun sürer']};
+ showPanel(`<div class="ax-kicker">${text('A DIFFERENT WAY TO PLAY','FARKLI BİR OYNANIŞ')}</div><h2>${text('Hero workshop','Kahraman atölyesi')}</h2><p>${text('Class mastery tasks','Sınıf ustalık görevi')}: ${cls==='guardian'?text('Block 50 hits','50 darbeyi engelle'):cls==='energy'?text('Trigger 50 synergies','50 sinerji oluştur'):text('Land 50 precise cuts','50 hassas kesim yap')} · ${meta.masteryTasks[cls]||0}/50</p><div class="ax-specializations">${A.SPECIALIZATIONS[cls].map(id=>button('spec:'+id,`<b>${text(...descs[id])}</b><small>${id===selected?'✓ ':''}${text('Tap to equip','Dokun ve kuşan')}</small>`,`aria-pressed="${id===selected}"`)).join('')}</div><h3>${text('Ability form','Beceri biçimi')}</h3><div class="ax-chips">${[['standard','Standard','Standart'],['fortify','Strong barrier · 10 s cooldown','Güçlü bariyer · 10 sn bekleme'],['sustain','Light barrier · 4 s cooldown','Hafif bariyer · 4 sn bekleme'],['surge','Short slow + barrier','Kısa yavaşlatma + bariyer'],['orbit','8 targets · 75 energy · 8 s cooldown','8 hedef · 75 enerji · 8 sn bekleme']].filter(([id])=>id==='standard'||cls==='guardian'&&['fortify','sustain'].includes(id)||cls==='energy'&&id==='surge'||cls==='cutter'&&id==='orbit').map(([id,en,tr])=>button('variant:'+id,text(en,tr),`aria-pressed="${(meta.variants[cls]||'standard')===id}"`)).join('')}</div>${button('skill-preview',text('Try this build safely','Bu dizilimi güvenle dene'),'class="ax-primary"')}<h3>${text('Collections','Koleksiyonlar')}</h3>${A.collectionGoals(meta).map(c=>`<p>${meta.collections.includes(c.id)?'🏆':'◇'} ${text(c.en,c.tr)} · ${Math.min(c.goal,c.value)}/${c.goal}</p>${meta.collections.includes(c.id)?button('cosmetic:'+c.id,text('Equip appearance','Görünümü kuşan')):''}`).join('')}<h3>${text('Region trophies','Bölge kupaları')}</h3><div class="ax-trophy-shelf">${A.BIOMES.map((b,i)=>meta.frontier>i*10+10?`<span title="${safe(text(b[0],b[1]))}">${trophySVG(i)}</span>`:'').join('')}</div><h3>${text('Name a saved build','Kayıtlı dizilimine ad ver')}</h3><input id="axBuildName" maxlength="24" placeholder="${text('My lightning build','Yıldırım dizilimim')}">${button('name-build',text('Name latest build','Son dizilimi adlandır'))}${button('home',text('Back','Geri'),'class="ax-subtle"')}`);
+}
+function challenges(){const day=localDay(),weekly=A.weeklyRule(day);showPanel(`<div class="ax-kicker">${text('SAME SEED · NEW GOAL','AYNI KOD · YENİ HEDEF')}</div><h2>${text('Challenges','Meydan okumalar')}</h2><div class="ax-event-list">${button('challenge:daily',`<b>${text('Daily common stage','Günün ortak bölümü')}</b><span>${day} · ${text('Fixed gear, same layout','Sabit ekipman, aynı yerleşim')}</span>`)}${button('challenge:weekly',`<b>${text('Weekly special rule','Haftalık özel kural')}</b><span>${text('This week','Bu hafta')}: ${text(...({counter:['Counters only','Yalnız karşı saldırı'],onehp:['One HP','Tek can'],nocards:['No power cards','Güç kartı yok']}[weekly]))}</span>`)}${button('challenge:fair',`<b>${text('Fair skill trial','Eşit beceri sınavı')}</b><span>${text('No upgrades or adaptation','Yükseltme ve uyarlama yok')}</span>`)}</div><details class="ax-details"><summary>${text('Race a friend’s ghost','Arkadaşının hayaletiyle yarış')}</summary><textarea id="axGhostCode" rows="3" maxlength="12000" placeholder="${text('Paste the shared code','Paylaşılan kodu yapıştır')}"></textarea>${button('ghost-play',text('Load ghost','Hayaleti yükle'))}<p>${text('Shared ghost scores are informal comparisons.','Paylaşılan hayalet puanları resmî sıralama değildir.')}</p></details>${button('online-series',text('Online elimination & rematch','Çevrim içi eleme ve rövanş'))}${button('home',text('Back','Geri'),'class="ax-subtle"')}`);}
+function launchChallenge(kind,ghost=null){
+ if(run&&!run.done)checkpoint();const keep=run&&!run.done?copy(run):null;
+ const day=localDay(),seed=ghost?.seed||(kind==='daily'?A.dailyCode(day):kind==='weekly'?'WEEK-'+Math.floor(Date.parse(day+'T12:00:00Z')/604800000):'FAIR-SKILL-V7');
+ run=defaultRun(seed);run.stage=ghost?.stage||12;run.challenge=kind;run.fair=true;run.rule=kind==='weekly'?A.weeklyRule(day):'';run.ghost=ghost;run.keepCampaign=keep;meta.runs++;persist();startRoom(true);
+}
+function metricsView(){showPanel(`<div class="ax-kicker">${text('DEVICE-LOCAL OBSERVATIONS','CİHAZDAKİ GÖZLEMLER')}</div><h2>${text('Playtest & performance','Oyun testi ve performans')}</h2><p>${text('Frame average','Ortalama kare')}: ${Math.round(meta.perf.average||0)} ms · P95: ${Math.round(meta.perf.p95||0)} ms</p><div class="ax-table-scroll"><table><thead><tr><th>${text('Stage','Aşama')}</th><th>${text('Attempts','Deneme')}</th><th>${text('Win','Kazanma')}</th><th>${text('Retry','Tekrar')}</th></tr></thead><tbody>${Object.entries(meta.metrics).slice(-15).map(([n,m])=>`<tr><td>${n}</td><td>${m.attempts}</td><td>${Math.round(m.wins/Math.max(1,m.attempts)*100)}%</td><td>${m.retries}</td></tr>`).join('')}</tbody></table></div><p>${text('Recorded participant sessions','Kayıtlı katılımcı oturumları')}: ${meta.study.filter(s=>s.answer).length}</p><p>${text('Human difficulty is not inferred from bot wins. This test records only local task timing and voluntary feedback.','İnsanların zorlanma düzeyi bot galibiyetlerinden çıkarılmaz. Bu test yalnız yerel görev sürelerini ve gönüllü yanıtları kaydeder.')}</p>${button('study-start',text('Start voluntary usability test','Gönüllü kullanılabilirlik testini başlat'),'class="ax-primary"')}${button('settings',text('Back to settings','Ayarlara dön'))}`);}
+const v6Settings=settings;settings=function(){v6Settings();const list=document.getElementById('axModal').querySelector?.('.ax-settings');if(list){for(const [id,en,tr]of [['leftHand','Left-handed controls','Solak kullanım'],['contrast','High-contrast arena','Yüksek kontrastlı alan']]){const label=document.createElement('label');label.innerHTML=`<span>${text(en,tr)}</span><input type="checkbox" data-ax-option="${id}" ${meta.settings[id]?'checked':''}>`;list.append(label);}const l=document.createElement('label');l.innerHTML=`${text('Impact shake','Darbe sarsıntısı')}<input type="range" data-ax-option="shake" min="0" max="1" step="0.1" value="${meta.settings.shake}">`;list.append(l);}
+ const dialog=document.getElementById('axModal').querySelector?.('.ax-dialog');if(dialog){const b=document.createElement('button');b.dataset.ax='metrics';b.textContent=text('Playtest & performance','Oyun testi ve performans');dialog.append(b);}root.classList.toggle('ax-left',meta.settings.leftHand);root.classList.toggle('ax-contrast',meta.settings.contrast);};
+const v6Action=action;action=function(value){
+ const [kind,id]=value.split(':');if(research&&run?.study)research.actions.push({action:kind,ms:Date.now()-research.started});
+ if(kind==='fight'){modalView('');pausedAX=false;countdown=.8;renderHUD();return;}
+ if(kind==='workshop'){workshop();return;}if(kind==='challenges'){challenges();return;}
+ if(kind==='spec'){if(A.SPECIALIZATIONS[rpgState().classId].includes(id)){meta.specializations[rpgState().classId]=id;persist();workshop();}return;}
+ if(kind==='variant'){if(['standard','fortify','sustain','surge','orbit'].includes(id)){meta.variants[rpgState().classId]=id;persist();workshop();}return;}
+ if(kind==='skill-preview'){practice('hunter');engine.specialization=meta.specializations[rpgState().classId]||'';engine.variant=meta.variants[rpgState().classId]||'standard';engine.hero=rpgState().classId;engine.skills=[...growth.skills];engine.energy=100;engine.spawn('target',{x:110,y:330,expires:9999});return;}
+ if(kind==='risk-route'&&run?.phase==='route'){run.path='reward';run.modifier='swarm';run.stage++;run.riskDoor=run.stage;run.phase='fight';run.snapshot=null;persist();startRoom(true);return;}
+ if(kind==='cosmetic'&&meta.collections.includes(id)){meta.cosmetic=id;persist();workshop();return;}
+ if(kind==='artifact'&&run?.phase==='route'&&A.ARTIFACTS[id]){run.artifact=id;persist();routeView();return;}
+ if(kind==='name-build'){const name=document.getElementById('axBuildName')?.value.trim().slice(0,24);if(name&&meta.builds.length){meta.builds.at(-1).name=name;persist();workshop();}return;}
+ if(kind==='challenge'){launchChallenge(id);return;}if(kind==='ghost-play'){try{const d=A.decodeGhost(document.getElementById('axGhostCode')?.value.trim());launchChallenge('ghost',d);}catch{const input=document.getElementById('axGhostCode');if(input)input.setAttribute('aria-invalid','true');}return;}
+ if(kind==='online-series'){close();openDuelLobby();chosenSeriesFormat='tournament';renderDuelLobby();return;}
+ if(kind==='no-card'&&run?.phase==='cards'){run.phase='route';routeView();return;}
+ if(kind==='clear-data'){meta.metrics={};meta.perf={};meta.study=[];}
+ if(kind==='metrics'){metricsView();return;}
+ if(kind==='study-start'){research={started:Date.now(),actions:[],status:'in_progress',answer:null};launchChallenge('study');run.study=true;persist();return;}
+ if(kind==='study-answer'){const s=meta.study.at(-1);if(s){s.answer=id;s.status='answered';persist();metricsView();}return;}
+ if(kind==='retry'){const challenge=run?.challenge,ghost=run?.ghost,keep=run?.keepCampaign,lastSeed=run?.seed;if(challenge){launchChallenge(challenge,ghost);run.keepCampaign=keep;run.quickRetry=true;modalView('');countdown=.65;}else{run=null;begin(lastSeed);run.quickRetry=true;modalView('');countdown=.65;}return;}
+ if((kind==='home'||kind==='save')&&run?.challenge&&run.keepCampaign){run=run.keepCampaign;engine=null;close();return;}
+ if(kind==='card'&&run?.phase==='cards'){const c=A.CARDS.find(c=>c.id===id);if(c&&run.cards[c.synergy])meta.fusions[[id,c.synergy].sort().join('+')]=true;}
+ v6Action(value);
+};
+
+function trophySVG(region){const color=A.BIOMES[region][2],n=5+region%4,points=Array.from({length:n},(_,i)=>{const a=i*Math.PI*2/n-Math.PI/2;return (40+Math.cos(a)*21)+','+(32+Math.sin(a)*21);}).join(' ');return `<svg viewBox="0 0 80 90" role="img" aria-label="${safe(text(...A.BIOMES[region].slice(0,2)))}"><path d="M27 64H53L58 76H22ZM36 50H44V65H36" fill="${color}" opacity=".6"/><polygon points="${points}" fill="${color}22" stroke="${color}" stroke-width="2"/><circle cx="40" cy="32" r="11" fill="${color}"/><text x="40" y="36" text-anchor="middle" font-size="12" fill="#17363a">${region+1}</text></svg>`;}
+const v6HeroMarkup=heroMarkup;heroMarkup=function(){return v6HeroMarkup().replace('ax-emblem ','ax-emblem cosmetic-'+(meta.cosmetic||'none')+' ');};
+const v7Render=renderMenu;renderMenu=function(){v7Render();if(hubTab==='skills'){const main=document.querySelector?.('.hub-main');if(main){const b=document.createElement('button');b.textContent=text('Try abilities without spending points','Puan harcamadan yetenekleri dene');b.onclick=()=>action('skill-preview');main.append(b);}}};
+
 // Public inspection surface for deterministic QA; no hidden network-backed AI.
 window.angioExpedition={action,begin,resume,get engine(){return engine},get state(){return saved},get run(){return run},menu};
 renderMenu();
