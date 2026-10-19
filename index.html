@@ -3111,7 +3111,7 @@ function advancePlayGuide(){if(guideStep<2){guideStep++;renderPlayGuide();}else 
 function finishPlayGuide(){db.set('angio-guide-seen-v1',true);document.getElementById('playGuide').hidden=true;const action=guideAction;guideAction=null;if(action)action();}
 function renderMenu(){
  ensureDay();const root=document.getElementById('newMenu');if(!root)return;const rows=db.get('angio-records-'+mode,[]);const tabs=[['play',L('Play','Oyna')],['campaign',L('Adventure','Serüven')],['skills',L('Skills','Yetenekler')],['more',L('More','Diğer')]];
- root.innerHTML=`<header class="hub-header"><div class="hub-brand"><div class="brand-mark">✦</div><div><span>DUAL STRIKE</span><h1>AngioBlade <em>Arena</em></h1></div></div><div class="hub-profile"><span>${profileBadge(displayTrophy)+escapeText(playerNick||career.name||L('Player','Oyuncu'))}${campaign.stars[24]?' · '+L('Vessel Guardian','Damar Koruyucusu'):''}</span><b>◇ ${crystals}</b></div></header><nav class="hub-nav">${tabs.map(([id,label])=>`<button data-hub-tab="${id}" aria-pressed="${hubTab===id||(id==='more'&&['daily','trophies','skins','leaderboard','account','settings'].includes(hubTab))}">${label}</button>`).join('')}</nav><div class="hub-layout"><section class="hub-main">${hubTab==='play'?simpleHome():hubTab==='campaign'?campaignMap():hubTab==='more'?moreMenu():hubTab==='account'?accountView():hubTab==='settings'?settingsView():hubTab==='daily'?`<div class="section-heading"><span class="eyebrow">${ensureDay().day} · ${L('ISTANBUL TIME','İSTANBUL SAATİ')}</span><h2>${L('Daily missions','Günlük görevler')}</h2><p>${L('Play, complete goals and claim cosmetic crystals. Resets at midnight.','Oynayın, hedefleri tamamlayın ve kozmetik kristalleri alın. Gece yarısı yenilenir.')}</p></div>${questCards()}`:hubTab==='leaderboard'?leaderboardView():hubTab==='skills'?skillTreeView():hubTab==='trophies'?`<div class="section-heading"><span class="eyebrow">${progress.unlocked.length}/${trophies.length}</span><h2>${L('Your trophy showcase','Kupa vitrininiz')}</h2></div>${trophyShowcase()}`:`<div class="section-heading"><span class="eyebrow">${L('LOOKS ONLY · EQUAL PLAY','SADECE GÖRÜNÜM · EŞİT OYUN')}</span><h2>${L('Blade & trail collection','Bıçak ve iz koleksiyonu')}</h2></div>${wardrobe()}`}</section><details class="hub-player-details"><summary>👤 ${L('Player details','Oyuncu bilgilerim')}</summary><aside class="hub-aside">${growthCard()}${leagueCard()}<div class="hub-mini"><h3>${L('Player identity','Oyuncu kimliği')}</h3><div class="nick-row"><input id="profileName" maxlength="24" placeholder="${L('Your name','Adınız')}" value="${escapeText(playerNick||career.name||'')}"><button id="saveProfileName">✓</button></div><p id="careerMessage">${careerStatus}</p><p>${L('Keep this browser’s game data to retain access to your league profile.','Lig profilinize erişimi korumak için bu tarayıcının oyun verilerini saklayın.')}</p></div><div class="hub-mini"><h3>${L('Personal records','Kişisel rekorlar')}</h3>${rows.length?rows.slice(0,3).map((r,i)=>`<div class="hub-record"><span>0${i+1}</span><strong>${escapeText(r.name||playerNick)} · ${r.score.toLocaleString()}</strong></div>`).join(''):`<p>${L('Your next match could be a new record.','Bir sonraki maç yeni rekorunuz olabilir.')}</p>`}</div></aside></details></div><footer class="hub-footer"><span>v7.0.1 · ${L('Progression · skills · arena','İlerleme · yetenekler · arena')}</span><div><button id="switchLanguage">🌐 ${lang==='tr'?'Türkçe':'English'}</button><button id="qualityBtn">⚙ ${renderQuality==='lite'?L('Lightweight','Hafif'):renderQuality==='cinematic'?L('Cinematic','Sinematik'):L('Standard','Standart')}</button></div></footer>`;
+ root.innerHTML=`<header class="hub-header"><div class="hub-brand"><div class="brand-mark">✦</div><div><span>DUAL STRIKE</span><h1>AngioBlade <em>Arena</em></h1></div></div><div class="hub-profile"><span>${profileBadge(displayTrophy)+escapeText(playerNick||career.name||L('Player','Oyuncu'))}${campaign.stars[24]?' · '+L('Vessel Guardian','Damar Koruyucusu'):''}</span><b>◇ ${crystals}</b></div></header><nav class="hub-nav">${tabs.map(([id,label])=>`<button data-hub-tab="${id}" aria-pressed="${hubTab===id||(id==='more'&&['daily','trophies','skins','leaderboard','account','settings'].includes(hubTab))}">${label}</button>`).join('')}</nav><div class="hub-layout"><section class="hub-main">${hubTab==='play'?simpleHome():hubTab==='campaign'?campaignMap():hubTab==='more'?moreMenu():hubTab==='account'?accountView():hubTab==='settings'?settingsView():hubTab==='daily'?`<div class="section-heading"><span class="eyebrow">${ensureDay().day} · ${L('ISTANBUL TIME','İSTANBUL SAATİ')}</span><h2>${L('Daily missions','Günlük görevler')}</h2><p>${L('Play, complete goals and claim cosmetic crystals. Resets at midnight.','Oynayın, hedefleri tamamlayın ve kozmetik kristalleri alın. Gece yarısı yenilenir.')}</p></div>${questCards()}`:hubTab==='leaderboard'?leaderboardView():hubTab==='skills'?skillTreeView():hubTab==='trophies'?`<div class="section-heading"><span class="eyebrow">${progress.unlocked.length}/${trophies.length}</span><h2>${L('Your trophy showcase','Kupa vitrininiz')}</h2></div>${trophyShowcase()}`:`<div class="section-heading"><span class="eyebrow">${L('LOOKS ONLY · EQUAL PLAY','SADECE GÖRÜNÜM · EŞİT OYUN')}</span><h2>${L('Blade & trail collection','Bıçak ve iz koleksiyonu')}</h2></div>${wardrobe()}`}</section><details class="hub-player-details"><summary>👤 ${L('Player details','Oyuncu bilgilerim')}</summary><aside class="hub-aside">${growthCard()}${leagueCard()}<div class="hub-mini"><h3>${L('Player identity','Oyuncu kimliği')}</h3><div class="nick-row"><input id="profileName" maxlength="24" placeholder="${L('Your name','Adınız')}" value="${escapeText(playerNick||career.name||'')}"><button id="saveProfileName">✓</button></div><p id="careerMessage">${careerStatus}</p><p>${L('Keep this browser’s game data to retain access to your league profile.','Lig profilinize erişimi korumak için bu tarayıcının oyun verilerini saklayın.')}</p></div><div class="hub-mini"><h3>${L('Personal records','Kişisel rekorlar')}</h3>${rows.length?rows.slice(0,3).map((r,i)=>`<div class="hub-record"><span>0${i+1}</span><strong>${escapeText(r.name||playerNick)} · ${r.score.toLocaleString()}</strong></div>`).join(''):`<p>${L('Your next match could be a new record.','Bir sonraki maç yeni rekorunuz olabilir.')}</p>`}</div></aside></details></div><footer class="hub-footer"><span>v7.0.2 · ${L('Progression · skills · arena','İlerleme · yetenekler · arena')}</span><div><button id="switchLanguage">🌐 ${lang==='tr'?'Türkçe':'English'}</button><button id="qualityBtn">⚙ ${renderQuality==='lite'?L('Lightweight','Hafif'):renderQuality==='cinematic'?L('Cinematic','Sinematik'):L('Standard','Standart')}</button></div></footer>`;
  root.querySelectorAll('[data-hub-tab]').forEach(button=>button.onclick=()=>{hubTab=button.dataset.hubTab;if(hubTab==='play'&&mode==='campaign')mode='comparison';renderMenu();if(hubTab==='leaderboard')loadLeaderboard()});root.querySelectorAll('[data-unlock-skill]').forEach(button=>button.onclick=()=>unlockSkill(button.dataset.unlockSkill));if(hubTab==='skills'){document.getElementById('resetSkills').onclick=resetSkills;root.querySelectorAll('[data-loadout-save]').forEach(b=>b.onclick=()=>saveSkillLoadout(Number(b.dataset.loadoutSave)));root.querySelectorAll('[data-loadout-load]').forEach(b=>b.onclick=()=>loadSkillLoadout(Number(b.dataset.loadoutLoad)));}root.querySelectorAll('[data-claim]').forEach(button=>button.onclick=()=>claimQuest(button.dataset.claim));root.querySelectorAll('[data-trophy]').forEach(button=>button.onclick=()=>chooseDisplayTrophy(button.dataset.trophy));root.querySelectorAll('[data-skin]').forEach(button=>button.onclick=()=>selectSkin(...button.dataset.skin.split(':')));root.querySelectorAll('[data-buy]').forEach(button=>button.onclick=()=>buySkin(button.dataset.buy));
  root.querySelectorAll('[data-campaign-stage]').forEach(button=>button.onclick=()=>campaignBriefing(Number(button.dataset.campaignStage)));
  if(hubTab==='play'){document.getElementById('campaignEntry').onclick=()=>{hubTab='campaign';renderMenu()};document.getElementById('compare').onclick=()=>{mode='comparison';renderMenu()};document.getElementById('challenge').onclick=()=>{mode='challenge';renderMenu()};document.getElementById('duelModeButton').onclick=openDuelLobby;document.getElementById('introSlashTarget').onclick=requestPlay;document.getElementById('learnToPlay').onclick=()=>showPlayGuide();}
@@ -3986,6 +3986,8 @@ rgMeta();saveGrowth();renderMenu();
 
 
 
+
+
 <!-- EXPEDITION V6 START -->
 <style>
 /* Expedition: one goal, one thumb, a quiet high-contrast arena. */
@@ -4280,6 +4282,29 @@ class ImpactEngine extends Base{
   if(this.animations)this.addAnimation('spawn',e,{duration:.35,color:kind==='target'?'#79f3dc':'#ffc58a'});
   return e;
  }
+ moveTarget(e,dt){
+  // Move simulation coordinates, so the visible target and swipe hitbox stay together.
+  if(e.kind==='target'){
+   if(this.t<this.frozen)return;
+   if(!Number.isFinite(e.driftX)){
+    const phase=(e.id*2.399+this.stage.n*.71),speed=this.tutorial?18:30+Math.min(30,this.stage.n*.45);
+    e.driftX=Math.cos(phase)*speed;e.driftY=Math.sin(phase)*speed*.65;
+   }
+   const r=e.r||16,left=24+r,right=336-r,top=185+r,bottom=525-r;
+   const oldX=e.x,oldY=e.y;
+   e.x+=e.driftX*dt;e.y+=e.driftY*dt;
+   if(e.x<left||e.x>right){e.x=clamp(e.x,left,right);e.driftX=e.x<=left?Math.abs(e.driftX):-Math.abs(e.driftX);}
+   if(e.y<top||e.y>bottom){e.y=clamp(e.y,top,bottom);e.driftY=e.y<=top?Math.abs(e.driftY):-Math.abs(e.driftY);}
+   for(const o of this.stage.obstacles){
+    if(e.x>o.x-r&&e.x<o.x+o.w+r&&e.y>o.y-r&&e.y<o.y+o.h+r){
+     const crossedX=oldX<=o.x-r||oldX>=o.x+o.w+r;
+     e.x=oldX;e.y=oldY;if(crossedX)e.driftX*=-1;else e.driftY*=-1;break;
+    }
+   }
+   e.vx=e.driftX;e.vy=e.driftY;return;
+  }
+  super.updateEnemy(e,dt);
+ }
  sampleInput(type,p){
   if(this.trace.length>=2200)return;const at=Math.round(this.t*1000);
   if(type==='move'&&at-this.lastSavedInput<60)return;this.lastSavedInput=at;
@@ -4350,6 +4375,7 @@ class ImpactEngine extends Base{
   return old!==this.energy;
  }
  updateEnemy(e,dt){
+  if(e.kind==='target'){this.moveTarget(e,dt);return;}
   if(this.t<this.parryUntil&&e.state==='attack'&&distance(e,this.drone)<45){e.state='recover';e.since=this.t;this.addAnimation('parry',e,{color:'#fff0b6'});this.stats.interrupt++;}
   const before=e.state;super.updateEnemy(e,dt);
   if(before!==e.state){e.transitionAt=this.animClock;if(e.state==='windup')this.addAnimation('intent',e,{duration:.28,color:'#ffcca0'});if(e.state==='recover')this.addAnimation('recover',e,{duration:.4,color:'#cfb3ff'});}

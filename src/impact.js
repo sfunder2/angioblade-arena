@@ -32,6 +32,29 @@ class ImpactEngine extends Base{
   if(this.animations)this.addAnimation('spawn',e,{duration:.35,color:kind==='target'?'#79f3dc':'#ffc58a'});
   return e;
  }
+ moveTarget(e,dt){
+  // Move simulation coordinates, so the visible target and swipe hitbox stay together.
+  if(e.kind==='target'){
+   if(this.t<this.frozen)return;
+   if(!Number.isFinite(e.driftX)){
+    const phase=(e.id*2.399+this.stage.n*.71),speed=this.tutorial?18:30+Math.min(30,this.stage.n*.45);
+    e.driftX=Math.cos(phase)*speed;e.driftY=Math.sin(phase)*speed*.65;
+   }
+   const r=e.r||16,left=24+r,right=336-r,top=185+r,bottom=525-r;
+   const oldX=e.x,oldY=e.y;
+   e.x+=e.driftX*dt;e.y+=e.driftY*dt;
+   if(e.x<left||e.x>right){e.x=clamp(e.x,left,right);e.driftX=e.x<=left?Math.abs(e.driftX):-Math.abs(e.driftX);}
+   if(e.y<top||e.y>bottom){e.y=clamp(e.y,top,bottom);e.driftY=e.y<=top?Math.abs(e.driftY):-Math.abs(e.driftY);}
+   for(const o of this.stage.obstacles){
+    if(e.x>o.x-r&&e.x<o.x+o.w+r&&e.y>o.y-r&&e.y<o.y+o.h+r){
+     const crossedX=oldX<=o.x-r||oldX>=o.x+o.w+r;
+     e.x=oldX;e.y=oldY;if(crossedX)e.driftX*=-1;else e.driftY*=-1;break;
+    }
+   }
+   e.vx=e.driftX;e.vy=e.driftY;return;
+  }
+  super.updateEnemy(e,dt);
+ }
  sampleInput(type,p){
   if(this.trace.length>=2200)return;const at=Math.round(this.t*1000);
   if(type==='move'&&at-this.lastSavedInput<60)return;this.lastSavedInput=at;
@@ -102,6 +125,7 @@ class ImpactEngine extends Base{
   return old!==this.energy;
  }
  updateEnemy(e,dt){
+  if(e.kind==='target'){this.moveTarget(e,dt);return;}
   if(this.t<this.parryUntil&&e.state==='attack'&&distance(e,this.drone)<45){e.state='recover';e.since=this.t;this.addAnimation('parry',e,{color:'#fff0b6'});this.stats.interrupt++;}
   const before=e.state;super.updateEnemy(e,dt);
   if(before!==e.state){e.transitionAt=this.animClock;if(e.state==='windup')this.addAnimation('intent',e,{duration:.28,color:'#ffcca0'});if(e.state==='recover')this.addAnimation('recover',e,{duration:.4,color:'#cfb3ff'});}

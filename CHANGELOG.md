@@ -1,3 +1,9 @@
+## 7.0.2 — Moving targets
+
+- Targets now travel and bounce inside the arena from stage 1, including training.
+- Deterministic simulation movement keeps hitboxes aligned; stasis freezes targets and slow effects reduce their speed.
+- Targets bounce off arena walls and obstacles, with gradual speed progression.
+
 # 7.0.0 — Impact
 
 - Added material-specific hit reactions, directional halves, boss finishers and reduced-motion-safe transitions.

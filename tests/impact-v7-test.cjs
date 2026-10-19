@@ -3,6 +3,18 @@ function fresh(n=3,extra={}){const e=new A.Engine({seed:'V7',stage:n,...extra});
 function tick(e,seconds){for(let n=0;n<Math.ceil(seconds/.05);n++)e.update(.05);}
 function cut(e,x=180,y=300){const f=e.spawn('target',{x,y});e.swipe({x:x-25,y},{x:x+25,y});return f;}
 {
+ const e=fresh(1),a=e.spawn('target',{x:180,y:300,expires:9999});
+ const x=a.x,y=a.y;tick(e,1);assert.ok(Math.hypot(a.x-x,a.y-y)>15,'early-stage targets move visibly');
+ const same=fresh(1),b=same.spawn('target',{x:180,y:300,expires:9999});tick(same,1);assert.equal(a.x,b.x);assert.equal(a.y,b.y);
+ const before={x:a.x,y:a.y};e.frozen=e.t+2;tick(e,1);assert.deepEqual({x:a.x,y:a.y},before,'stasis freezes target movement');
+ e.frozen=0;for(let i=0;i<300;i++){e.updateEnemy(a,.05);assert.ok(a.x>=40&&a.x<=320&&a.y>=201&&a.y<=509);}
+ e.swipe({x:a.x-25,y:a.y},{x:a.x+25,y:a.y});assert.ok(a.dead,'swipe uses the moving target position');
+ const wall=fresh(1);wall.stage.obstacles=[{x:230,y:250,w:30,h:100}];const c=wall.spawn('target',{x:210,y:300});c.driftX=40;c.driftY=0;wall.updateEnemy(c,.2);assert.equal(c.x,210);assert.ok(c.driftX<0,'targets bounce off walls');
+ const reduced=fresh(1,{options:{motion:true}}),d=reduced.spawn('target',{x:180,y:300});tick(reduced,1);assert.notEqual(d.x,180,'reduced visual effects retain gameplay motion');
+ const tutorial=fresh(1,{tutorial:true}),t=tutorial.entities[0],tx=t.x;tick(tutorial,1);assert.notEqual(t.x,tx,'training targets also move');
+}
+
+{
  const e=fresh();cut(e);assert.equal(e.stats.precise,1);assert.ok(e.animations.some(a=>a.type==='split'));assert.ok(e.animations.some(a=>a.type==='precision'));assert.ok(e.slashes.length);assert.ok(e.score>=35);
  const edge=fresh();edge.spawn('target',{x:180,y:300});edge.swipe({x:150,y:300},{x:158,y:300});assert.equal(edge.stats.precise,1,'center-aligned short pointer segments are recognized');
  const a=e.spawn('target',{x:80,y:280,armor:1});e.swipe({x:50,y:280},{x:110,y:280});assert.equal(a.armor,0);assert.ok(e.animations.some(a=>a.type==='crack'));assert.equal(e.hitstop,.04);
