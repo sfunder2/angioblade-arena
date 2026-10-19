@@ -3,6 +3,19 @@ function fresh(n=3,extra={}){const e=new A.Engine({seed:'V7',stage:n,...extra});
 function tick(e,seconds){for(let n=0;n<Math.ceil(seconds/.05);n++)e.update(.05);}
 function cut(e,x=180,y=300){const f=e.spawn('target',{x,y});e.swipe({x:x-25,y},{x:x+25,y});return f;}
 {
+ let previous=0;
+ for(let n=1;n<=100;n++){
+  const e=fresh(n);assert.ok(e.targetSpeed()>previous,'each stage increases speed');previous=e.targetSpeed();
+  const early=e.targetSpeed();e.t=e.stage.duration;assert.ok(e.targetSpeed()>early,'speed ramps within a stage');assert.ok(e.targetSpeed()<=150);
+ }
+ const e=fresh(1),a=e.spawn('target',{x:180,y:300});e.updateEnemy(a,.01);const speed=Math.hypot(a.vx,a.vy);
+ e.t=e.stage.duration*.8;e.updateEnemy(a,.01);assert.ok(Math.hypot(a.vx,a.vy)>speed,'already spawned targets accelerate');
+ const late=fresh(100),b=late.spawn('target',{x:180,y:300});late.updateEnemy(b,.01);assert.ok(Math.hypot(b.vx,b.vy)>speed*3);
+ const restored=fresh(100),c=restored.spawn('target',{x:180,y:300,driftX:10,driftY:0});restored.updateEnemy(c,.01);assert.ok(c.vx>100,'old checkpoints receive current speed');
+ const tutorial=fresh(1,{tutorial:true});tutorial.t=100;assert.equal(tutorial.targetSpeed(),18);
+}
+
+{
  const e=fresh(1),a=e.spawn('target',{x:180,y:300,expires:9999});
  const x=a.x,y=a.y;tick(e,1);assert.ok(Math.hypot(a.x-x,a.y-y)>15,'early-stage targets move visibly');
  const same=fresh(1),b=same.spawn('target',{x:180,y:300,expires:9999});tick(same,1);assert.equal(a.x,b.x);assert.equal(a.y,b.y);

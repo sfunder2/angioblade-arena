@@ -32,14 +32,23 @@ class ImpactEngine extends Base{
   if(this.animations)this.addAnimation('spawn',e,{duration:.35,color:kind==='target'?'#79f3dc':'#ffc58a'});
   return e;
  }
+ targetSpeed(){
+  if(this.tutorial)return 18;
+  const stageSpeed=32+(clamp(this.stage.n,1,100)-1)*.8;
+  const pressure=1+.35*clamp(this.t/Math.max(1,this.stage.duration),0,1);
+  return Math.min(150,stageSpeed*pressure);
+ }
  moveTarget(e,dt){
   // Move simulation coordinates, so the visible target and swipe hitbox stay together.
   if(e.kind==='target'){
    if(this.t<this.frozen)return;
    if(!Number.isFinite(e.driftX)){
-    const phase=(e.id*2.399+this.stage.n*.71),speed=this.tutorial?18:30+Math.min(30,this.stage.n*.45);
+    const phase=(e.id*2.399+this.stage.n*.71),speed=this.targetSpeed();
     e.driftX=Math.cos(phase)*speed;e.driftY=Math.sin(phase)*speed*.65;
    }
+   // Recalculate live, including existing targets and resumed checkpoints.
+   const length=Math.hypot(e.driftX,e.driftY)||1,scale=this.targetSpeed()/length;
+   e.driftX*=scale;e.driftY*=scale;
    const r=e.r||16,left=24+r,right=336-r,top=185+r,bottom=525-r;
    const oldX=e.x,oldY=e.y;
    e.x+=e.driftX*dt;e.y+=e.driftY*dt;

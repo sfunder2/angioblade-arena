@@ -1,3 +1,9 @@
+## 7.0.3 — Progressive target speed
+
+- Target speed increases on every stage from 32 to 111.2 world pixels per second.
+- Existing and newly spawned targets gradually accelerate by up to 35% during a stage, capped at 150.
+- Training remains gentle; stasis, slow effects and checkpoint resumes keep working.
+
 ## 7.0.2 — Moving targets
 
 - Targets now travel and bounce inside the arena from stage 1, including training.
